@@ -16,18 +16,12 @@ import { environment } from '@env/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { TranslateModuleLoad } from './translate-import';
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { MetaModule } from '@ngx-meta/core';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		FooterComponent,
-		HeaderComponent,
-		SafeHtmlPipe
-	],
+	declarations: [AppComponent, FooterComponent, HeaderComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
