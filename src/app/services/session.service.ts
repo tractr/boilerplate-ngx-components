@@ -47,7 +47,7 @@ export class SessionService {
 	 * Retrieve user info from api
 	 * @return {Promise<void>}
 	 */
-	async current(): Promise<void> {
+	private async current(): Promise<void> {
 		// Get current from api
 		const options = { withCredentials: true };
 		const result: SelfResponse = await this.http
