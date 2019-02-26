@@ -9,5 +9,8 @@ export const environment = {
 	},
 	api: {
 		uri: 'https://api.example.com'
+	},
+	keys: {
+		google: 'ofZXw1etVLA4qQoo1yAoJXfUbbQWujjA8dzSIaAH0R'
 	}
 };

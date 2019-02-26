@@ -9,5 +9,8 @@ export const environment = {
 	},
 	api: {
 		uri: 'http://localhost:3000'
+	},
+	keys: {
+		google: 'ofZXw1etVLA4qQoo1yAoJXfUbbQWujjA8dzSIaAH0R'
 	}
 };

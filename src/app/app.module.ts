@@ -7,14 +7,7 @@ import { StaticModule } from '@app/static';
 import { SessionModule } from '@app/session';
 import { ModelsModule } from '@app/models';
 import { IsAdminGuard, IsLoggedGuard, IsNotLoggedGuard } from '@app/guards';
-import {
-	ErrorService,
-	SessionService,
-	S3Service,
-	GeocoderService,
-	PasswordService,
-	EmailConfirmationService
-} from '@app/services';
+import { ErrorService, SessionService } from '@app/services';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent, FooterComponent } from './shared/';
@@ -24,8 +17,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { TranslateModuleLoad } from './translate-import';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
-import { TranslateEntryPipe } from './pipes/translate-entry.pipe';
-import { TranslateCutPipe } from './pipes/translate-cut.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { MetaModule } from '@ngx-meta/core';
 import { MatButtonModule, MatIconModule } from '@angular/material';
@@ -35,9 +26,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 		AppComponent,
 		FooterComponent,
 		HeaderComponent,
-		SafeHtmlPipe,
-		TranslateEntryPipe,
-		TranslateCutPipe
+		SafeHtmlPipe
 	],
 	imports: [
 		BrowserModule,
@@ -62,11 +51,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 		IsLoggedGuard,
 		IsNotLoggedGuard,
 		SessionService,
-		S3Service,
-		GeocoderService,
-		PasswordService,
-		ErrorService,
-		EmailConfirmationService
+		ErrorService
 	],
 	bootstrap: [AppComponent]
 })
