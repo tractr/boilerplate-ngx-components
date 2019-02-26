@@ -1,6 +1,6 @@
 export const environment = {
 	production: false,
-  appName: 'Ngx Components',
+	appName: 'Ngx Components',
 	login: {
 		redirection: ['']
 	},
