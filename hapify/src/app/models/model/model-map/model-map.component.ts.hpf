@@ -141,4 +141,6 @@ export class <<M AA>>MapComponent implements OnInit, OnDestroy {
   }
 
 }
+<<??>>
+// No map for <<M a>>
 <<?>>

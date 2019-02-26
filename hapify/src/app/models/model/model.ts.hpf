@@ -1,17 +1,17 @@
 import {Helpers} from '@app/shared';
 import {BaseModel, BaseModelInterface} from '@app/abstracts';
-<<@ D !(ip*(in+rs)) d>>
+<<@ D !(ip*in) d>>
 import {<<d AA>>, <<d AA>>Interface} from '../<<d a-a>>/<<d a-a>>';
 <<@>>
- 
+
 export interface <<M AA>>Interface extends BaseModelInterface {
-<<@ F !(ip*(in+rs))/pr f>>
+<<@ F !(ip*in)/pr f>>
   <<f a_a>>?: <<=type(f)>>;
 <<@>>
 }
- 
+
 export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
- 
+
   /** @return {string} Short function to get label of instance */
   getLabel(): string {
 <<? F lb>>
@@ -36,7 +36,7 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
     <<?>>
   }
 <<@>>
- 
+
   /**
    * Populate the current instance from an object
    * @param {<<M AA>>Interface} object
@@ -67,7 +67,7 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
     <<?>>
 <<@>>
   }
-  
+
   /**
    * Convert the current instance to an object
    * @return {<<M AA>>Interface}
@@ -111,7 +111,7 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
 <<@>>
     return props;
   }
-  
+
   /**
    * Convert an instance to an object to be sent to the API
    * @return {<<M AA>>Interface}
@@ -120,7 +120,7 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
     const payload = this.toObject();
 
 <<# Remove public data that cannot be sent to the API >>
-<<@ F (in+rs)/ip f>>
+<<@ F in/ip f>>
     delete payload.<<f a_a>>;
 <<@>>
 
@@ -130,7 +130,7 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
 <<@>>
 
 <<# Convert dates and entities >>
-<<@ F /in/rs*(tD+tE) f>>
+<<@ F /in*(tD+tE) f>>
     <<? f tD>>
     payload.<<f a_a>> = < number>payload.<<f a_a>>;
     <<?? f tE>>
@@ -145,10 +145,10 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
   }
 }
 
-<<< 
+<<<
 function type(f) {
   let out = "";
- 
+
   if (f.type === "boolean") out += "boolean";
   else if (f.type === "string") out += "string";
   else if (f.type === "number") out += "number";
@@ -158,9 +158,9 @@ function type(f) {
     out += `string${m} | ${f.m.names.upperCamel}${m} | ${f.m.names.upperCamel}Interface${m}`;
   }
   else out += "any";
- 
+
   if (f.nullable && !f.multiple) out += " | null";
- 
+
   return out;
 }
 function labels() {
