@@ -1,0 +1,110 @@
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import {ErrorService} from '@app/services';
+<<? F tSr/in/rs>>
+import {TinyMceConfig} from '@app/shared';
+<<?>>
+import {<<M AA>><<? root.d.s>>, <<M AA>>Interface<<?>>} from '../<<M a-a>>';
+import {<<M AA>>Service} from '../<<M a-a>>.service';
+
+@Component({
+  selector: 'hpf-<<M a-a>>-form',
+  templateUrl: './<<M a-a>>-form.component.html'
+})
+export class <<M AA>>FormComponent implements OnInit {
+
+  /** The <<M a>> to inject in the form */
+  @Input() <<M aA>>: <<M AA>>;
+  /** @type {EventEmitter<<<M AA>>>} Called the save button is clicked for a new instance */
+  @Output() onCreate = new EventEmitter<<<M AA>>>();
+  /** @type {EventEmitter<<<M AA>>>} Called the save button is clicked for an existing instance */
+  @Output() onUpdate = new EventEmitter<<<M AA>>>();
+  /** @type {FormGroup} The form group to use */
+  form: FormGroup;
+<<? F tSr/in/rs>>
+  /** @type {Function<{}>} TinyMCE config */
+  tinyMceConfig = TinyMceConfig;
+<<?>>
+
+  /**
+   * Constructor
+   * @param {FormBuilder} formBuilder
+   * @param {ErrorService} errorService
+   * @param {<<M AA>>Service} <<M aA>>Service
+   */
+  constructor(private formBuilder: FormBuilder,
+              private errorService: ErrorService,
+              private <<M aA>>Service: <<M AA>>Service) {
+  }
+
+  /** Init */
+  ngOnInit() {
+    // If no instance, create a new one
+    if (!this.<<M aA>>) {
+      this.<<M aA>> = new <<M AA>>();
+    }
+    // Form validator
+<<? F ip/nu/in/rs>>
+    const privateRequired = this.<<M aA>>.isNew() ? [Validators.required] : [];
+<<?>>
+    this.form = this.formBuilder.group({
+<<@ F /in/rs f>>
+    <<? f ip/nu>>
+          <<f a_a>>: new FormControl(this.<<M aA>>.props.<<f a_a>>, [<<=validator(f, false)>>].concat(privateRequired)),
+    <<??>>
+          <<f a_a>>: new FormControl(this.<<M aA>>.props.<<f a_a>>, [<<=validator(f, true)>>]),
+    <<?>>
+<<@>>
+    });
+  }
+  /** Called on form submit */
+  onSubmit(): void {
+    // Update model
+    this.updateModel();
+    
+    // Creation or update ?
+    if (this.<<M aA>>.isNew()) {
+      // Creation
+      this.<<M aA>>Service.create(this.<<M aA>>.toPayload())
+        .then((<<M aA>>: <<M AA>>) => {
+          this.onCreate.next(<<M aA>>);
+        })
+        .catch((error) => this.errorService.handle(error));
+    } else {
+      // Update
+      this.<<M aA>>Service.update(this.<<M aA>>.getId(), this.<<M aA>>.toPayload())
+        .then(() => {
+          this.onUpdate.next(this.<<M aA>>);
+        })
+        .catch((error) => this.errorService.handle(error));
+    }
+  }
+  /** Update models properties from inputs values */
+  private updateModel(): void {
+    for (const key of Object.keys(this.form.controls)) {
+        this.<<M aA>>.props[key] = this.form.get(key).value;
+    }
+  }
+
+}
+
+<<<
+function validator(f, required) {
+    out = '';
+
+    if (f.type === 'number') {
+        if (f.subtype === 'latitude') out = 'Validators.min(-90), Validators.max(90)';
+        else if (f.subtype === 'longitude') out = 'Validators.min(-180), Validators.max(180)';
+    }
+    else if (f.type === 'string') {
+        if (f.subtype === 'email') out = 'Validators.email';
+        else if (f.subtype === 'password') out = 'Validators.minLength(6)';
+    }
+
+    if (!f.nullable && required) {
+        out = out.length ? `${out}, Validators.required` : 'Validators.required';
+    }
+
+    return out;
+}
+>>>

@@ -1,0 +1,20 @@
+<hpf-<<M a-a>>-details
+    *ngIf="<<M aA>>"
+    [<<M aA>>]="<<M aA>>"
+    (onDelete)="onDelete()"></hpf-<<M a-a>>-details>
+<div *ngIf="!<<M aA>>" class="my-5">
+    <mat-spinner class="mx-auto"></mat-spinner>
+</div>
+ 
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-3">
+            <mat-card>
+                <mat-card-title>Code</mat-card-title>
+                <mat-card-content>
+                    <pre>&lt;hpf-<<M a-a>>-details [<<M aA>>]="<<M aA>>" (onDelete)="onDelete()"&gt;&lt;/hpf-<<M a-a>>-details&gt;</pre>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

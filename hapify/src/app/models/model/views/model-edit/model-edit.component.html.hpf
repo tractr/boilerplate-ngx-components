@@ -1,0 +1,20 @@
+<hpf-<<M a-a>>-form
+        *ngIf="<<M aA>>"
+        [<<M aA>>]="<<M aA>>"
+        (onUpdate)="onSave($event)"></hpf-<<M a-a>>-form>
+<div *ngIf="!<<M aA>>" class="my-5">
+    <mat-spinner class="mx-auto"></mat-spinner>
+</div>
+ 
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-3">
+            <mat-card>
+                <mat-card-title>Code</mat-card-title>
+                <mat-card-content>
+                    <pre>&lt;hpf-<<M a-a>>-form [<<M aA>>]="<<M aA>>" (onUpdate)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</pre>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

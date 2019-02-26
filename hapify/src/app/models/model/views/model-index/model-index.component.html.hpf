@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-3 my-lg-5">
+            <mat-card>
+                <h2>Components for <<M a>></h2>
+                <div class="mt-4">
+                    <a [routerLink]="['/<<M a-a>>/selectors']">Selectors</a>
+                </div>
+                <div class="mt-4">
+                    <a [routerLink]="['/<<M a-a>>/list']">Table & Filters</a>
+                </div>
+<<? M pGSe>>
+                <div class="mt-4">
+                    <a [routerLink]="['/<<M a-a>>/map']">Map & Filters</a>
+                </div>
+<<?>>
+                <div class="mt-4">
+                    <a [routerLink]="['/<<M a-a>>/create']">Creation form</a>
+                </div>
+                <div class="mt-4" *ngIf="item">
+                    <a [routerLink]="['/<<M a-a>>/edit', item.getId()]">Edition form</a>
+                </div>
+                <div class="mt-4" *ngIf="item">
+                    <a [routerLink]="['/<<M a-a>>', item.getId()]">Details</a>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

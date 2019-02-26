@@ -1,0 +1,62 @@
+<div class="<<M a-a>>-list-container">
+    <div [ngClass]="{'d-none': !total}">
+        <mat-card class="table-container">
+            <div *ngIf="refreshing" class="loading-shade">
+                <mat-spinner></mat-spinner>
+            </div>
+            <mat-table #table
+                       [dataSource]="dataSource"
+                       matSort
+                       matSortDisableClear
+                       matSortActive="{{ searchParams.props._sort }}"
+                       matSortDirection="{{ searchParams.props._order }}">
+<<@ F /ip/pr/(tE/im) f>>
+                <!-- <<f A>> Column -->
+                <ng-container matColumnDef="<<f a_a>>">
+                    <mat-header-cell *matHeaderCellDef<<? f so>> mat-sort-header<<?>>>
+                        {{ '<<M a-a>>_<<f a-a>>' | translate }}
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+    <<? f tE>>
+        <<? f ml>>
+                        <div>
+                            <div *ngFor="let item of row.props.<<f a_a>>">
+                                {{ item.getLabel() }}
+                            </div>
+                        </div>
+        <<??>>
+                        {{ row.<<f aA>>Exists() ? row.props.<<f a_a>>.getLabel() : '' }}
+        <<?>>
+    <<?? f tD>>
+                        {{ row.props.<<f a_a>> | date:'medium' }}
+    <<?? f tB>>
+                        {{ (row.props.<<f a_a>> ? 'common_true' : 'common_false') | translate }}
+    <<?? f tSt>>
+                        <div [innerHTML]="row.props.<<f a_a>> | nl2br"></div>
+    <<?? f tSr>>
+                        <div [innerHTML]="row.props.<<f a_a>>"></div>
+    <<??>>
+                        {{ row.props.<<f a_a>> }}
+    <<?>>
+                    </mat-cell>
+                </ng-container>
+<<@>>
+                <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+                <mat-row
+                    *matRowDef="let row; columns: columns;"
+                    class="hover-bg-accent pointer"
+                    (click)="onSelect(row)"></mat-row>
+            </mat-table>
+            <mat-paginator
+                    [length]="total"
+                    [pageSize]="searchParams.props._limit"
+                    [pageIndex]="searchParams.props._page"
+                    [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </mat-card>
+    </div>
+    <div *ngIf="!total" class="text-center">
+        <mat-card>
+            <h4 class="my-3">{{ '<<M a-a>>_common_not-found' | translate }}</h4>
+        </mat-card>
+    </div>
+</div>

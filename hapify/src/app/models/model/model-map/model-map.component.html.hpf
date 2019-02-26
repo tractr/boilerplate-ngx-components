@@ -1,0 +1,34 @@
+<<? M pGSe>>
+<div class="<<M a-a>>-list-container w-100 h-100">
+    <agm-map class="h-100"
+             [latitude]="latitude"
+             [longitude]="longitude"
+             [zoom]="12"
+             [scrollwheel]="false"
+             [streetViewControl]="false"
+             [styles]="styles"
+             (mapReady)="onReady($event)"
+             (idle)="onIdle()">
+        <agm-marker *ngFor="let item of items"
+                    [latitude]="item.props.latitude"
+                    [longitude]="item.props.longitude">
+            <agm-snazzy-info-window borderRadius="0"
+                                    padding="0"
+                                    [border]="false"
+                                    [maxWidth]="400"
+                                    [maxHeight]="315"
+                                    [closeOnMapClick]="true"
+                                    [closeWhenOthersOpen]="true"
+                                    [showCloseButton]="false">
+                <ng-template>
+                    <div class="markerInfoWindow p-3 mw-100 text-center">
+                        <a href="javascript:" (click)="onSelect(item)">
+                            {{ item.getLabel() }}
+                        </a>
+                    </div>
+                </ng-template>
+            </agm-snazzy-info-window>
+        </agm-marker>
+    </agm-map>
+</div>
+<<?>>

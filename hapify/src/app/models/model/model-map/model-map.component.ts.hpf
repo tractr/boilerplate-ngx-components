@@ -1,0 +1,144 @@
+<<? M pGSe>>
+<<# Define shortcuts to fields latitude/longitude >>
+<<< let lat, lng; >>>
+<<@1 F se*tNt f>><<< lat = f; >>><<@>>
+<<@1 F se*tNg f>><<< lng = f; >>><<@>>
+import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
+import {takeUntil} from 'rxjs/operators';
+import {ErrorService} from '@app/services';
+import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
+import {<<M AA>>Service} from '../<<M a-a>>.service';
+import {<<M AA>>} from '../<<M a-a>>';
+ 
+@Component({
+  selector: 'hpf-<<M a-a>>-map',
+  templateUrl: './<<M a-a>>-map.component.html'
+})
+export class <<M AA>>MapComponent implements OnInit, OnDestroy {
+ 
+  /** @type {<<M AA>>SearchParams} The search params */
+  @Input() searchParams: <<M AA>>SearchParams;
+  /** @type {EventEmitter} Triggered when the user select a marker */
+  @Output() select = new EventEmitter<<<M AA>>>();
+  /** @type {Subject<void>} Observables unsubscriber */
+  private unsubscribe: Subject<void> = new Subject<void>();
+  /** @type {any} The map object */
+  map: any;
+  /** @type {<<M AA>>[]} The found objects */
+  items: <<M AA>>[] = [];
+  /** @type {number} Length of the received results */
+  total = 0;
+  /** @type {boolean} Denotes if the map should fit the search params on loading */
+  @Input() centerOnLoad = false;
+  /** @type {any[]} The map styles */
+  @Input() styles: any[] = [];
+  /** @type {number} Start latitude */
+  @Input() latitude = 45.5210724;
+  /** @type {number} Start longitude */
+  @Input() longitude = -73.6111978;
+ 
+  /**
+   * Constructor
+   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {ErrorService} errorService
+   */
+  constructor(private <<M aA>>Service: <<M AA>>Service,
+              private errorService: ErrorService) {
+  }
+
+  /** Init */
+  ngOnInit() {
+    this.searchParams
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe(() => {
+            this._refresh();
+        });
+  }
+  /** Destroy */
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
+  /**
+   * On select
+   * @param {<<M AA>>} item
+   */
+  onSelect(item: <<M AA>>) {
+    this.select.emit(item);
+  }
+  /**
+   * On select
+   * @param {any} map
+   */
+  onReady(map: any) {
+    this.map = map;
+    // Set bounds if possible
+    if (this.centerOnLoad) {
+        const bounds = {
+          south: this.searchParams.props.<<lat a_a>>__min,
+          north: this.searchParams.props.<<lat a_a>>__max,
+          west: this.searchParams.props.<<lng a_a>>__min,
+          east: this.searchParams.props.<<lng a_a>>__max,
+        };
+        if (typeof bounds.south !== 'undefined' &&
+            typeof bounds.west !== 'undefined' &&
+            typeof bounds.north !== 'undefined' &&
+            typeof bounds.east !== 'undefined') {
+            this.map.fitBounds({
+                south: Number(bounds.south),
+                north: Number(bounds.north),
+                west: Number(bounds.west),
+                east: Number(bounds.east),
+            });
+        }
+    }
+  }
+  /** Called when the user move the map */
+  onIdle(): void {
+    // Copy bounds to params
+    const bounds = this.map.getBounds();
+    const northEast = bounds.getNorthEast();
+    const southWest = bounds.getSouthWest();
+    // Latitude
+    this.searchParams.props.<<lat a_a>>__min = southWest.lat();
+    this.searchParams.props.<<lat a_a>>__max = northEast.lat();
+    // Deal with borders -180/180 for longitudes
+    // @Todo Solve this border issue on backend side by using an "$or" statement when lngMax < lngMin
+    const lngMin = southWest.lng();
+    const lngMax = northEast.lng();
+    if (lngMin > lngMax) {
+        // The map has more positive longitudes displayed
+        if (Math.abs(lngMin) < Math.abs(lngMax)) {
+            this.searchParams.props.<<lng a_a>>__min = lngMin;
+            delete this.searchParams.props.<<lng a_a>>__max;
+        } else {
+            // The map has more negative longitudes displayed
+            this.searchParams.props.<<lng a_a>>__max = lngMax;
+            delete this.searchParams.props.<<lng a_a>>__min
+        }
+    } else {
+        this.searchParams.props.<<lng a_a>>__min = lngMin;
+        this.searchParams.props.<<lng a_a>>__max = lngMax;
+    }
+    // Trigger update
+    this.searchParams.next();
+  }
+  /**
+   * Refresh data from search params
+   * @private
+   */
+  private _refresh(): void {
+    const params = this.searchParams.toObject();
+    // Get list
+    this.<<M aA>>Service.list(params)
+      .then((results) => {
+        // Link data
+        this.items = results.items;
+        this.total = results.total;
+      })
+      .catch((error) => this.errorService.handle(error));
+  }
+
+}
+<<?>>

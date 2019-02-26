@@ -1,0 +1,29 @@
+import {Component, OnInit} from '@angular/core';
+import {<<M AA>>} from '../../<<M a-a>>';
+ 
+@Component({
+  selector: 'hpf-<<M a-a>>-selectors',
+  templateUrl: './<<M a-a>>-selectors.component.html'
+})
+export class <<M AA>>SelectorsComponent implements OnInit {
+  
+  /** Fake recipients for inputs */
+  singleSelect: <<M AA>>;
+  multipleSelect: <<M AA>>[] = [];
+  singleNullCheckbox: <<M AA>>;
+  singleCheckbox: <<M AA>>;
+  multipleCheckbox: <<M AA>>[] = [];
+  multipleMaxCheckbox: <<M AA>>[] = [];
+  baseSortable: <<M AA>>[] = [];
+  maxSortable: <<M AA>>[] = [];
+  duplicateSortable: <<M AA>>[] = [];
+  
+  /** Constructor */
+  constructor() {
+  }
+ 
+  /** Init */
+  ngOnInit() {
+  }
+ 
+}

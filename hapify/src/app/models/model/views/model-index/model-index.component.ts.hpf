@@ -1,0 +1,39 @@
+import {Component, OnInit} from '@angular/core';
+import {ErrorService} from '@app/services';
+import {<<M AA>>} from '../../<<M a-a>>';
+import {<<M AA>>Service} from '../../<<M a-a>>.service';
+import {<<M AA>>SearchParams} from '../../<<M a-a>>-search-params';
+ 
+@Component({
+  selector: 'hpf-<<M a-a>>-index',
+  templateUrl: './<<M a-a>>-index.component.html'
+})
+export class <<M AA>>IndexComponent implements OnInit {
+ 
+  /**
+   * First found item
+   */
+  item: <<M AA>> = null;
+  
+  /**
+   * Constructor
+   * @param {ErrorService} errorService
+   * @param {<<M AA>>Service} <<M aA>>Service
+   */
+  constructor(private errorService: ErrorService,
+              private <<M aA>>Service: <<M AA>>Service) {}
+
+ 
+  /** Init */
+  ngOnInit() {
+      const params = new <<M AA>>SearchParams({ _limit: 1 });
+      this.<<M aA>>Service.list(params.toObject())
+        .then((results) => {
+            if (results.count) {
+                this.item = results.items[0];
+            }
+        })
+        .catch((error) => this.errorService.handle(error));
+  }
+ 
+}

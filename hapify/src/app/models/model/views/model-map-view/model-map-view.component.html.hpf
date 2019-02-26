@@ -1,0 +1,32 @@
+<<? M pGSe>>
+<mat-sidenav-container class="sidenav-cnt">
+<<? F se>>
+    <mat-sidenav #sidenav
+                 mode="side"
+                 opened="true"
+                 class="sidenav p-3"
+                 [fixedInViewport]="false"
+                 [fixedTopGap]="0"
+                 [fixedBottomGap]="0">
+        <hpf-<<M a-a>>-filters [searchParams]="searchParams"></hpf-<<M a-a>>-filters>
+    </mat-sidenav>
+<<?>>
+    <mat-sidenav-content class="sidenav-ctt p-3">
+        <hpf-<<M a-a>>-map 
+            [searchParams]="searchParams"
+            (select)="onSelect($event)"></hpf-<<M a-a>>-map>
+        
+        <div class="w-100 my-3">
+            <mat-card>
+                <mat-card-title>Code</mat-card-title>
+                <mat-card-content>
+<<? F se>>
+                    <pre>&lt;hpf-<<M a-a>>-filters [searchParams]="searchParams"&gt;&lt;/hpf-<<M a-a>>-filters&gt;</pre>
+<<?>>
+                    <pre>&lt;hpf-<<M a-a>>-map [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<M a-a>>-map&gt;</pre>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<<?>>
