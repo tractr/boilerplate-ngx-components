@@ -42,6 +42,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# manually imported libs
+/src/assets/tinymce
+
 # Generated files (to be remove after generation)
 src/app/models/*
 src/app/shared/models.ts
