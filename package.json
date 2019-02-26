@@ -8,9 +8,8 @@
 		"build:production": "ng build--prod --configuration=production",
 		"test": "ng test",
 		"lint": "./node_modules/.bin/prettier --write \"src/*/**/*{.ts,.json,.css,.scss,.html}\"",
-		"e2e": "ng e2e",
+		"e2e": "ng e2e"
 	},
-	"private": true,
 	"dependencies": {
 		"@agm/core": "^1.0.0-beta.5",
 		"@agm/snazzy-info-window": "^1.0.0-beta.5",
