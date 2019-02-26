@@ -11,6 +11,6 @@ export const environment = {
 		uri: 'http://localhost:3000'
 	},
 	keys: {
-		google: 'ofZXw1etVLA4qQoo1yAoJXfUbbQWujjA8dzSIaAH0R'
+		google: 'AIzaSyDFTKbcSXEN22pUx3zfaabEOGyy7oOZtmI'
 	}
 };
