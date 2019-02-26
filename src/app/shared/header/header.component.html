@@ -26,7 +26,12 @@
 		<mat-icon>person</mat-icon>
 	</button>
 	<mat-menu #toolbarUserMenu="matMenu">
-		<button mat-menu-item disabled="disabled" *ngIf="self">
+		<button
+			mat-menu-item
+			*ngIf="self"
+			[routerLink]="['/user', self.getId()]"
+		>
+			<mat-icon>settings</mat-icon>
 			<span>{{ self.getName() }}</span>
 		</button>
 		<button mat-menu-item (click)="onLogoutClick()">
