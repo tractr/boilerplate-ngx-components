@@ -130,7 +130,8 @@ export abstract class BaseModelService<
 	 * @return {string}
 	 */
 	protected uri(): string {
-		return `${environment.api.uri}/${this.path()}`;
+		// Use admin routes for demo (always available)
+		return `${environment.api.uri}/admin/${this.path()}`;
 	}
 	/**
 	 * Returns the base URI for this model
