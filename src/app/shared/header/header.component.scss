@@ -1,0 +1,34 @@
+@import '../../../scss/_variables.scss';
+
+mat-toolbar {
+	z-index: 1;
+
+	.nav-button {
+		margin: 0 10px 0 0;
+	}
+
+	.branding {
+		cursor: pointer;
+	}
+
+	.sign-in-button {
+		line-height: 35px;
+		margin-right: 10px;
+	}
+
+	.spacer {
+		flex: 1 1 auto;
+	}
+
+	@media (max-width: map-get($grid-breakpoints, lg)) {
+		.nav-button {
+			min-width: 0;
+			padding: 0 10px;
+		}
+		.sign-in-button {
+			min-width: 0;
+			padding: 0 10px;
+			margin: 0 5px 0 0;
+		}
+	}
+}

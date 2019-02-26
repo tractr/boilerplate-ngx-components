@@ -1,0 +1,30 @@
+<mat-sidenav-container>
+	<mat-sidenav #sidenav mode="push">
+		<div class="branding">
+			<img [src]="logo" />
+			<span>{{ 'header_app-short-name' | translate }}</span>
+		</div>
+		<mat-nav-list>
+			<div *ngIf="displayHeader">
+				<a
+					mat-list-item
+					*ngFor="let item of navigationSideMenu"
+					(click)="sidenav.close()"
+					[routerLink]="item.link"
+					routerLinkActive="active"
+				>
+					{{ item.label }}
+				</a>
+			</div>
+		</mat-nav-list>
+	</mat-sidenav>
+
+	<div class="wrapper">
+		<app-header *ngIf="displayHeader" [sidenav]="sidenav"></app-header>
+
+		<div class="content">
+			<router-outlet #o="outlet"></router-outlet>
+		</div>
+		<app-footer *ngIf="displayFooter"></app-footer>
+	</div>
+</mat-sidenav-container>

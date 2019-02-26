@@ -1,0 +1,18 @@
+<div class="background">
+	<div class="gradient">
+		<div class="container">
+			<h2 class="text-center">{{ 'home_title' | translate }}</h2>
+			<div class="actions">
+				<a
+					class="m-md-3 d-md-inline-block d-block"
+					*ngFor="let m of models"
+					[routerLink]="m.link"
+					routerLinkActive
+					#rla="routerLinkActive"
+				>
+					{{ m.label }}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

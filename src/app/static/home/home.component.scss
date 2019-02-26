@@ -1,0 +1,58 @@
+@import '../../../scss/_variables.scss';
+
+.background {
+	padding: 100px 0;
+	position: relative;
+
+	h1 {
+		text-align: center;
+		font-size: 3em;
+		text-transform: uppercase;
+	}
+
+	.actions {
+		text-align: center;
+		margin: 50px;
+		z-index: 1;
+
+		span {
+			display: inline-block;
+			font-weight: bold;
+			padding: 10px;
+		}
+
+		a {
+			margin: 0 0 10px 0;
+		}
+	}
+}
+
+@media (max-width: map-get($grid-breakpoints, md)) {
+	.background {
+		.get-started {
+			width: auto;
+		}
+	}
+}
+
+@media (max-width: map-get($grid-breakpoints, sm)) {
+	.background {
+		padding: 40px 0;
+
+		h1 {
+			line-height: 1em;
+		}
+
+		.actions {
+			margin: 40px 0 0 0;
+
+			span {
+				padding: 0 0 10px 0;
+			}
+
+			a {
+				width: 100%;
+			}
+		}
+	}
+}

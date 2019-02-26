@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+	<button mat-icon-button (click)="sidenav.open()" class="mr-2">
+		<img class="h-100 w-auto" [src]="logo" />
+	</button>
+
+	<span routerLink="" class="branding spacer d-md-none text-center">{{
+		'header_app-short-name' | translate
+	}}</span>
+	<span routerLink="" class="branding spacer d-none d-md-inline">{{
+		'header_app-name' | translate
+	}}</span>
+
+	<span class="d-none d-md-inline">
+		<button
+			mat-button
+			class="nav-button"
+			*ngFor="let item of navigation"
+			[routerLink]="[item.link]"
+			routerLinkActive="active"
+		>
+			{{ item.label }}
+		</button>
+	</span>
+
+	<button mat-icon-button [matMenuTriggerFor]="toolbarUserMenu">
+		<mat-icon>person</mat-icon>
+	</button>
+	<mat-menu #toolbarUserMenu="matMenu">
+		<button mat-menu-item disabled="disabled" *ngIf="self">
+			<span>{{ self.getName() }}</span>
+		</button>
+		<button mat-menu-item (click)="onLogoutClick()">
+			<mat-icon>power_settings_new</mat-icon>
+			<span>{{ 'header_action-logout' | translate }}</span>
+		</button>
+	</mat-menu>
+</mat-toolbar>

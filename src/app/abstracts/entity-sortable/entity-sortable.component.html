@@ -1,0 +1,60 @@
+<div class="w-100">
+	<mat-form-field class="w-100">
+		<mat-select
+			[placeholder]="placeholder"
+			[multiple]="false"
+			[(ngModel)]="selectedValue"
+			[disabled]="maxReached()"
+			(selectionChange)="onChange()"
+			(openedChange)="onOpened($event)"
+			[compareWith]="compareEntities"
+		>
+			<div
+				*ngIf="filterEnabled"
+				class="w-100 mat-option mat-option-disabled bg-accent"
+			>
+				<i class="material-icons mr-1">search</i>
+				<input
+					#filter
+					type="text"
+					matInput
+					placeholder="{{ filterPlaceholder }}"
+					[(ngModel)]="filterValue"
+					[ngModelOptions]="{ standalone: true }"
+					(keyup)="onFilterChanged()"
+				/>
+			</div>
+			<mat-option *ngIf="!loaded" [disabled]="true">
+				<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+			</mat-option>
+			<mat-option *ngFor="let item of items" [value]="item">{{
+				item.getLabel()
+			}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+	<div *ngIf="hasModels()" class="mb-3">
+		<div
+			cdkDropList
+			class="drag-list w-100"
+			(cdkDropListDropped)="onDrop($event)"
+		>
+			<div
+				class="drag-box p-2"
+				*ngFor="let item of model; let i = index"
+				cdkDrag
+			>
+				<span class="name">{{ item.getLabel() }}</span>
+				<span class="remove text-right" (click)="onDelete(i)">
+					<i class="material-icons mr-1">close</i>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="showError && errorRequired">
+		<mat-error class="mt-2 small">
+			{{ errorRequired }}
+		</mat-error>
+	</div>
+</div>

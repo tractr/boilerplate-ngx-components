@@ -1,0 +1,28 @@
+@import '../../../scss/_theme.scss';
+@import '~@angular/material/theming';
+
+$theme: hpf-get-theme();
+$primary: map-get($theme, primary);
+$accent: map-get($theme, accent);
+
+.footer {
+	padding: 0 15px;
+	text-align: center;
+	z-index: 1;
+	color: mat-color($primary, lighter);
+	background-color: mat-color($primary, darker);
+
+	.row {
+		padding: 10px 0;
+
+		.signature {
+			a {
+				float: right;
+				color: mat-color($primary, lighter);
+				&:hover {
+					color: mat-color($accent);
+				}
+			}
+		}
+	}
+}

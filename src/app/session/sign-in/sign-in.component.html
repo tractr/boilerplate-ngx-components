@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div
+			class="offset-md-2 col-md-8 offset-lg-3 col-lg-6 offset-xl-4 col-xl-4 mt-3 mb-3 mt-lg-5 mb-lg-5"
+		>
+			<form class="sign-in-form w-100">
+				<mat-form-field class="w-100">
+					<input
+						name="email"
+						matInput
+						placeholder="{{ 'session_email' | translate }}"
+						[(ngModel)]="email"
+					/>
+				</mat-form-field>
+				<mat-form-field class="w-100">
+					<input
+						name="password"
+						matInput
+						placeholder="{{ 'session_password' | translate }}"
+						type="password"
+						[(ngModel)]="password"
+					/>
+				</mat-form-field>
+				<button
+					mat-raised-button
+					color="primary"
+					[disabled]="!(email && password)"
+					(click)="onSignIn()"
+				>
+					{{ 'session_sign-in' | translate }}
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

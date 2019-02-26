@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ngx Components</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="assets/icons/icon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/icons/icon-72x72.png" sizes="72x72">
+  <link rel="icon" type="image/png" href="assets/icons/icon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="assets/icons/icon-128x128.png" sizes="128x128">
+  <link rel="icon" type="image/png" href="assets/icons/icon-144x144.png" sizes="144x144">
+  <link rel="icon" type="image/png" href="assets/icons/icon-152x152.png" sizes="152x152">
+  <link rel="icon" type="image/png" href="assets/icons/icon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="assets/icons/icon-384x384.png" sizes="384x384">
+  <link rel="icon" type="image/png" href="assets/icons/icon-512x512.png" sizes="512x512">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1976d2">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta content="website" property="og:type">
+  <meta content="Ngx Components" property="og:title">
+  <meta content="https://www.hapify.io/" property="og:url">
+  <meta
+    content="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_630,w_1200,f_auto,q_auto/v1/1425848/social_share_qp6we3.png"
+    property="og:image">
+  <meta content="Ngx Components" property="og:site_name">
+  <meta content="Accelerate backend and frontend development." property="og:description">
+  <meta content="Ngx Components" itemprop="name">
+  <meta content="Accelerate backend and frontend development." itemprop="description">
+  <meta
+    content="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_630,w_1200,f_auto,q_auto/v1/1425848/social_share_qp6we3.png"
+    itemprop="image">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="Ngx Components" name="twitter:title">
+  <meta content="Accelerate backend and frontend development." name="twitter:description">
+  <meta
+    content="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_630,w_1200,f_auto,q_auto/v1/1425848/social_share_qp6we3.png"
+    name="twitter:image">
+  <meta content="Accelerate backend and frontend development." name="description">
+  <style type="text/css">
+    body, html {
+      height: 100%;
+    }
+
+    .app-loading {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .app-loading .spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #ddd;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+  </style>
+</head>
+<body>
+<app-root>
+  <div class="app-loading">
+    <div class="logo"></div>
+    <svg class="spinner" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
+  </div>
+</app-root>
+</body>
+</html>
