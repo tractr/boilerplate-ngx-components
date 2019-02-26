@@ -1,14 +1,14 @@
 // Static words
 let _output = {
     "error_dismiss-action": "Ok",
-    "header_app-name": "Hapify - Components",
-    "header_app-short-name": "Hapify",
+    "header_app-name": "Ngx Components",
+    "header_app-short-name": "Components",
     "header_action-logout": "Logout",
     "footer_tag-line": "© {{year}} - Tractr",
     "session_sign-in": "Sign in",
     "session_email": "Email",
     "session_password": "Password",
-    "home_title": "Hapify",
+    "home_title": "Components",
     "common_any": "Any",
     "common_true": "Yes",
     "common_false": "No",
@@ -98,10 +98,10 @@ function __model(model) {
 //--------------------------------------------------
 models.map((model) => {
     const keysUnordered = Object.assign(_output, __model(model));
-    
+
     _output = Object.keys(keysUnordered).sort().reduce(function(keysOrdered, key) {
       keysOrdered[key] = keysUnordered[key];
-      
+
       return keysOrdered;
     }, {});
 });
