@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ErrorService} from '@app/services';
-<<? F tSr/in/rs>>
+<<? F tSr/in>>
 import {TinyMceConfig} from '@app/shared';
 <<?>>
 import {<<M AA>><<? root.d.s>>, <<M AA>>Interface<<?>>} from '../<<M a-a>>';
@@ -21,7 +21,7 @@ export class <<M AA>>FormComponent implements OnInit {
   @Output() onUpdate = new EventEmitter<<<M AA>>>();
   /** @type {FormGroup} The form group to use */
   form: FormGroup;
-<<? F tSr/in/rs>>
+<<? F tSr/in>>
   /** @type {Function<{}>} TinyMCE config */
   tinyMceConfig = TinyMceConfig;
 <<?>>
@@ -44,11 +44,11 @@ export class <<M AA>>FormComponent implements OnInit {
       this.<<M aA>> = new <<M AA>>();
     }
     // Form validator
-<<? F ip/nu/in/rs>>
+<<? F ip/nu/in>>
     const privateRequired = this.<<M aA>>.isNew() ? [Validators.required] : [];
 <<?>>
     this.form = this.formBuilder.group({
-<<@ F /in/rs f>>
+<<@ F /in f>>
     <<? f ip/nu>>
           <<f a_a>>: new FormControl(this.<<M aA>>.props.<<f a_a>>, [<<=validator(f, false)>>].concat(privateRequired)),
     <<??>>
@@ -61,7 +61,7 @@ export class <<M AA>>FormComponent implements OnInit {
   onSubmit(): void {
     // Update model
     this.updateModel();
-    
+
     // Creation or update ?
     if (this.<<M aA>>.isNew()) {
       // Creation

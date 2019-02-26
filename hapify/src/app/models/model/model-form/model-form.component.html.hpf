@@ -3,7 +3,7 @@
         <div class="col-12 my-3 my-lg-5">
             <mat-card>
                 <form class="<<M a-a>>-form w-100" [formGroup]="form" (ngSubmit)="onSubmit()">
-<<@ F /in/rs f>>
+<<@ F /in f>>
                     <!-- <<f A>> -->
 
     <<? f tE>>
@@ -95,7 +95,7 @@
     </div>
 </div>
 
-<<< 
+<<<
 function tagOpen(f) {
     return f.type === 'string' && f.subtype === 'rich' ?
         '<div class="w-100 mb-3">' : '<mat-form-field class="w-100 mb-3">';
