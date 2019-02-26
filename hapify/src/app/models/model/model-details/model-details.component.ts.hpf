@@ -3,13 +3,13 @@ import {MatSlideToggleChange} from '@angular/material';
 import {ErrorService} from '@app/services';
 import {<<M AA>>} from '../<<M a-a>>';
 import {<<M AA>>Service} from '../<<M a-a>>.service';
-
+ 
 @Component({
   selector: 'hpf-<<M a-a>>-details',
   templateUrl: './<<M a-a>>-details.component.html'
 })
 export class <<M AA>>DetailsComponent implements OnInit {
-
+ 
   /** @type {<<M AA>>} The <<M a>> to inject view */
   @Input() <<M aA>>: <<M AA>>;
   /** @type {EventEmitter<void>} Called the delete button is clicked */
@@ -18,7 +18,7 @@ export class <<M AA>>DetailsComponent implements OnInit {
   @Input() deletable = true;
   /** @type {boolean} Toggle delete button display */
   deletionUnlocked = false;
-
+ 
   /**
    * Constructor
    * @param {<<M AA>>Service} <<M aA>>Service
@@ -26,7 +26,7 @@ export class <<M AA>>DetailsComponent implements OnInit {
    */
   constructor(private <<M aA>>Service: <<M AA>>Service,
               private errorService: ErrorService) {}
-
+ 
   /** Init */
   ngOnInit() {}
   /**

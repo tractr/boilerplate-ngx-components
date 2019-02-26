@@ -1,3 +1,5 @@
 dist
 vendor
 utils/scaffolds
+hapify.json
+hapify

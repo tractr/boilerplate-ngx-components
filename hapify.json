@@ -6,36 +6,6 @@
   "project": "5c7019c998ebdb001075f1ed",
   "templates": [
     {
-      "path": "src/app/models/index.ts",
-      "engine": "hpf",
-      "input": "all"
-    },
-    {
-      "path": "src/app/models/models.module.ts",
-      "engine": "hpf",
-      "input": "all"
-    },
-    {
-      "path": "src/app/models/models-routing.module.ts",
-      "engine": "hpf",
-      "input": "all"
-    },
-    {
-      "path": "src/assets/i18n/en.json",
-      "engine": "js",
-      "input": "all"
-    },
-    {
-      "path": "src/app/models/{model.hyphen}/index.ts",
-      "engine": "hpf",
-      "input": "one"
-    },
-    {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}.ts",
-      "engine": "hpf",
-      "input": "one"
-    },
-    {
       "path": "src/app/models/{model.hyphen}/{model.hyphen}-checkbox/{model.hyphen}-checkbox.component.ts",
       "engine": "hpf",
       "input": "one"
@@ -71,17 +41,17 @@
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}/{model.hyphen}.component.html",
-      "engine": "hpf",
-      "input": "one"
-    },
-    {
       "path": "src/app/models/{model.hyphen}/{model.hyphen}-map/{model.hyphen}-map.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
       "path": "src/app/models/{model.hyphen}/{model.hyphen}-map/{model.hyphen}-map.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{model.hyphen}/{model.hyphen}-search-params.ts",
       "engine": "hpf",
       "input": "one"
     },
@@ -111,17 +81,27 @@
       "input": "one"
     },
     {
+      "path": "src/app/models/{model.hyphen}/{model.hyphen}.service.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{model.hyphen}/{model.hyphen}.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{model.hyphen}/{model.hyphen}/{model.hyphen}.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
       "path": "src/app/models/{model.hyphen}/{model.hyphen}/{model.hyphen}.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-search-params.ts",
-      "engine": "hpf",
-      "input": "one"
-    },
-    {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}.service.ts",
+      "path": "src/app/models/{model.hyphen}/index.ts",
       "engine": "hpf",
       "input": "one"
     },
@@ -206,8 +186,28 @@
       "input": "one"
     },
     {
+      "path": "src/app/models/index.ts",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "src/app/models/models-routing.module.ts",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "src/app/models/models.module.ts",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
       "path": "src/app/shared/models.ts",
       "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "src/assets/i18n/en.json",
+      "engine": "js",
       "input": "all"
     }
   ]
