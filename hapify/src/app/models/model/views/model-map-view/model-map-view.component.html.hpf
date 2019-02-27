@@ -12,18 +12,18 @@
     </mat-sidenav>
 <<?>>
     <mat-sidenav-content class="sidenav-ctt p-3">
-        <hpf-<<M a-a>>-map 
+        <hpf-<<M a-a>>-map
             [searchParams]="searchParams"
             (select)="onSelect($event)"></hpf-<<M a-a>>-map>
-        
+
         <div class="w-100 my-3">
             <mat-card>
                 <mat-card-title>Code</mat-card-title>
                 <mat-card-content>
 <<? F se>>
-                    <pre>&lt;hpf-<<M a-a>>-filters [searchParams]="searchParams"&gt;&lt;/hpf-<<M a-a>>-filters&gt;</pre>
+                    <pre><code>&lt;hpf-<<M a-a>>-filters [searchParams]="searchParams"&gt;&lt;/hpf-<<M a-a>>-filters&gt;</code></pre>
 <<?>>
-                    <pre>&lt;hpf-<<M a-a>>-map [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<M a-a>>-map&gt;</pre>
+                    <pre><code>&lt;hpf-<<M a-a>>-map [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<M a-a>>-map&gt;</code></pre>
                 </mat-card-content>
             </mat-card>
         </div>

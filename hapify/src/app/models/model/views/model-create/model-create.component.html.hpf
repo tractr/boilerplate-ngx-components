@@ -1,12 +1,12 @@
 <hpf-<<M a-a>>-form (onCreate)="onSave($event)"></hpf-<<M a-a>>-form>
- 
+
 <div class="container">
     <div class="row">
         <div class="col-12 my-3">
             <mat-card>
                 <mat-card-title>Code</mat-card-title>
                 <mat-card-content>
-                    <pre>&lt;hpf-<<M a-a>>-form (onCreate)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</pre>
+                    <pre><code>&lt;hpf-<<M a-a>>-form (onCreate)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</code></pre>
                 </mat-card-content>
             </mat-card>
         </div>

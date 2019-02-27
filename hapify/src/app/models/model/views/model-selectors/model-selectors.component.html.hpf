@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
- 
+
         <div class="col-12 my-3">
             <mat-card>
                 <mat-card-title>Dropdown</mat-card-title>
@@ -30,7 +30,7 @@
                         [multiple]="true">
                     </hpf-<<M a-a>>-select>
                     <h5 class="mt-3">Code</h5>
-                    <pre>&lt;hpf-<<M a-a>>-select
+                    <pre><code>&lt;hpf-<<M a-a>>-select
     [placeholder]="'<<M a-a>>_common_name' | translate"
     [nullable]="true"
     [nullLabel]="'common_any' | translate"
@@ -43,11 +43,11 @@
     [formGroup]="form"
     [errorRequired]="'common_error-required' | translate"
     [(model)]="<<M a_a>>"
-    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-select&gt;</pre>
+    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-select&gt;</code></pre>
                 </mat-card-content>
             </mat-card>
         </div>
- 
+
         <div class="col-12 my-3">
             <mat-card>
                 <mat-card-title>Sortable</mat-card-title>
@@ -85,7 +85,7 @@
                         [maxSelectable]="3">
                     </hpf-<<M a-a>>-sortable>
                     <h5 class="mt-3">Code</h5>
-                    <pre>&lt;hpf-<<M a-a>>-sortable
+                    <pre><code>&lt;hpf-<<M a-a>>-sortable
     [placeholder]="'<<M a-a>>_common_name' | translate"
 <<? F se*lb >>
     [filterEnabled]="true"
@@ -98,11 +98,11 @@
     [formGroup]="form"
     [errorRequired]="'common_error-required' | translate"
     [(model)]="<<M a_a>>"
-    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-sortable&gt;</pre>
+    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-sortable&gt;</code></pre>
                 </mat-card-content>
             </mat-card>
         </div>
- 
+
         <div class="col-12 my-3">
             <mat-card>
                 <mat-card-title>Buttons</mat-card-title>
@@ -137,7 +137,7 @@
                         [maxSelectable]="3">
                     </hpf-<<M a-a>>-checkbox>
                     <h5 class="mt-3">Code</h5>
-                    <pre>&lt;hpf-<<M a-a>>-checkbox
+                    <pre><code>&lt;hpf-<<M a-a>>-checkbox
     [placeholder]="'<<M a-a>>_common_name' | translate"
     [nullable]="true"
     [multiple]="true"
@@ -147,7 +147,7 @@
     [formGroup]="form"
     [errorRequired]="'common_error-required' | translate"
     [(model)]="<<M a_a>>"
-    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-checkbox&gt;</pre>
+    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-checkbox&gt;</code></pre>
                 </mat-card-content>
             </mat-card>
         </div>
