@@ -1,7 +1,7 @@
 <hpf-<<M a-a>>-form
         *ngIf="<<M aA>>"
         [<<M aA>>]="<<M aA>>"
-        (onUpdate)="onSave($event)"></hpf-<<M a-a>>-form>
+        (update)="onSave($event)"></hpf-<<M a-a>>-form>
 <div *ngIf="!<<M aA>>" class="my-5">
     <mat-spinner class="mx-auto"></mat-spinner>
 </div>
@@ -12,7 +12,7 @@
             <mat-card>
                 <mat-card-title>Code</mat-card-title>
                 <mat-card-content>
-                    <pre><code>&lt;hpf-<<M a-a>>-form [<<M aA>>]="<<M aA>>" (onUpdate)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</code></pre>
+                    <pre><code>&lt;hpf-<<M a-a>>-form [<<M aA>>]="<<M aA>>" (update)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</code></pre>
                 </mat-card-content>
             </mat-card>
         </div>

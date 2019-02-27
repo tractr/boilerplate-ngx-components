@@ -16,9 +16,9 @@ export class <<M AA>>FormComponent implements OnInit {
   /** The <<M a>> to inject in the form */
   @Input() <<M aA>>: <<M AA>>;
   /** @type {EventEmitter<<<M AA>>>} Called the save button is clicked for a new instance */
-  @Output() onCreate = new EventEmitter<<<M AA>>>();
+  @Output() create = new EventEmitter<<<M AA>>>();
   /** @type {EventEmitter<<<M AA>>>} Called the save button is clicked for an existing instance */
-  @Output() onUpdate = new EventEmitter<<<M AA>>>();
+  @Output() update = new EventEmitter<<<M AA>>>();
   /** @type {FormGroup} The form group to use */
   form: FormGroup;
 <<? F tSr/in>>
@@ -67,14 +67,14 @@ export class <<M AA>>FormComponent implements OnInit {
       // Creation
       this.<<M aA>>Service.create(this.<<M aA>>.toPayload())
         .then((<<M aA>>: <<M AA>>) => {
-          this.onCreate.next(<<M aA>>);
+          this.create.next(<<M aA>>);
         })
         .catch((error) => this.errorService.handle(error));
     } else {
       // Update
       this.<<M aA>>Service.update(this.<<M aA>>.getId(), this.<<M aA>>.toPayload())
         .then(() => {
-          this.onUpdate.next(this.<<M aA>>);
+          this.update.next(this.<<M aA>>);
         })
         .catch((error) => this.errorService.handle(error));
     }

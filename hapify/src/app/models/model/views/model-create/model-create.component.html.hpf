@@ -1,4 +1,4 @@
-<hpf-<<M a-a>>-form (onCreate)="onSave($event)"></hpf-<<M a-a>>-form>
+<hpf-<<M a-a>>-form (create)="onSave($event)"></hpf-<<M a-a>>-form>
 
 <div class="container">
     <div class="row">
@@ -6,7 +6,7 @@
             <mat-card>
                 <mat-card-title>Code</mat-card-title>
                 <mat-card-content>
-                    <pre><code>&lt;hpf-<<M a-a>>-form (onCreate)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</code></pre>
+                    <pre><code>&lt;hpf-<<M a-a>>-form (create)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</code></pre>
                 </mat-card-content>
             </mat-card>
         </div>
