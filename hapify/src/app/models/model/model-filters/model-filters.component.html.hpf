@@ -109,7 +109,7 @@
         [nullLabel]="'common_any' | translate"
         <<? f.m.f se*lb >>
         [filterEnabled]="true"
-        [filterPlaceholder]="'<<f.m a_a>>_common_search-placeholder' | translate"
+        [filterPlaceholder]="'<<f.m a-a>>_common_search-placeholder' | translate"
         <<?>>
         <<? f ml>>
         [multiple]="true"
