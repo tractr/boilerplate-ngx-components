@@ -3,7 +3,7 @@
   "validatorPath": "hapify/validator.js",
   "name": "Angular Components",
   "description": "Components library built with Angular 7",
-  "logo": "https://images.hapify.io/resize?nocrop=true&url=https://hpf-files-production-u67438.s3.amazonaws.com/img/51dd659e-3d5a-4427-9050-31eeb9f2f36e-1692aaf89de.png&width=300",
+  "logo": "https://angular.io/assets/images/logos/angular/angular.svg",
   "project": "5c7019c998ebdb001075f1ed",
   "templates": [
     {
