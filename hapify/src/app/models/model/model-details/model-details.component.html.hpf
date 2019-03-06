@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12 my-3 my-lg-5">
             <mat-card>
-<<@ F /ip/pr f>>
+<<@ F /hd/pr f>>
                 <!-- <<f A>> -->
                 <div class="mb-4">
                     <h5>{{ '<<M a-a>>_<<f a-a>>' | translate }}</h5>

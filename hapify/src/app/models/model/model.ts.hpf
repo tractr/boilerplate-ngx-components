@@ -1,11 +1,11 @@
 import {Helpers} from '@app/shared';
 import {BaseModel, BaseModelInterface} from '@app/abstracts';
-<<@ D !(ip*in) d>>
+<<@ D !(hd*in) d>>
 import {<<d AA>>, <<d AA>>Interface} from '../<<d a-a>>/<<d a-a>>';
 <<@>>
 
 export interface <<M AA>>Interface extends BaseModelInterface {
-<<@ F !(ip*in)/pr f>>
+<<@ F !(hd*in)/pr f>>
   <<f a_a>>?: <<=type(f)>>;
 <<@>>
 }
@@ -74,7 +74,7 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
    */
   toObject(): <<M AA>>Interface {
     const props = Object.assign({}, this.props);
-<<@ F nu/ip f>>
+<<@ F nu/hd f>>
     <<? f tS>>
     if (typeof props.<<f a_a>> !== 'string' || props.<<f a_a>>.length === 0) {
         props.<<f a_a>> = null;
@@ -120,12 +120,12 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
     const payload = this.toObject();
 
 <<# Remove public data that cannot be sent to the API >>
-<<@ F in/ip f>>
+<<@ F in/hd f>>
     delete payload.<<f a_a>>;
 <<@>>
 
 <<# Remove private data that have been entered >>
-<<@ F ip/nu f>>
+<<@ F hd/nu f>>
     if (payload.<<f a_a>> === null) { delete payload.<<f a_a>>; }
 <<@>>
 

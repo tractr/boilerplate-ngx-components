@@ -44,12 +44,12 @@ export class <<M AA>>FormComponent implements OnInit {
       this.<<M aA>> = new <<M AA>>();
     }
     // Form validator
-<<? F ip/nu/in>>
+<<? F hd/nu/in>>
     const privateRequired = this.<<M aA>>.isNew() ? [Validators.required] : [];
 <<?>>
     this.form = this.formBuilder.group({
 <<@ F /in f>>
-    <<? f ip/nu>>
+    <<? f hd/nu>>
           <<f a_a>>: new FormControl(this.<<M aA>>.props.<<f a_a>>, [<<=validator(f, false)>>].concat(privateRequired)),
     <<??>>
           <<f a_a>>: new FormControl(this.<<M aA>>.props.<<f a_a>>, [<<=validator(f, true)>>]),
