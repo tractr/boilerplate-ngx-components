@@ -27,12 +27,12 @@ let _output = {
  * @private
  */
 function __fields(model) {
-    const modelKey = model.names.hyphen;
+    const modelKey = model.names.kebab;
     return model.fields.list
         .filter((f) => !((f.hidden && (f.internal || f.restricted)) || f.primary))
         .reduce((p, f) => {
-            const key = f.names.hyphen;
-            p[`${modelKey}_${key}`] = `${f.names.wordsUpper}`;
+            const key = f.names.kebab;
+            p[`${modelKey}_${key}`] = `${f.names.capital}`;
             return p;
         }, {});
 }
@@ -44,14 +44,14 @@ function __fields(model) {
  * @private
  */
 function __filter(model) {
-    const modelKey = model.names.hyphen;
+    const modelKey = model.names.kebab;
     return model.fields.searchable
         .reduce((p, f) => {
-            const key = f.names.hyphen;
-            p[`${modelKey}_${key}`] = `${f.names.wordsUpper}`;
+            const key = f.names.kebab;
+            p[`${modelKey}_${key}`] = `${f.names.capital}`;
             if (f.type === 'number' || f.type === 'datetime') {
-                p[`${modelKey}_${key}--min`] = `${f.names.wordsUpper} min`;
-                p[`${modelKey}_${key}--max`] = `${f.names.wordsUpper} max`;
+                p[`${modelKey}_${key}--min`] = `${f.names.capital} min`;
+                p[`${modelKey}_${key}--max`] = `${f.names.capital} max`;
             }
             return p;
         }, {});
@@ -66,7 +66,7 @@ function __filter(model) {
 function __select(model) {
     if (model.p.hasSearchableLabel) {
         return {
-            [`${model.names.hyphen}_common_search-placeholder`]: `Search ${model.names.wordsLower}`
+            [`${model.names.kebab}_common_search-placeholder`]: `Search ${model.names.lower}`
         };
     }
     return {};
@@ -79,11 +79,11 @@ function __select(model) {
  * @private
  */
 function __model(model) {
-    const modelKey = model.names.hyphen;
-    const modelWords = model.names.wordsLower;
+    const modelKey = model.names.kebab;
+    const modelWords = model.names.lower;
     return Object.assign(
         {
-            [`${modelKey}_common_name`]: model.names.wordsUpper,
+            [`${modelKey}_common_name`]: model.names.capital,
             [`${modelKey}_common_not-found`]: `No ${modelWords} found`,
         },
         __filter(model),

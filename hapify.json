@@ -7,182 +7,182 @@
   "project": "5c7019c998ebdb001075f1ed",
   "templates": [
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-checkbox/{model.hyphen}-checkbox.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}-checkbox/{kebab}-checkbox.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-details/{model.hyphen}-details.component.html",
+      "path": "src/app/models/{kebab}/{kebab}-details/{kebab}-details.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-details/{model.hyphen}-details.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}-details/{kebab}-details.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-filters/{model.hyphen}-filters.component.html",
+      "path": "src/app/models/{kebab}/{kebab}-filters/{kebab}-filters.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-filters/{model.hyphen}-filters.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}-filters/{kebab}-filters.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-form/{model.hyphen}-form.component.html",
+      "path": "src/app/models/{kebab}/{kebab}-form/{kebab}-form.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-form/{model.hyphen}-form.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}-form/{kebab}-form.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-map/{model.hyphen}-map.component.html",
+      "path": "src/app/models/{kebab}/{kebab}-map/{kebab}-map.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-map/{model.hyphen}-map.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}-map/{kebab}-map.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-search-params.ts",
+      "path": "src/app/models/{kebab}/{kebab}-search-params.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-select/{model.hyphen}-select.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}-select/{kebab}-select.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-sortable/{model.hyphen}-sortable.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}-sortable/{kebab}-sortable.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-table/{model.hyphen}-table.component.html",
+      "path": "src/app/models/{kebab}/{kebab}-table/{kebab}-table.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-table/{model.hyphen}-table.component.scss",
+      "path": "src/app/models/{kebab}/{kebab}-table/{kebab}-table.component.scss",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}-table/{model.hyphen}-table.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}-table/{kebab}-table.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}.service.ts",
+      "path": "src/app/models/{kebab}/{kebab}.service.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}.ts",
+      "path": "src/app/models/{kebab}/{kebab}.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}/{model.hyphen}.component.html",
+      "path": "src/app/models/{kebab}/{kebab}/{kebab}.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/{model.hyphen}/{model.hyphen}.component.ts",
+      "path": "src/app/models/{kebab}/{kebab}/{kebab}.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/index.ts",
+      "path": "src/app/models/{kebab}/index.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-create/{model.hyphen}-create.component.html",
+      "path": "src/app/models/{kebab}/views/{kebab}-create/{kebab}-create.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-create/{model.hyphen}-create.component.ts",
+      "path": "src/app/models/{kebab}/views/{kebab}-create/{kebab}-create.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-edit/{model.hyphen}-edit.component.html",
+      "path": "src/app/models/{kebab}/views/{kebab}-edit/{kebab}-edit.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-edit/{model.hyphen}-edit.component.ts",
+      "path": "src/app/models/{kebab}/views/{kebab}-edit/{kebab}-edit.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-index/{model.hyphen}-index.component.html",
+      "path": "src/app/models/{kebab}/views/{kebab}-index/{kebab}-index.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-index/{model.hyphen}-index.component.ts",
+      "path": "src/app/models/{kebab}/views/{kebab}-index/{kebab}-index.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-list/{model.hyphen}-list.component.html",
+      "path": "src/app/models/{kebab}/views/{kebab}-list/{kebab}-list.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-list/{model.hyphen}-list.component.scss",
+      "path": "src/app/models/{kebab}/views/{kebab}-list/{kebab}-list.component.scss",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-list/{model.hyphen}-list.component.ts",
+      "path": "src/app/models/{kebab}/views/{kebab}-list/{kebab}-list.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-map-view/{model.hyphen}-map-view.component.html",
+      "path": "src/app/models/{kebab}/views/{kebab}-map-view/{kebab}-map-view.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-map-view/{model.hyphen}-map-view.component.scss",
+      "path": "src/app/models/{kebab}/views/{kebab}-map-view/{kebab}-map-view.component.scss",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-map-view/{model.hyphen}-map-view.component.ts",
+      "path": "src/app/models/{kebab}/views/{kebab}-map-view/{kebab}-map-view.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-read/{model.hyphen}-read.component.html",
+      "path": "src/app/models/{kebab}/views/{kebab}-read/{kebab}-read.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-read/{model.hyphen}-read.component.ts",
+      "path": "src/app/models/{kebab}/views/{kebab}-read/{kebab}-read.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-selectors/{model.hyphen}-selectors.component.html",
+      "path": "src/app/models/{kebab}/views/{kebab}-selectors/{kebab}-selectors.component.html",
       "engine": "hpf",
       "input": "one"
     },
     {
-      "path": "src/app/models/{model.hyphen}/views/{model.hyphen}-selectors/{model.hyphen}-selectors.component.ts",
+      "path": "src/app/models/{kebab}/views/{kebab}-selectors/{kebab}-selectors.component.ts",
       "engine": "hpf",
       "input": "one"
     },

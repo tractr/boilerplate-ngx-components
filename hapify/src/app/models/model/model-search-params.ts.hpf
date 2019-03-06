@@ -115,7 +115,7 @@ function _type(f) {
   return "any";
 }
 function _interface(f) {
-    const prop = f.names.underscore;
+    const prop = f.names.snake;
     const type = _type(f);
     let line = `${prop}?: ${type}`;
     if (f.type === "number" || f.type === "datetime") {
@@ -125,7 +125,7 @@ function _interface(f) {
     return line;
 }
 function _key(f) {
-    const prop = f.names.underscore;
+    const prop = f.names.snake;
     let line = `'${prop}'`;
     if (f.type === "number" || f.type === "datetime") {
         line += `,\n      '${prop}__min'`;

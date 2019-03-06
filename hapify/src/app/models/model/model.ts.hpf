@@ -155,7 +155,7 @@ function type(f) {
   else if (f.type === "datetime") out += "number | Date";
   else if (f.type === "entity") {
     const m = f.multiple ? "[]" : "";
-    out += `string${m} | ${f.m.names.upperCamel}${m} | ${f.m.names.upperCamel}Interface${m}`;
+    out += `string${m} | ${f.m.names.pascal}${m} | ${f.m.names.pascal}Interface${m}`;
   }
   else out += "any";
 
@@ -165,7 +165,7 @@ function type(f) {
 }
 function labels() {
     return root.f.lb
-        .map(lb => "${this.props."+lb.names.underscore+"}")
+        .map(lb => "${this.props."+lb.names.snake+"}")
         .join(' ');
 }
 >>>
