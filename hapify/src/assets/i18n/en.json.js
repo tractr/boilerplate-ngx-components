@@ -29,7 +29,7 @@ let _output = {
 function __fields(model) {
     const modelKey = model.names.hyphen;
     return model.fields.list
-        .filter((f) => !((f.isPrivate && (f.internal || f.restricted)) || f.primary))
+        .filter((f) => !((f.hidden && (f.internal || f.restricted)) || f.primary))
         .reduce((p, f) => {
             const key = f.names.hyphen;
             p[`${modelKey}_${key}`] = `${f.names.wordsUpper}`;
