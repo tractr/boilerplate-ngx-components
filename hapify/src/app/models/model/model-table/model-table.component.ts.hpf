@@ -21,7 +21,7 @@ export class <<M AA>>TableComponent implements OnInit, OnDestroy {
   @Output() select = new EventEmitter<<<M AA>>>();
   /** @type {string[]} Columns to show */
   @Input() columns = [
-<<@5 F /ip/pr/(tE/im)/tSt/tSr f>>
+<<@5 F /ip/pr/(tE/em)/tSt/tSr f>>
     '<<f a_a>>',
 <<@>>
   ];
