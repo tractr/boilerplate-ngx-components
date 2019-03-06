@@ -135,9 +135,9 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
     payload.<<f a_a>> = < number>payload.<<f a_a>>;
     <<?? f tE>>
         <<? f ml>>
-    payload.<<f a_a>> = payload.<<f a_a>> ? (< <<f.m AA>>Interface[]>payload.<<f a_a>>).map((i) => i.<<f.m.f.p a_a>>) : null;
+    payload.<<f a_a>> = payload.<<f a_a>> ? (< <<f.m AA>>Interface[]>payload.<<f a_a>>).map((i) => i.<<f.m.f.pr a_a>>) : null;
         <<??>>
-    payload.<<f a_a>> = payload.<<f a_a>> ? (< <<f.m AA>>Interface>payload.<<f a_a>>).<<f.m.f.p a_a>> : null;
+    payload.<<f a_a>> = payload.<<f a_a>> ? (< <<f.m AA>>Interface>payload.<<f a_a>>).<<f.m.f.pr a_a>> : null;
         <<?>>
     <<?>>
 <<@>>
