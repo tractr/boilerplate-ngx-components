@@ -154,6 +154,7 @@ export abstract class EntitySelectComponent<
 		) {
 			// Clear search if needed
 			this.filterValue = null;
+			this.refresh();
 		}
 	}
 	/**
