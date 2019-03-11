@@ -1,4 +1,4 @@
-# Angular Components
+# Angular Components Boileplate
 
 #### Hapify
 This boilerplate is meant to be used with Hapify. To get more info about Hapify setup, please refer to https://www.hapify.io/get-started.
@@ -20,9 +20,7 @@ Then you need to generate code from your Hapify project using `hpf generate`.
 
 ### 3. API Dependency
 
-This project depends on the API [`hapijs_tractr`](https://github.com/Tractr/boilerplate-hapijs).
-
-Please install and start this API before running this project.
+This project depends on the [`hapijs_tractr`](https://github.com/Tractr/boilerplate-hapijs) API Boilerplate. Please install and start the API before running Angular Component.
 
 ### 4. Start project
 
