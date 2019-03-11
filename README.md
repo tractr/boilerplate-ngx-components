@@ -1,8 +1,8 @@
 # Angular Components Boileplate
 
+This boilerplate provides a components library built with Angular 7.
 > This boilerplate is meant to be used with Hapify. To get more info about Hapify setup, please refer to https://www.hapify.io/get-started.
 
-This boilerplate provides a components library built with Angular 7.
 
 
 ## Get Started
