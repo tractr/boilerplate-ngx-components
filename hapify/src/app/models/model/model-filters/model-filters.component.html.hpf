@@ -107,6 +107,7 @@
         [(id)]="searchParams.props.<<f a_a>>"
         [nullable]="true"
         [nullLabel]="'common_any' | translate"
+        [emptyLabel]="'common_empty' | translate"
         <<? f.m.f se*lb >>
         [filterEnabled]="true"
         [filterPlaceholder]="'<<f.m a-a>>_common_search-placeholder' | translate"

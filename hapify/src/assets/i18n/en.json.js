@@ -9,6 +9,7 @@ let _output = {
     "session_email": "Email",
     "session_password": "Password",
     "home_title": "Components",
+    "common_empty": "No results",
     "common_any": "Any",
     "common_true": "Yes",
     "common_false": "No",
@@ -84,7 +85,7 @@ function __model(model) {
     return Object.assign(
         {
             [`${modelKey}_common_name`]: model.names.capital,
-            [`${modelKey}_common_not-found`]: `No ${modelWords} found`,
+            [`${modelKey}_common_not-found`]: `No ${modelWords} found`
         },
         __filter(model),
         __fields(model),

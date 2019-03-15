@@ -22,6 +22,7 @@
                             [filterEnabled]="true"
                             [filterPlaceholder]="'<<f.m a-a>>_common_search-placeholder' | translate"
         <<?>>
+                            [emptyLabel]="'common_empty' | translate"
                             [placeholder]="'<<M a-a>>_<<f a-a>>' | translate"
                             [errorRequired]="'common_error-required' | translate">
                         </hpf-<<f.m a-a>>-select>

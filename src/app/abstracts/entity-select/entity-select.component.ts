@@ -79,6 +79,8 @@ export abstract class EntitySelectComponent<
 	@Input() nullable = false;
 	/** @type {string} The label for null value */
 	@Input() nullLabel = '-';
+	/** @type {string} The label for no results */
+	@Input() emptyLabel = '∅';
 	/** @type {boolean} Denotes if the field should be multiple */
 	@Input() multiple = false;
 	/** @type {boolean} Denotes if the items should be preloaded */

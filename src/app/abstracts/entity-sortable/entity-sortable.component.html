@@ -27,6 +27,9 @@
 			<mat-option *ngIf="!loaded" [disabled]="true">
 				<mat-progress-bar mode="indeterminate"></mat-progress-bar>
 			</mat-option>
+			<mat-option *ngIf="loaded && !items.length" [disabled]="true">
+				<em>{{ emptyLabel }}</em>
+			</mat-option>
 			<mat-option *ngFor="let item of items" [value]="item">{{
 				item.getLabel()
 			}}</mat-option>
