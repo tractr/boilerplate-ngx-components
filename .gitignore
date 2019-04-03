@@ -45,7 +45,7 @@ Thumbs.db
 # manually imported libs
 /src/assets/tinymce
 
-# Generated files (to be remove after generation)
+# Generated files. Remove these lines after generation
 src/app/models/*
 src/app/shared/models.ts
 src/assets/i18n/en.json

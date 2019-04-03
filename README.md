@@ -15,7 +15,7 @@ This boilerplate provides a components library built with Angular 7.
 
 Then you need to generate code from your Hapify project using `hpf generate`.
 
-**Important**: For development purpose, generated files are ignored in the `.gitignore`. You should edit this file and remove the last lines before committing.
+⚠️ **Important**: For development purpose, generated files are ignored in the `.gitignore`. You should edit this file and remove the last lines before committing.
 
 ### 3. API Dependency
 
