@@ -1,115 +1,46 @@
-import {Component, OnInit, Input, Output, EventEmitter, ViewChild, OnDestroy} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {Subscription} from 'rxjs/Subscription';
+import {Component, Input} from '@angular/core';
 import {ErrorService} from '@app/services';
+import {EntityTableComponent} from '@app/abstracts';
 import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
 import {<<M AA>>Service} from '../<<M a-a>>.service';
 import {<<M AA>>} from '../<<M a-a>>';
-
+ 
 @Component({
   selector: 'hpf-<<M a-a>>-table',
-  templateUrl: './<<M a-a>>-table.component.html',
-  styleUrls: ['./<<M a-a>>-table.component.scss']
+  templateUrl: './<<M a-a>>-table.component.html'
 })
-export class <<M AA>>TableComponent implements OnInit, OnDestroy {
+export class <<M AA>>TableComponent extends EntityTableComponent< <<M AA>>, <<M AA>>SearchParams> {
 
-  /** @type {<<M AA>>SearchParams} The search params */
-  @Input() searchParams: <<M AA>>SearchParams;
-  /** @type {number} Delay to show loading spinner. Avoid blinking effect on fast APIs */
-  @Input() refreshingDelay = 200;
-  /** @type {EventEmitter} Triggered when the user select a row */
-  @Output() select = new EventEmitter<<<M AA>>>();
   /** @type {string[]} Columns to show */
   @Input() columns = [
 <<@5 F /hd/pr/(tE/em)/tSt/tSr f>>
     '<<f a_a>>',
 <<@>>
   ];
-  /** @type {boolean} Raised if the list in being updated */
-  refreshing = false;
-  /** @type {Subscription[]} Subscription to the tables events */
-  private _subscriptions: Subscription[] = [];
-  /** @type {MatTableDataSource<<<M AA>>>} Data wrapper for MatTable */
-  dataSource: MatTableDataSource<<<M AA>>> = new MatTableDataSource();
-  /** @type {number} Length of the received results */
-  total = 0;
-  /** @type {MatPaginator} Paginator sub view */
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  /** @type {MatSort} Sort sub view */
-  @ViewChild(MatSort) sort: MatSort;
 
-  /**
-   * Constructor
-   * @param {<<M AA>>Service} <<M aA>>Service
-   * @param {ErrorService} errorService
-   */
+  /** Constructor */
   constructor(private <<M aA>>Service: <<M AA>>Service,
               private errorService: ErrorService) {
+    super();
   }
 
-  /** Init */
-  ngOnInit() {
-    // Subscriptions
-    this._subscriptions = [
-      this.sort.sortChange.subscribe(() => {
-        // If the <<M a>> changes the sort order, reset back to the first page.
-        this.paginator.pageIndex = 0;
-        this._update();
-      }),
-      this.paginator.page.subscribe(() => {
-        this._update();
-      }),
-      this.searchParams.subscribe(() => {
-        this._refresh();
-      })
-    ];
-  }
-  /** Destroy */
-  ngOnDestroy() {
-    this._subscriptions.map(s => s.unsubscribe());
-  }
-  /**
-   * On select
-   * @param {<<M AA>>} item
-   */
-  onSelect(item: <<M AA>>) {
-    this.select.emit(item);
-  }
-  /**
-   * Update data
-   * @private
-   */
-  private _update(): void {
-    // Copy controls to params
-    this.searchParams.props._page = this.paginator.pageIndex;
-    this.searchParams.props._limit = this.paginator.pageSize;
-    this.searchParams.props._sort = this.sort.active;
-    this.searchParams.props._order = this.sort.direction;
-    // Trigger update
-    this.searchParams.next();
-  }
-  /**
-   * Refresh data from search params
-   * @private
-   */
-  private _refresh(): void {
+  /** @inheritDoc */
+  protected refresh(): void {
     const params = this.searchParams.toObject();
+
     // Set refreshing flag
-    const refreshTimeout = setTimeout(() => {
-      this.refreshing = true;
-    }, this.refreshingDelay);
+    this.refreshing = true;
     // Get list
     this.<<M aA>>Service.list(params)
       .then((results) => {
         // Link data
-        this.dataSource.data = results.items;
+        this.items = results.items;
         this.total = results.total;
       })
       .catch((error) => this.errorService.handle(error))
       .then(() => {
-        clearTimeout(refreshTimeout);
         this.refreshing = false;
       });
   }
-
+ 
 }

@@ -1,17 +1,17 @@
 import {Helpers} from '@app/shared';
 import {BaseModel, BaseModelInterface} from '@app/abstracts';
-<<@ D !(hd*in) d>>
+<<@ D !(hd*(in+rs)) d>>
 import {<<d AA>>, <<d AA>>Interface} from '../<<d a-a>>/<<d a-a>>';
 <<@>>
-
+ 
 export interface <<M AA>>Interface extends BaseModelInterface {
-<<@ F !(hd*in)/pr f>>
+<<@ F !(hd*(in+rs))/pr f>>
   <<f a_a>>?: <<=type(f)>>;
 <<@>>
 }
-
+ 
 export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
-
+ 
   /** @return {string} Short function to get label of instance */
   getLabel(): string {
 <<? F lb>>
@@ -36,7 +36,7 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
     <<?>>
   }
 <<@>>
-
+ 
   /**
    * Populate the current instance from an object
    * @param {<<M AA>>Interface} object
@@ -67,7 +67,7 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
     <<?>>
 <<@>>
   }
-
+  
   /**
    * Convert the current instance to an object
    * @return {<<M AA>>Interface}
@@ -111,26 +111,27 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
 <<@>>
     return props;
   }
-
+  
   /**
    * Convert an instance to an object to be sent to the API
    * @return {<<M AA>>Interface}
    */
   toPayload(): <<M AA>>Interface {
-    const payload = this.toObject();
-
-<<# Remove public data that cannot be sent to the API >>
-<<@ F in/hd f>>
-    delete payload.<<f a_a>>;
-<<@>>
-
+    const raw = this.toObject();
+    const allowed = this.allowedKeys();
+    
+    <<# Remove public data that cannot be sent to the API >>
+    const payload = Object.keys(raw)
+      .filter(key => allowed.includes(key))
+      .reduce((o, k) => { o[k] = raw[k]; return o; }, {} as <<M AA>>Interface);
+ 
 <<# Remove private data that have been entered >>
-<<@ F hd/nu f>>
+<<@ F hd/(in+rs)/nu f>>
     if (payload.<<f a_a>> === null) { delete payload.<<f a_a>>; }
 <<@>>
 
 <<# Convert dates and entities >>
-<<@ F /in*(tD+tE) f>>
+<<@ F /in/rs*(tD+tE) f>>
     <<? f tD>>
     payload.<<f a_a>> = < number>payload.<<f a_a>>;
     <<?? f tE>>
@@ -143,12 +144,24 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
 <<@>>
     return payload;
   }
+  
+  /**
+   * List allowed keys to be sent to the API
+   * @return {string[]}
+   */
+  protected allowedKeys(): string[] {
+  	return [
+<<@ F /in/rs f>>
+      '<<f a_a>>',
+<<@>>
+  	];
+  }
 }
 
-<<<
+<<< 
 function type(f) {
   let out = "";
-
+ 
   if (f.type === "boolean") out += "boolean";
   else if (f.type === "string") out += "string";
   else if (f.type === "number") out += "number";
@@ -158,9 +171,9 @@ function type(f) {
     out += `string${m} | ${f.m.names.pascal}${m} | ${f.m.names.pascal}Interface${m}`;
   }
   else out += "any";
-
+ 
   if (f.nullable && !f.multiple) out += " | null";
-
+ 
   return out;
 }
 function labels() {

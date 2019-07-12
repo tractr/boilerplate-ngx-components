@@ -36,14 +36,14 @@ let _output = {
  * @private
  */
 function __fields(model) {
-    const modelKey = model.names.kebab;
-    return model.fields.list
-        .filter(f => !((f.hidden && (f.internal || f.restricted)) || f.primary))
-        .reduce((p, f) => {
-            const key = f.names.kebab;
-            p[`${modelKey}_${key}`] = `${f.names.capital}`;
-            return p;
-        }, {});
+	const modelKey = model.names.kebab;
+	return model.fields.list
+		.filter(f => !((f.hidden && (f.internal || f.restricted)) || f.primary))
+		.reduce((p, f) => {
+			const key = f.names.kebab;
+			p[`${modelKey}_${key}`] = `${f.names.capital}`;
+			return p;
+		}, {});
 }
 
 /**
@@ -53,13 +53,12 @@ function __fields(model) {
  * @private
  */
 function __filter(model) {
-    const modelKey = model.names.kebab;
-    return model.fields.searchable
-        .reduce((p, f) => {
-            const key = f.names.kebab;
-            p[`${modelKey}_${key}`] = `${f.names.capital}`;
-            return p;
-        }, {});
+	const modelKey = model.names.kebab;
+	return model.fields.searchable.reduce((p, f) => {
+		const key = f.names.kebab;
+		p[`${modelKey}_${key}`] = `${f.names.capital}`;
+		return p;
+	}, {});
 }
 
 /**
@@ -74,11 +73,11 @@ function __select(model) {
 			model.names.lower
 		}`
 	};
-    if (model.p.hasSearchableLabel) {
+	if (model.p.hasSearchableLabel) {
 		output[`${model.names.kebab}_common_search-placeholder`] = `Search ${
 			model.names.lower
 		}`;
-    }
+	}
 	return output;
 }
 
@@ -89,30 +88,31 @@ function __select(model) {
  * @private
  */
 function __model(model) {
-    const modelKey = model.names.kebab;
-    const modelWords = model.names.lower;
-    return Object.assign(
-        {
-            [`${modelKey}_common_name`]: model.names.capital,
-            [`${modelKey}_common_not-found`]: `No ${modelWords} found`
-        },
-        __filter(model),
-        __fields(model),
-        __select(model)
-    );
+	const modelKey = model.names.kebab;
+	const modelWords = model.names.lower;
+	return Object.assign(
+		{
+			[`${modelKey}_common_name`]: model.names.capital,
+			[`${modelKey}_common_not-found`]: `No ${modelWords} found`
+		},
+		__filter(model),
+		__fields(model),
+		__select(model)
+	);
 }
-
 
 //--------------------------------------------------
 //  Output
 //--------------------------------------------------
 models.map(model => {
-    const keysUnordered = Object.assign(_output, __model(model));
+	const keysUnordered = Object.assign(_output, __model(model));
 
-    _output = Object.keys(keysUnordered).sort().reduce(function(keysOrdered, key) {
-      keysOrdered[key] = keysUnordered[key];
+	_output = Object.keys(keysUnordered)
+		.sort()
+		.reduce(function(keysOrdered, key) {
+			keysOrdered[key] = keysUnordered[key];
 
-      return keysOrdered;
-    }, {});
+			return keysOrdered;
+		}, {});
 });
 return JSON.stringify(_output, null, 2);

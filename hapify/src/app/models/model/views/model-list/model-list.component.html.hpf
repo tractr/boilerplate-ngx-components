@@ -1,30 +1,27 @@
-<mat-sidenav-container class="sidenav-cnt">
-<<? F se>>
-    <mat-sidenav #sidenav
-                 mode="side"
-                 opened="true"
-                 class="sidenav p-3"
-                 [fixedInViewport]="false"
-                 [fixedTopGap]="0"
-                 [fixedBottomGap]="0">
-        <hpf-<<M a-a>>-filters [searchParams]="searchParams"></hpf-<<M a-a>>-filters>
-    </mat-sidenav>
-<<?>>
-    <mat-sidenav-content class="sidenav-ctt p-3">
-        <hpf-<<M a-a>>-table
-            [searchParams]="searchParams"
-            (select)="onSelect($event)"></hpf-<<M a-a>>-table>
-
-        <div class="w-100 my-3">
-            <mat-card>
-                <mat-card-title>Code</mat-card-title>
-                <mat-card-content>
-<<? F se>>
-                    <pre><code>&lt;hpf-<<M a-a>>-filters [searchParams]="searchParams"&gt;&lt;/hpf-<<M a-a>>-filters&gt;</code></pre>
-<<?>>
-                    <pre><code>&lt;hpf-<<M a-a>>-table [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<M a-a>>-table&gt;</code></pre>
-                </mat-card-content>
-            </mat-card>
+<div class="container-fluid">
+    <div class="row my-5">
+        <div class="col-3">
+            <div class="p-3 bg-light rounded">
+                <h6 class="border-bottom pb-2 mb-3">{{ 'common_filters-title' | translate }}</h6>
+                <hpf-<<M a-a>>-filters [searchParams]="searchParams" [resetPage]="true"></hpf-<<M a-a>>-filters>
+            </div>
         </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-12">
+                    <hpf-<<M a-a>>-table
+                        [searchParams]="searchParams"
+                        (select)="onSelect($event)"></hpf-<<M a-a>>-table>
+                    <div class="w-100 my-3">
+                        <nz-card nzTitle="Code">
+            <<? F se>>
+                            <pre><code>&lt;hpf-<<M a-a>>-filters [searchParams]="searchParams" [resetPage]="true"&gt;&lt;/hpf-<<M a-a>>-filters&gt;</code></pre>
+            <<?>>
+                            <pre><code>&lt;hpf-<<M a-a>>-table [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<M a-a>>-table&gt;</code></pre>
+                        </nz-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

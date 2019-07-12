@@ -9,7 +9,7 @@ import {Helpers} from '@app/shared';
 @Component({
   selector: 'hpf-<<M a-a>>-list',
   templateUrl: './<<M a-a>>-list.component.html',
-  styleUrls: ['./<<M a-a>>-list.component.scss']
+  styleUrls: []
 })
 export class <<M AA>>ListComponent implements OnInit, AfterViewInit, OnDestroy {
  

@@ -1,13 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-12 my-3 my-lg-5">
-            <mat-card>
-                <form class="<<M a-a>>-form w-100" [formGroup]="form" (ngSubmit)="onSubmit()">
-<<@ F /in f>>
+                <form nz-form
+                      class="<<M a-a>>-form w-100"
+                      [formGroup]="form"
+                      (ngSubmit)="onSubmit()">
+<<@ F /in/rs f>>
                     <!-- <<f A>> -->
-
+                    <nz-form-item>
+                    <nz-form-label>{{ '<<M a-a>>_<<f a-a>>' | translate }}</nz-form-label>
+                    <nz-form-control>
     <<? f tE>>
-                    <div class="w-100 mb-3">
                         <hpf-<<f.m a-a>>-select
                             [controlName]="'<<f a_a>>'"
                             [formGroup]="form"
@@ -17,93 +20,79 @@
         <<?>>
         <<? f nu>>
                             [nullable]="true"
-        <<?>>
+        <<?>> 
         <<? f.m.f se*lb >>
                             [filterEnabled]="true"
-                            [filterPlaceholder]="'<<f.m a-a>>_common_search-placeholder' | translate"
+                            [placeholder]="'<<f.m a-a>>_common_search-placeholder' | translate"
+        <<??>>
+                            [placeholder]="'<<f.m a-a>>_common_select-placeholder' | translate"
         <<?>>
-                            [emptyLabel]="'common_empty' | translate"
-                            [placeholder]="'<<M a-a>>_<<f a-a>>' | translate"
-                            [errorRequired]="'common_error-required' | translate">
+                            [emptyLabel]="'common_empty' | translate">
                         </hpf-<<f.m a-a>>-select>
-                    </div>
-    <<??>>
 
+    <<?? f tS>>
 
-                    <<=tagOpen(f)>>
-
-        <<? f tS>>
-            <<? f tSt>>
-                        <textarea matInput
-                                  matTextareaAutosize
-                                  [matAutosizeMinRows]="3"
-                                  [matAutosizeMaxRows]="12"
-                                  placeholder="{{ '<<M a-a>>_<<f a-a>>' | translate }}"
+        <<? f tSt>>
+                        <textarea class="w-100"
+                                  nz-input
+                                  [nzAutosize]="{ minRows: 3, maxRows: 12 }"
+                                  [placeholder]="'common_value-string' | translate"
                                   formControlName="<<f a_a>>"></textarea>
-            <<?? f tSr>>
-                        <div class="mb-2 tinymce-title" [class.error]="form.controls['<<f a_a>>'].invalid && (form.controls['<<f a_a>>'].dirty || form.controls['<<f a_a>>'].touched)">
-                            {{ '<<M a-a>>_<<f a-a>>' | translate }}
-                        </div>
+        <<?? f tSr>>
                         <editor [init]="tinyMceConfig()" formControlName="<<f a_a>>"></editor>
-            <<??>>
-                        <input matInput
-                               type="<<? f tSp>>password<<?? f tSe>>email<<??>>text<<?>>"<<? f tSp>> autocomplete="new-password"<<?>>
-                               placeholder="{{ '<<M a-a>>_<<f a-a>>' | translate }}"
+        <<??>>
+                        <input nz-input
+                               class="w-100"
+                               type="<<? f tSp>>password<<?? f tSe>>email<<??>>text<<?>>"<<? f tSp>> 
+                               autocomplete="new-password"<<?>>
+                               [placeholder]="'common_value-string' | translate"
                                formControlName="<<f a_a>>">
-            <<?>>
-
-        <<?? f tN>>
-                        <input matInput
-                               type="number"<<? f tNt>> min="-90" max="90"<<?? f tNg>> min="-180" max="180"<<?>>
-                               placeholder="{{ '<<M a-a>>_<<f a-a>>' | translate }}"
-                               formControlName="<<f a_a>>">
-        <<?? f tD>>
-                        <input matInput
-                               [matDatepicker]="picker_<<f a_a>>"
-                               placeholder="{{ '<<M a-a>>_<<f a-a>>' | translate }}"
-                               formControlName="<<f a_a>>">
-                        <mat-datepicker-toggle matSuffix [for]="picker_<<f a_a>>"></mat-datepicker-toggle>
-                        <mat-datepicker #picker_<<f a_a>>></mat-datepicker>
-        <<?? f tB>>
-                        <mat-select placeholder="{{ '<<M a-a>>_<<f a-a>>' | translate }}"
-                                    formControlName="<<f a_a>>"><<? f nu>>
-                            <mat-option [value]="null">-</mat-option><<?>>
-                            <mat-option [value]="false">{{ 'common_false' | translate }}</mat-option>
-                            <mat-option [value]="true">{{ 'common_true' | translate }}</mat-option>
-                        </mat-select>
         <<?>>
-                        <mat-error
+
+    <<?? f tN>>
+                        <nz-input-number class="w-100"
+                                         formControlName="<<f a_a>>" <<? f tNt>>[nzMin]="-90" [nzMax]="90"<<?? f tNg>>[nzMin]="-180" [nzMax]="180"<<?>>
+                                         [nzStep]="1"
+                                         [nzPlaceHolder]="'common_value-number' | translate"></nz-input-number>
+    <<?? f tD>>
+                        <nz-date-picker class="w-100"<<? f !nu>>
+                                        [nzAllowClear]="false"<<?>>
+                                        [nzPlaceHolder]="'common_value-date' | translate"
+                                        formControlName="<<f a_a>>"></nz-date-picker>
+    <<?? f tB>>
+                        <nz-select class="w-100"
+                                   [nzPlaceHolder]="'common_value-boolean' | translate"<<? f nu>>
+                                   [nzAllowClear]="true"<<?>>
+                                   formControlName="<<f a_a>>">
+                            <nz-option [nzValue]="true" [nzLabel]="'common_true' | translate"></nz-option>
+                            <nz-option [nzValue]="false" [nzLabel]="'common_false' | translate"></nz-option>
+                        </nz-select>
+    <<?? f tO>>
+                        <textarea class="w-100 text-monospace"
+                                  nz-input
+                                  [nzAutosize]="{ minRows: 6, maxRows: 12 }"
+                                  [placeholder]="'common_value-object' | translate"
+                                  formControlName="<<f a_a>>"></textarea>
+    <<?>>
+                        <nz-form-explain
                                 *ngIf="form.controls['<<f a_a>>'].invalid && (form.controls['<<f a_a>>'].dirty || form.controls['<<f a_a>>'].touched)"
-                                class="mt-2<<? f tSr>> small<<?>>">
+                                class="mt-1">
                             <div *ngIf="form.controls['<<f a_a>>'].errors.required">
                                 {{ 'common_error-required' | translate }}
                             </div>
                             <div *ngIf="!form.controls['<<f a_a>>'].errors.required">
                                 {{ 'common_error-format' | translate }}
                             </div>
-                        </mat-error>
-                    <<=tagClose(f)>>
+                        </nz-form-explain>
 
-    <<?>>
+                    </nz-form-control>
+                    </nz-form-item>
                     <!-- /<<f A>> -->
 <<@>>
-                    <button class="mt-4" mat-raised-button color="primary" [disabled]="form.invalid">
+                    <button nz-button nzType="primary" [disabled]="form.invalid" [nzLoading]="loading">
                         {{ 'common_save' | translate }}
                     </button>
                 </form>
-            </mat-card>
         </div>
     </div>
 </div>
-
-<<<
-function tagOpen(f) {
-    return f.type === 'string' && f.subtype === 'rich' ?
-        '<div class="w-100 mb-3">' : '<mat-form-field class="w-100 mb-3">';
-}
-
-function tagClose(f) {
-    return f.type === 'string' && f.subtype === 'rich' ?
-        '</div>' : '</mat-form-field>';
-}
->>>

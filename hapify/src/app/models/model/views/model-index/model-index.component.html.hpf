@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 my-3 my-lg-5">
-            <mat-card>
+            <nz-card>
                 <h2>Components for <<M a>></h2>
                 <div class="mt-4">
                     <a [routerLink]="['/<<M a-a>>/selectors']">Selectors</a>
@@ -23,7 +23,7 @@
                 <div class="mt-4" *ngIf="item">
                     <a [routerLink]="['/<<M a-a>>', item.getId()]">Details</a>
                 </div>
-            </mat-card>
+            </nz-card>
         </div>
     </div>
 </div>

@@ -1,66 +1,61 @@
 <div class="container">
     <div class="row">
-
         <div class="col-12 my-3">
-            <mat-card>
-                <mat-card-title>Dropdown</mat-card-title>
-                <mat-card-content>
+            <nz-card nzTitle="Dropdown">
                     <h5 class="mt-3">Single selection</h5>
                     <hpf-<<M a-a>>-select
                         [(model)]="singleSelect"
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
                         [nullable]="true"
-                        [nullLabel]="'common_any' | translate"
                         [emptyLabel]="'common_empty' | translate"
 <<? F se*lb >>
                         [filterEnabled]="true"
-                        [filterPlaceholder]="'<<M a-a>>_common_search-placeholder' | translate"
+                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
+<<??>>
+                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
 <<?>>
                         [multiple]="false">
                     </hpf-<<M a-a>>-select>
                     <h5 class="mt-3">Multiple selection</h5>
                     <hpf-<<M a-a>>-select
                         [(model)]="multipleSelect"
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
                         [nullable]="true"
-                        [nullLabel]="'common_any' | translate"
                         [emptyLabel]="'common_empty' | translate"
 <<? F se*lb >>
                         [filterEnabled]="true"
-                        [filterPlaceholder]="'<<M a-a>>_common_search-placeholder' | translate"
+                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
+<<??>>
+                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
 <<?>>
                         [multiple]="true">
                     </hpf-<<M a-a>>-select>
                     <h5 class="mt-3">Code</h5>
                     <pre><code>&lt;hpf-<<M a-a>>-select
-    [placeholder]="'<<M a-a>>_common_name' | translate"
     [nullable]="true"
-    [nullLabel]="'common_any' | translate"
+    [paginated]="true"
     [emptyLabel]="'common_empty' | translate"
 <<? F se*lb >>
     [filterEnabled]="true"
-    [filterPlaceholder]="'<<M a-a>>_common_search-placeholder' | translate"
+    [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
+<<??>>
+    [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
 <<?>>
     [multiple]="true"
     [controlName]="'<<M a-a>>'"
     [formGroup]="form"
-    [errorRequired]="'common_error-required' | translate"
     [(model)]="<<M a_a>>"
     (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-select&gt;</code></pre>
-                </mat-card-content>
-            </mat-card>
+            </nz-card>
         </div>
 
         <div class="col-12 my-3">
-            <mat-card>
-                <mat-card-title>Sortable</mat-card-title>
-                <mat-card-content>
+            <nz-card nzTitle="Sortable">
                     <h5 class="mt-3">Sortable selection</h5>
                     <hpf-<<M a-a>>-sortable
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
 <<? F se*lb >>
                         [filterEnabled]="true"
-                        [filterPlaceholder]="'<<M a-a>>_common_search-placeholder' | translate"
+                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
+<<??>>
+                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
 <<?>>
                         [emptyLabel]="'common_empty' | translate"
                         [(model)]="baseSortable"
@@ -68,10 +63,11 @@
                     </hpf-<<M a-a>>-sortable>
                     <h5 class="mt-3">Sortable selection with duplicates</h5>
                     <hpf-<<M a-a>>-sortable
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
 <<? F se*lb >>
                         [filterEnabled]="true"
-                        [filterPlaceholder]="'<<M a-a>>_common_search-placeholder' | translate"
+                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
+<<??>>
+                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
 <<?>>
                         [emptyLabel]="'common_empty' | translate"
                         [(model)]="duplicateSortable"
@@ -80,10 +76,11 @@
                     </hpf-<<M a-a>>-sortable>
                     <h5 class="mt-3">Sortable selection with max 3 items</h5>
                     <hpf-<<M a-a>>-sortable
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
 <<? F se*lb >>
                         [filterEnabled]="true"
-                        [filterPlaceholder]="'<<M a-a>>_common_search-placeholder' | translate"
+                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
+<<??>>
+                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
 <<?>>
                         [emptyLabel]="'common_empty' | translate"
                         [(model)]="maxSortable"
@@ -92,71 +89,68 @@
                     </hpf-<<M a-a>>-sortable>
                     <h5 class="mt-3">Code</h5>
                     <pre><code>&lt;hpf-<<M a-a>>-sortable
-    [placeholder]="'<<M a-a>>_common_name' | translate"
     [emptyLabel]="'common_empty' | translate"
 <<? F se*lb >>
     [filterEnabled]="true"
-    [filterPlaceholder]="'<<M a-a>>_common_search-placeholder' | translate"
+    [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
+<<??>>
+    [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
 <<?>>
     [nullable]="true"
+    [paginated]="true"
     [unique]="true"
     [maxSelectable]="3"
     [controlName]="'<<M a-a>>'"
     [formGroup]="form"
-    [errorRequired]="'common_error-required' | translate"
     [(model)]="<<M a_a>>"
     (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-sortable&gt;</code></pre>
-                </mat-card-content>
-            </mat-card>
+            </nz-card>
         </div>
 
         <div class="col-12 my-3">
-            <mat-card>
-                <mat-card-title>Buttons</mat-card-title>
-                <mat-card-content>
-                    <h5 class="mt-3">Single selection</h5>
-                    <hpf-<<M a-a>>-checkbox
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
-                        [(model)]="singleNullCheckbox"
-                        [nullable]="true"
-                        [multiple]="false">
-                    </hpf-<<M a-a>>-checkbox>
-                    <h5 class="mt-3">Single selection not null</h5>
-                    <hpf-<<M a-a>>-checkbox
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
-                        [(model)]="singleCheckbox"
-                        [nullable]="false"
-                        [multiple]="false">
-                    </hpf-<<M a-a>>-checkbox>
-                    <h5 class="mt-3">Multiple selection</h5>
-                    <hpf-<<M a-a>>-checkbox
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
-                        [(model)]="multipleCheckbox"
-                        [nullable]="true"
-                        [multiple]="true">
-                    </hpf-<<M a-a>>-checkbox>
-                    <h5 class="mt-3">Multiple selection with max 3 items</h5>
-                    <hpf-<<M a-a>>-checkbox
-                        [placeholder]="'<<M a-a>>_common_name' | translate"
-                        [(model)]="multipleMaxCheckbox"
-                        [nullable]="true"
-                        [multiple]="true"
-                        [maxSelectable]="3">
-                    </hpf-<<M a-a>>-checkbox>
-                    <h5 class="mt-3">Code</h5>
-                    <pre><code>&lt;hpf-<<M a-a>>-checkbox
+            <nz-card nzTitle="Buttons">
+                <h5 class="mt-3">Single selection</h5>
+                <hpf-<<M a-a>>-checkbox
+                    [placeholder]="'<<M a-a>>_common_name' | translate"
+                    [(model)]="singleNullCheckbox"
+                    [nullable]="true"
+                    [multiple]="false">
+                </hpf-<<M a-a>>-checkbox>
+                <h5 class="mt-3">Single selection not null</h5>
+                <hpf-<<M a-a>>-checkbox
+                    [placeholder]="'<<M a-a>>_common_name' | translate"
+                    [(model)]="singleCheckbox"
+                    [nullable]="false"
+                    [multiple]="false">
+                </hpf-<<M a-a>>-checkbox>
+                <h5 class="mt-3">Multiple selection</h5>
+                <hpf-<<M a-a>>-checkbox
+                    [placeholder]="'<<M a-a>>_common_name' | translate"
+                    [(model)]="multipleCheckbox"
+                    [nullable]="true"
+                    [multiple]="true">
+                </hpf-<<M a-a>>-checkbox>
+                <h5 class="mt-3">Multiple selection with max 3 items</h5>
+                <hpf-<<M a-a>>-checkbox
+                    [placeholder]="'<<M a-a>>_common_name' | translate"
+                    [(model)]="multipleMaxCheckbox"
+                    [nullable]="true"
+                    [multiple]="true"
+                    [maxSelectable]="3">
+                </hpf-<<M a-a>>-checkbox>
+                <h5 class="mt-3">Code</h5>
+                <pre><code>&lt;hpf-<<M a-a>>-checkbox
     [placeholder]="'<<M a-a>>_common_name' | translate"
     [nullable]="true"
+    [paginated]="true"
     [multiple]="true"
     [resultsLimit]="12"
     [maxSelectable]="3"
     [controlName]="'<<M a-a>>'"
     [formGroup]="form"
-    [errorRequired]="'common_error-required' | translate"
     [(model)]="<<M a_a>>"
     (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-checkbox&gt;</code></pre>
-                </mat-card-content>
-            </mat-card>
+            </nz-card>
         </div>
     </div>
 </div>

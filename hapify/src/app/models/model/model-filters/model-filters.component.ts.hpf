@@ -26,6 +26,8 @@ export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDes
   /** @type {Subscription[]} Subscription of the component */
   private subscription: Subscription;
 <<?>>
+  /** @type {boolean} Denotes if the page number should be set to 0 when filters change */
+  @Input() resetPage = false;
  
   /** Constructor */
   constructor() {}
@@ -36,9 +38,7 @@ export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDes
     // Subscription
     this.subscription = this.keyupSubject
       .pipe(debounceTime(this.filterDebounceTime))
-      .subscribe(() => {
-        this.searchParams.next();
-      });
+      .subscribe(() => { this.onChange(); });
 <<?>>
   }
 
@@ -55,6 +55,9 @@ export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDes
 
   /** Called when an input is changed */
   onChange() {
+    if (this.resetPage) {
+        this.searchParams.props._page = 0;
+    }
     this.searchParams.next();
   }
 }

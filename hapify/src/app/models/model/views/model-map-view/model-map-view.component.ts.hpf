@@ -9,8 +9,7 @@ import {Helpers} from '@app/shared';
  
 @Component({
   selector: 'hpf-<<M a-a>>-map-view',
-  templateUrl: './<<M a-a>>-map-view.component.html',
-  styleUrls: ['./<<M a-a>>-map-view.component.scss']
+  templateUrl: './<<M a-a>>-map-view.component.html'
 })
 export class <<M AA>>MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
  

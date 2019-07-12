@@ -22,7 +22,10 @@ export class <<M AA>>CheckboxComponent extends EntityCheckboxComponent< <<M AA>>
   }
   /** @inheritDoc */
   protected async getList(): Promise< <<M AA>>[]> {
-      const params = new <<M AA>>SearchParams({ _limit: this.resultsLimit});
+      const params = new <<M AA>>SearchParams({
+          _limit: this.resultsLimit,
+          _page: this.currentPage
+      });
       return (await this.<<M aA>>Service.list(params.toObject())).items;
   }
   /** @inheritDoc */

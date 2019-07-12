@@ -1,8 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ErrorService} from '@app/services';
-<<? F tSr/in>>
+<<? F tSr/in/rs>>
 import {TinyMceConfig} from '@app/shared';
+<<?>>
+<<# Includes toJSON helpers for Objects >>
+<<? F tO/in/rs>>
+import {Helpers} from '@app/shared';
 <<?>>
 import {<<M AA>><<? root.d.s>>, <<M AA>>Interface<<?>>} from '../<<M a-a>>';
 import {<<M AA>>Service} from '../<<M a-a>>.service';
@@ -21,10 +25,12 @@ export class <<M AA>>FormComponent implements OnInit {
   @Output() update = new EventEmitter<<<M AA>>>();
   /** @type {FormGroup} The form group to use */
   form: FormGroup;
-<<? F tSr/in>>
+<<? F tSr/in/rs>>
   /** @type {Function<{}>} TinyMCE config */
   tinyMceConfig = TinyMceConfig;
 <<?>>
+  /** @type {boolean} Denotes if the form is pending */
+  loading = false;
 
   /**
    * Constructor
@@ -44,46 +50,59 @@ export class <<M AA>>FormComponent implements OnInit {
       this.<<M aA>> = new <<M AA>>();
     }
     // Form validator
-<<? F hd/nu/in>>
+<<? F hd/nu/in/rs>>
     const privateRequired = this.<<M aA>>.isNew() ? [Validators.required] : [];
 <<?>>
     this.form = this.formBuilder.group({
-<<@ F /in f>>
+<<@ F /in/rs f>>
     <<? f hd/nu>>
-          <<f a_a>>: new FormControl(this.<<M aA>>.props.<<f a_a>>, [<<=validator(f, false)>>].concat(privateRequired)),
+          <<f a_a>>: new FormControl(<<? f tO>>Helpers.toJSON(<<?>>this.<<M aA>>.props.<<f a_a>><<? f tO>>)<<?>>, [<<=validator(f, false)>>].concat(privateRequired)),
     <<??>>
-          <<f a_a>>: new FormControl(this.<<M aA>>.props.<<f a_a>>, [<<=validator(f, true)>>]),
+          <<f a_a>>: new FormControl(<<? f tO>>Helpers.toJSON(<<?>>this.<<M aA>>.props.<<f a_a>><<? f tO>>)<<?>>, [<<=validator(f, true)>>]),
     <<?>>
 <<@>>
     });
   }
   /** Called on form submit */
-  onSubmit(): void {
-    // Update model
-    this.updateModel();
-
-    // Creation or update ?
-    if (this.<<M aA>>.isNew()) {
-      // Creation
-      this.<<M aA>>Service.create(this.<<M aA>>.toPayload())
-        .then((<<M aA>>: <<M AA>>) => {
+  async onSubmit(): Promise<void> {
+  
+    // Loading flag
+    this.loading = true;
+    
+    try {
+        // Update model
+        this.updateModel();
+    
+        // Creation or update ?
+        if (this.<<M aA>>.isNew()) {
+          // Creation
+          const <<M aA>>: <<M AA>> = await this.<<M aA>>Service.create(this.<<M aA>>.toPayload());
           this.create.next(<<M aA>>);
-        })
-        .catch((error) => this.errorService.handle(error));
-    } else {
-      // Update
-      this.<<M aA>>Service.update(this.<<M aA>>.getId(), this.<<M aA>>.toPayload())
-        .then(() => {
+        } else {
+          // Update
+          await this.<<M aA>>Service.update(this.<<M aA>>.getId(), this.<<M aA>>.toPayload());
           this.update.next(this.<<M aA>>);
-        })
-        .catch((error) => this.errorService.handle(error));
+        }
+    
+    } catch (error) {
+        this.errorService.handle(error);
     }
+    
+    // Loading flag
+    this.loading = false
   }
   /** Update models properties from inputs values */
   private updateModel(): void {
     for (const key of Object.keys(this.form.controls)) {
         this.<<M aA>>.props[key] = this.form.get(key).value;
     }
+<<# Transform JSON to objects >>
+<<@ F tO/in/rs f>>
+    if (typeof this.<<M aA>>.props.<<f a_a>> === 'string') {
+        this.<<M aA>>.props.<<f a_a>> = this.<<M aA>>.props.<<f a_a>> ?
+            JSON.parse(this.<<M aA>>.props.<<f a_a>>) : <<? f ml>>[]<<??>>null<<?>>;
+    }
+<<@>>
   }
 
 }
