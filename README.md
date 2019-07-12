@@ -1,4 +1,4 @@
-# Angular Components Boileplate
+# Angular Components Boilerplate
 
 This boilerplate provides a components library built with Angular 7.
 
@@ -26,8 +26,24 @@ This project depends on the [`hapijs_tractr`](https://github.com/Tractr/boilerpl
 Once the API is started, you can start the project:
 
 ```bash
+npm install
+```
+
+```bash
 npm start
 ```
+
+## Models access
+
+This boilerplate is meant to provide components for end users' front-end.
+When you navigate in this boilerplate, you navigate as a non-admin user.
+
+Therefore, if a model does not allow non-admin access to an action and you navigate to this action's view, it will result to an error.
+
+_Example:_ You have a model `invoice`, its action `search` is restricted to the admins and you want to list the invoices.
+It will throw an error because listing invoices for non-admins is not possible.
+
+If you are looking for an admin dashboard, please refer to [`ngx_dashboard_tractr`](https://github.com/Tractr/boilerplate-ngx-dashboard).
 
 ## Advanced Integration
 
