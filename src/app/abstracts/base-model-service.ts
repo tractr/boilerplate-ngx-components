@@ -26,6 +26,12 @@ export abstract class BaseModelService<
 	I extends BaseModelInterface,
 	S extends BaseModelSearchParamsInterface
 > {
+	/** Removes credentials on read action to allow shared caching */
+	protected publicRead = false;
+	/** Removes credentials on list action to allow shared caching */
+	protected publicList = false;
+	/** Removes credentials on count action to allow shared caching */
+	protected publicCount = false;
 	/** @param {HttpClient} http Constructor */
 	constructor(private http: HttpClient) {}
 
@@ -62,7 +68,7 @@ export abstract class BaseModelService<
 	 */
 	get(id: string): Promise<T> {
 		// Start request
-		const options = { withCredentials: true };
+		const options = { withCredentials: !this.publicRead };
 		return this.http
 			.get(`${this.uri()}/${id}`, options)
 			.toPromise()
@@ -86,7 +92,7 @@ export abstract class BaseModelService<
 	list(searchParams: S): Promise<BaseModelSearchResultInterface<T>> {
 		// Start request
 		const options = {
-			withCredentials: true,
+			withCredentials: !this.publicList,
       params: this.transformSearchParams(searchParams) as {}
 		};
 		return this.http
@@ -120,7 +126,7 @@ export abstract class BaseModelService<
 		delete params._sort;
 		// Start request
 		const options = {
-			withCredentials: true,
+			withCredentials: !this.publicCount,
 			params: params as {}
 		};
 		return this.http
@@ -133,8 +139,7 @@ export abstract class BaseModelService<
 	 * @return {string}
 	 */
 	protected uri(): string {
-		// Use admin routes for demo (always available)
-		return `${environment.api.uri}/admin/${this.path()}`;
+		return `${environment.api.uri}/${this.path()}`;
 	}
 
 	/**
