@@ -1,30 +1,25 @@
-<mat-sidenav-container>
-	<mat-sidenav #sidenav mode="push">
-		<div class="branding">
-			<img [src]="logo" />
-			<span>{{ 'header_app-short-name' | translate }}</span>
-		</div>
-		<mat-nav-list>
-			<div *ngIf="displayHeader">
-				<a
-					mat-list-item
-					*ngFor="let item of navigationSideMenu"
-					(click)="sidenav.close()"
-					[routerLink]="item.link"
-					routerLinkActive="active"
-				>
-					{{ item.label }}
-				</a>
-			</div>
-		</mat-nav-list>
-	</mat-sidenav>
-
-	<div class="wrapper">
-		<app-header *ngIf="displayHeader" [sidenav]="sidenav"></app-header>
-
-		<div class="content">
+<div class="w-100 min-h-100 d-flex flex-column flex-nowrap">
+	<app-header
+		*ngIf="displayHeader"
+		class="d-block flex-shrink-0"
+	></app-header>
+	<section class="w-100 min-h-100 d-flex flex-row flex-shrink-1 flex-grow-1">
+		<ul id="mainMenu" *ngIf="displayHeader" nz-menu [nzMode]="'vertical'">
+			<li
+				nz-menu-item
+				*ngFor="let item of navigationSideMenu"
+				[routerLink]="item.link"
+				routerLinkActive="ant-menu-item-selected"
+			>
+				{{ item.label }}
+			</li>
+		</ul>
+		<div class="w-100 flex-shrink-1 flex-grow-1">
 			<router-outlet #o="outlet"></router-outlet>
 		</div>
-		<app-footer *ngIf="displayFooter"></app-footer>
-	</div>
-</mat-sidenav-container>
+	</section>
+	<app-footer
+		*ngIf="displayFooter"
+		class="d-block flex-shrink-0"
+	></app-footer>
+</div>

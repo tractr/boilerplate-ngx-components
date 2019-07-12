@@ -10,7 +10,6 @@ import { IsAdminGuard, IsLoggedGuard, IsNotLoggedGuard } from '@app/guards';
 import { ErrorService, SessionService } from '@app/services';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent, FooterComponent } from './shared/';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,7 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateModuleLoad } from './translate-import';
 import { HttpClientModule } from '@angular/common/http';
 import { MetaModule } from '@ngx-meta/core';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { FooterComponent } from '@app/shared/footer/footer.component';
+import { HeaderComponent } from '@app/shared/header/header.component';
 
 @NgModule({
 	declarations: [AppComponent, FooterComponent, HeaderComponent],
@@ -36,9 +36,7 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 		HttpClientModule,
 		AppRoutingModule,
 		TranslateModuleLoad(),
-		MetaModule.forRoot(),
-		MatButtonModule,
-		MatIconModule
+		MetaModule.forRoot()
 	],
 	providers: [
 		IsAdminGuard,

@@ -1,24 +1,22 @@
-import { Title } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ActivationEnd, Router } from '@angular/router';
-import { Subject } from 'rxjs/Subject';
-import { filter } from 'rxjs/operators/filter';
+import { Subject } from 'rxjs';
 import { environment } from '@env/environment';
+import { Title } from '@angular/platform-browser';
+import { filter } from 'rxjs/operators/filter';
 import { ModelsLinks } from '@app/shared';
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+	styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit, OnDestroy {
 	/** CSS */
 	@HostBinding('class') componentCssClass;
 	/** @type {Subject<void>} Observables unsubscriber*/
 	private unsubscribe: Subject<void> = new Subject<void>();
-	/** Logo path */
-	logo = require('../assets/logos/logo-small-purple.svg');
 	/** @type {ModelLink[]} Side links*/
 	navigationSideMenu = ModelsLinks;
 	/** @type {string[]} Routes where the footer should be displayed  */
