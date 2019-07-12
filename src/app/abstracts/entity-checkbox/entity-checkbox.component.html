@@ -1,18 +1,25 @@
-<div class="mb-2 input-title small" [class.error]="showError && errorRequired">
+<div *ngIf="placeholder" class="mb-2 input-title small">
 	{{ placeholder }}
 </div>
 <button
-	mat-raised-button
+	nz-button
 	type="button"
+	[nzType]="isSelected(item) ? 'primary' : 'default'"
 	*ngFor="let item of items"
 	class="mr-2 mb-2"
-	[color]="isSelected(item) ? 'primary' : 'secondary'"
 	(click)="onClick(item)"
 >
 	{{ item.getLabel() }}
 </button>
-<div *ngIf="showError && errorRequired">
-	<mat-error class="mt-2 small">
-		{{ errorRequired }}
-	</mat-error>
-</div>
+<button
+	*ngIf="paginated"
+	nz-button
+	type="button"
+	nzType="primary"
+	class="mr-2 mb-2"
+	[disabled]="lastPageReached"
+	[nzLoading]="loading"
+	(click)="loadMore()"
+>
+	{{ 'common_more' | translate }}
+</button>

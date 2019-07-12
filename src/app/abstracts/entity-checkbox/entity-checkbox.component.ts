@@ -12,8 +12,6 @@ export abstract class EntityCheckboxComponent<
 	@Input() resultsLimit = 12;
 	/** @type {number} Denotes the maximum number of selectable elements (only for multiple). 0 => Unlimited */
 	@Input() maxSelectable = 0;
-	/** @type {boolean} Denotes if we should show the error error */
-	showError = false;
 
 	/** @inheritDoc */
 	ngOnInit() {
@@ -63,10 +61,6 @@ export abstract class EntityCheckboxComponent<
 		if (this.formGroup && this.controlName) {
 			const formControl = this.formGroup.controls[this.controlName];
 			formControl.setValue(this.modelValue);
-			this.showError =
-				formControl.invalid &&
-				formControl.errors &&
-				formControl.errors.required;
 		}
 		// Trigger event
 		this.change.emit();
@@ -91,29 +85,9 @@ export abstract class EntityCheckboxComponent<
 	}
 	/**
 	 * @inheritDoc
-	 * Bypass this functionality. Prepend only if not present in the list
+	 * Bypass this functionality.
 	 */
 	protected prependExisting(list: T[] = []) {
-		// Remove existing from list and prepend existing
-		if (this.multiple) {
-			// Prepend if not exists
-			const prepend = [];
-			for (const m of <T[]>this.model || []) {
-				if (!list.some(e => this.compareEntities(e, m))) {
-					prepend.push(m);
-				}
-			}
-			this.items = prepend.concat(list);
-		} else {
-			// Prepend if not included in the list
-			if (
-				this.model &&
-				!list.some(e => this.compareEntities(e, this.model))
-			) {
-				this.items = [<T>this.model].concat(list);
-			} else {
-				this.items = list;
-			}
-		}
+		this.items = this.items.concat(list);
 	}
 }

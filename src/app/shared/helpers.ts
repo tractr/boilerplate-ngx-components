@@ -15,6 +15,19 @@ export class Helpers {
 		});
 		return search.toString();
 	}
+	/**
+	 * Convert value to JSON if not empty
+	 *
+	 * @return {any} object
+	 * @return {string}
+	 * @static
+	 */
+	static toJSON(object: any): string {
+		if (object === null) {
+			return null;
+		}
+		return JSON.stringify(object, null, 2);
+	}
 
 	/**
 	 * Convert any value to a boolean
@@ -65,6 +78,9 @@ export class Helpers {
 		}
 		if (typeof value === 'number') {
 			return new Date(Number(value));
+		}
+		if (value instanceof Date) {
+			return value;
 		}
 
 		return null;

@@ -1,12 +1,4 @@
-import {
-	OnInit,
-	Input,
-	Output,
-	OnDestroy,
-	EventEmitter,
-	ViewChild,
-	ElementRef
-} from '@angular/core';
+import { OnInit, Input, Output, OnDestroy, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
@@ -21,7 +13,8 @@ export abstract class EntitySelectComponent<
 	/** @type {T|T[]} Model to update (can be an array for multiple select) */
 	modelValue: T | T[];
 	@Output() modelChange = new EventEmitter<T | T[]>();
-	@Input() get model() {
+	@Input()
+	get model() {
 		return this.modelValue;
 	}
 	set model(val) {
@@ -34,7 +27,8 @@ export abstract class EntitySelectComponent<
 	/** @type {string|string[]} Model id to update (can be an array for multiple select) */
 	idValue: string | string[];
 	@Output() idChange = new EventEmitter<string | string[]>();
-	@Input() get id() {
+	@Input()
+	get id() {
 		return this.idValue;
 	}
 	set id(val) {
@@ -63,10 +57,6 @@ export abstract class EntitySelectComponent<
 	@Input() controlName: string;
 	/** @type {string} The placeholder */
 	@Input() placeholder: string;
-	/** @type {string} The message to display if required */
-	@Input() errorRequired: string;
-	/** @type {string} The filter placeholder */
-	@Input() filterPlaceholder: string;
 	/** @type {number} The debuonce delay before calling the API for filtering */
 	@Input() filterDebounceTime = 300;
 	/** @type {boolean} Denotes if the filter is enabled */
@@ -77,27 +67,33 @@ export abstract class EntitySelectComponent<
 	@Input() resultsLimit = 50;
 	/** @type {boolean} Denotes if the instance model is nullable */
 	@Input() nullable = false;
-	/** @type {string} The label for null value */
-	@Input() nullLabel = '-';
 	/** @type {string} The label for no results */
-	@Input() emptyLabel = '∅';
+	@Input() emptyLabel;
 	/** @type {boolean} Denotes if the field should be multiple */
 	@Input() multiple = false;
 	/** @type {boolean} Denotes if the items should be preloaded */
 	@Input() preload = false;
+	/** @type {boolean} Force reload items on open */
+	@Input() forceReload = false;
+	/** @type {boolean} Denotes if the entities can be paginated */
+	@Input() paginated = true;
 
 	/** @type {string} Contains the filter value */
 	filterValue: string = null;
+	/** @type {number} Contains the page number */
+	currentPage = 0;
+	/** Denotes if the last page has been reached*/
+	lastPageReached = false;
 	/** @type {Subject<void>} Subject for debounced keyup event */
 	protected keyupSubject = new Subject<void>();
-	/** @type {ElementRef} Filter field to focus when opening selector */
-	@ViewChild('filter') filterField: ElementRef;
 	/** @type {T[]} The reason to attend found */
 	items: T[] = [];
 	/** @type {Subscription[]} Subscription of the component */
 	protected subscriptions: Subscription[] = [];
 	/** @type {boolean} Denotes if the list has been loaded once */
-	loaded = false;
+	loadedOnce = false;
+	/** @type {boolean} Denotes if the list is loading */
+	loading = false;
 
 	/**
 	 * Constructor
@@ -133,21 +129,22 @@ export abstract class EntitySelectComponent<
 		this.change.emit();
 	}
 	/** Update data when filter changed */
-	onFilterChanged(): void {
+	onFilterChanged(filterValue: string): void {
+		if (!this.filterEnabled) {
+			return;
+		}
+		this.filterValue = filterValue;
 		this.keyupSubject.next();
 	}
+
 	/**
 	 * Call when the selector is opened or closed
 	 * @param {boolean} opened
 	 */
 	onOpened(opened: boolean) {
 		if (opened) {
-			if (!this.loaded) {
+			if (!this.loadedOnce || this.forceReload) {
 				this.refresh();
-			}
-			if (this.filterEnabled) {
-				// Focus
-				this.filterField.nativeElement.focus();
 			}
 		} else if (
 			this.filterEnabled &&
@@ -159,13 +156,18 @@ export abstract class EntitySelectComponent<
 			this.refresh();
 		}
 	}
+
 	/**
 	 * Refresh data with filter
 	 * @private
 	 */
 	protected refresh(): void {
+		this.lastPageReached = false;
+		this.loading = true;
+		this.items = [];
 		this.updateStart.emit();
-		this.loaded = true;
+		this.currentPage = 0;
+
 		// Get list
 		this.getList()
 			.then(results => {
@@ -174,8 +176,38 @@ export abstract class EntitySelectComponent<
 			.catch(error => this.errorService.handle(error))
 			.then(() => {
 				this.updateEnd.emit();
+				this.loadedOnce = true;
+				this.loading = false;
 			});
 	}
+
+	/**
+	 * Load the next page of results
+	 * @private
+	 */
+	loadMore(): void {
+		if (this.lastPageReached || !this.paginated) {
+			return;
+		}
+
+		this.loading = true;
+		this.updateStart.emit();
+		this.currentPage++;
+		// Get list
+		this.getList()
+			.then(results => {
+				this.prependExisting(results);
+				if (results.length === 0) {
+					this.lastPageReached = true;
+				}
+			})
+			.catch(error => this.errorService.handle(error))
+			.then(() => {
+				this.updateEnd.emit();
+				this.loading = false;
+			});
+	}
+
 	/**
 	 * Compare two entities
 	 * @param e1
@@ -185,6 +217,7 @@ export abstract class EntitySelectComponent<
 	compareEntities(e1: any, e2: any): boolean {
 		return Helpers.compareEntities(e1, e2);
 	}
+
 	/**
 	 * Will prepend selected models on top of items list
 	 * @param {T[]} list
@@ -194,17 +227,18 @@ export abstract class EntitySelectComponent<
 		// Remove existing from list and prepend existing
 		if (this.multiple) {
 			const model = this.model ? <T[]>this.model : [];
-			const items = list.filter(i => {
+			const items = this.items.concat(list).filter(i => {
 				return !model.some(e => this.compareEntities(e, i));
 			});
 			this.items = model.concat(items);
 		} else {
-			const items = list.filter(i => {
+			const items = this.items.concat(list).filter(i => {
 				return !this.compareEntities(this.model, i);
 			});
 			this.items = this.model ? [<T>this.model].concat(items) : items;
 		}
 	}
+
 	/**
 	 * Extract id(s) from model(s)
 	 * @return {string|string[]}
@@ -216,6 +250,7 @@ export abstract class EntitySelectComponent<
 			return this.modelValue ? (<T>this.modelValue).getId() : null;
 		}
 	}
+
 	/**
 	 * Find a model from its ids in the items or get it from API
 	 * @params {string} id

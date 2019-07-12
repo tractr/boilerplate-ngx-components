@@ -5,7 +5,7 @@ import { routerTransition } from '@app/core';
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.scss'],
+	styleUrls: ['./home.component.less'],
 	animations: [routerTransition]
 })
 export class HomeComponent implements OnInit {

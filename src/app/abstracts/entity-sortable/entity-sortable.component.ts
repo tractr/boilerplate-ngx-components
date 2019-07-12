@@ -13,8 +13,6 @@ export abstract class EntitySortableComponent<
 	@Input() unique = true;
 	/** @type {number} Denotes the maximum number of selectable elements (only for multiple). 0 => Unlimited */
 	@Input() maxSelectable = 0;
-	/** @type {boolean} Denotes if we should show the error error */
-	showError = false;
 	/** @type {T} Pending selected value*/
 	selectedValue: T;
 
@@ -63,7 +61,7 @@ export abstract class EntitySortableComponent<
 	 * Bypass this functionality.
 	 */
 	protected prependExisting(list: T[] = []) {
-		this.items = list;
+		this.items = this.items.concat(list);
 	}
 	/** Denotes if some models are selected */
 	hasModels(): boolean {
@@ -85,10 +83,6 @@ export abstract class EntitySortableComponent<
 		if (this.formGroup && this.controlName) {
 			const formControl = this.formGroup.controls[this.controlName];
 			formControl.setValue(this.modelValue);
-			this.showError =
-				formControl.invalid &&
-				formControl.errors &&
-				formControl.errors.required;
 		}
 		// Trigger event
 		this.change.emit();

@@ -87,7 +87,7 @@ export abstract class BaseModelService<
 		// Start request
 		const options = {
 			withCredentials: true,
-			params: searchParams as {}
+      params: this.transformSearchParams(searchParams) as {}
 		};
 		return this.http
 			.get(`${this.uri()}`, options)
@@ -110,7 +110,10 @@ export abstract class BaseModelService<
 	 */
 	count(searchParams: S): Promise<number> {
 		// Remove unwanted properties
-		const params = Object.assign({}, searchParams);
+		const params = Object.assign(
+			{},
+			this.transformSearchParams(searchParams)
+		);
 		delete params._page;
 		delete params._limit;
 		delete params._order;
@@ -133,6 +136,16 @@ export abstract class BaseModelService<
 		// Use admin routes for demo (always available)
 		return `${environment.api.uri}/admin/${this.path()}`;
 	}
+
+	/**
+	 * Transform search params before search & count
+	 * @param {S} searchParams
+	 * @return {S}
+	 */
+	protected transformSearchParams(searchParams: S): S {
+		return searchParams;
+	}
+
 	/**
 	 * Returns the base URI for this model
 	 * @return {string}
