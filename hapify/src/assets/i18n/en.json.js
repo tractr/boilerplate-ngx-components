@@ -1,24 +1,32 @@
 // Static words
 let _output = {
-    "error_dismiss-action": "Ok",
-    "header_app-name": "Ngx Components",
-    "header_app-short-name": "Components",
-    "header_action-logout": "Logout",
-    "footer_tag-line": "© {{year}} - Tractr",
-    "session_sign-in": "Sign in",
-    "session_email": "Email",
-    "session_password": "Password",
-    "home_title": "Components",
-    "common_empty": "No results",
-    "common_any": "Any",
-    "common_true": "Yes",
-    "common_false": "No",
-    "common_save": "Save",
-    "common_edit": "Edit",
-    "common_create": "Create",
-    "common_delete": "Delete",
-    "common_error-required": "This field is required",
-    "common_error-format": "Wrong format",
+	'error_dismiss-action': 'Ok',
+	'header_app-name': 'Hapify - Components',
+	'header_app-short-name': 'Hapify',
+	'header_action-logout': 'Logout',
+	'footer_tag-line': '© {{year}} - Tractr',
+	'session_sign-in': 'Sign in',
+	session_email: 'Email',
+	session_password: 'Password',
+	home_title: 'Hapify',
+	common_empty: 'No results',
+	common_true: 'Yes',
+	common_false: 'No',
+	common_save: 'Save',
+	common_edit: 'Edit',
+	common_create: 'Create',
+	common_delete: 'Delete',
+	common_more: 'More...',
+	'common_filters-title': 'Filters',
+	'common_value-string': 'Value',
+	'common_value-number': 'Value',
+	'common_value-date': 'Date',
+	'common_value-boolean': 'Yes/No',
+	'common_value-object': 'Value',
+	common_min: 'Minimum',
+	common_max: 'Maximum',
+	'common_error-required': 'This field is required',
+	'common_error-format': 'Wrong format'
 };
 
 /**
@@ -30,7 +38,7 @@ let _output = {
 function __fields(model) {
     const modelKey = model.names.kebab;
     return model.fields.list
-        .filter((f) => !((f.hidden && (f.internal || f.restricted)) || f.primary))
+        .filter(f => !((f.hidden && (f.internal || f.restricted)) || f.primary))
         .reduce((p, f) => {
             const key = f.names.kebab;
             p[`${modelKey}_${key}`] = `${f.names.capital}`;
@@ -50,10 +58,6 @@ function __filter(model) {
         .reduce((p, f) => {
             const key = f.names.kebab;
             p[`${modelKey}_${key}`] = `${f.names.capital}`;
-            if (f.type === 'number' || f.type === 'datetime') {
-                p[`${modelKey}_${key}--min`] = `${f.names.capital} min`;
-                p[`${modelKey}_${key}--max`] = `${f.names.capital} max`;
-            }
             return p;
         }, {});
 }
@@ -65,12 +69,17 @@ function __filter(model) {
  * @private
  */
 function __select(model) {
+	const output = {
+		[`${model.names.kebab}_common_select-placeholder`]: `Select ${
+			model.names.lower
+		}`
+	};
     if (model.p.hasSearchableLabel) {
-        return {
-            [`${model.names.kebab}_common_search-placeholder`]: `Search ${model.names.lower}`
-        };
+		output[`${model.names.kebab}_common_search-placeholder`] = `Search ${
+			model.names.lower
+		}`;
     }
-    return {};
+	return output;
 }
 
 /**
@@ -97,7 +106,7 @@ function __model(model) {
 //--------------------------------------------------
 //  Output
 //--------------------------------------------------
-models.map((model) => {
+models.map(model => {
     const keysUnordered = Object.assign(_output, __model(model));
 
     _output = Object.keys(keysUnordered).sort().reduce(function(keysOrdered, key) {
