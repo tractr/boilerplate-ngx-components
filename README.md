@@ -4,6 +4,18 @@ This boilerplate provides a components library built with Angular 7.
 
 > This boilerplate is meant to be used with Hapify. To get more info about Hapify setup, please refer to https://www.hapify.io/get-started.
 
+## Preview
+
+Some examples of what you will get:
+
+### Selects & checkboxes for each model
+
+![Map Preview](preview-selects.png)
+
+### Dynamic map for geo-located models
+
+![Map Preview](preview-map.png)
+
 ## Get Started
 
 ### 1. Clone repository
@@ -19,11 +31,13 @@ Then you need to generate code from your Hapify project using `hpf generate`.
 
 ### 3. API Dependency
 
-This project depends on the [`hapijs_tractr`](https://github.com/Tractr/boilerplate-hapijs) API Boilerplate. Please install and start the API before running Angular Component.
+This project depends on the [`hapijs_tractr`](https://github.com/Tractr/boilerplate-hapijs) API Boilerplate. Please install and start the API before running Angular Components.
+
+Don't forget to create an user (https://github.com/Tractr/boilerplate-hapijs#31-installation). Otherwise, you won't be able to navigate.
 
 ### 4. Start project
 
-Once the API is started, you can start the project:
+Once the API is started, you can run the project:
 
 ```bash
 npm install
