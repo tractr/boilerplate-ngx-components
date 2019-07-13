@@ -1,62 +1,61 @@
 <div class="<<M a-a>>-list-container">
-    <div [ngClass]="{'d-none': !total}">
-        <mat-card class="table-container">
-            <div *ngIf="refreshing" class="loading-shade">
-                <mat-spinner></mat-spinner>
-            </div>
-            <mat-table #table
-                       [dataSource]="dataSource"
-                       matSort
-                       matSortDisableClear
-                       matSortActive="{{ searchParams.props._sort }}"
-                       matSortDirection="{{ searchParams.props._order }}">
+    <nz-card class="table-container">
+        <nz-table   #table
+                    [nzData]="items"
+                    [nzShowSizeChanger]="true"
+                    [nzFrontPagination]="false"
+                    [nzLoading]="refreshing"
+                    [nzLoadingDelay]="refreshingDelay"
+                    [nzTotal]="total"
+                    [nzNoResult]="notFound"
+                    [(nzPageIndex)]="pageIndex"
+                    [(nzPageSize)]="searchParams.props._limit"
+                    (nzPageIndexChange)="update()"
+                    (nzPageSizeChange)="update(true)">
+
+                   <thead [nzSingleSort]="true" (nzSortChange)="sort($event)">
+                        <tr>
 <<@ F /hd/pr/(tE/em) f>>
-                <!-- <<f A>> Column -->
-                <ng-container matColumnDef="<<f a_a>>">
-                    <mat-header-cell *matHeaderCellDef<<? f so>> mat-sort-header<<?>>>
-                        {{ '<<M a-a>>_<<f a-a>>' | translate }}
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let row">
+                            <th *ngIf="columns.includes('<<f a_a>>')"<<? f so>> nzShowSort nzSortKey="<<f a_a>>"<<?>>>{{ '<<M a-a>>_<<f a-a>>' | translate }}</th>
+<<@>>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of table.data" (click)="onClick(row)">
+<<@ F /hd/pr/(tE/em) f>>
+                            <td *ngIf="columns.includes('<<f a_a>>')">
     <<? f tE>>
         <<? f ml>>
-                        <div>
-                            <div *ngFor="let item of row.props.<<f a_a>>">
-                                {{ item.getLabel() }}
-                            </div>
-                        </div>
+                              <div>
+                                  <div *ngFor="let item of row.props.<<f a_a>>">
+                                      {{ item.getLabel() }}
+                                  </div>
+                              </div>
         <<??>>
-                        {{ row.<<f aA>>Exists() ? row.props.<<f a_a>>.getLabel() : '' }}
+                              {{ row.<<f aA>>Exists() ? row.props.<<f a_a>>.getLabel() : '' }}
         <<?>>
     <<?? f tD>>
-                        {{ row.props.<<f a_a>> | date:'medium' }}
+                              {{ row.props.<<f a_a>> | date:'medium' }}
     <<?? f tB>>
-                        {{ (row.props.<<f a_a>> ? 'common_true' : 'common_false') | translate }}
+                              {{ (row.props.<<f a_a>> ? 'common_true' : 'common_false') | translate }}
     <<?? f tSt>>
-                        <div [innerHTML]="row.props.<<f a_a>> | nl2br"></div>
+                              <div [innerHTML]="row.props.<<f a_a>> | nl2br"></div>
     <<?? f tSr>>
-                        <div [innerHTML]="row.props.<<f a_a>>"></div>
+                              <div [innerHTML]="row.props.<<f a_a>>"></div>
+    <<?? f tO>>
+                              <small>
+                                  <pre>{{ row.props.<<f a_a>> | json }}</pre>
+                              </small>
     <<??>>
-                        {{ row.props.<<f a_a>> }}
+                              {{ row.props.<<f a_a>> }}
     <<?>>
-                    </mat-cell>
-                </ng-container>
+                            </td>
 <<@>>
-                <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
-                <mat-row
-                    *matRowDef="let row; columns: columns;"
-                    class="hover-bg-accent pointer"
-                    (click)="onSelect(row)"></mat-row>
-            </mat-table>
-            <mat-paginator
-                    [length]="total"
-                    [pageSize]="searchParams.props._limit"
-                    [pageIndex]="searchParams.props._page"
-                    [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-        </mat-card>
-    </div>
-    <div *ngIf="!total" class="text-center">
-        <mat-card>
-            <h4 class="my-3">{{ '<<M a-a>>_common_not-found' | translate }}</h4>
-        </mat-card>
-    </div>
+                        </tr>
+                    </tbody>
+        </nz-table>
+    </nz-card>
+    <ng-template #notFound>
+        <nz-empty [nzNotFoundContent]="'<<M a-a>>_common_not-found' | translate "></nz-empty>
+    </ng-template>
 </div>

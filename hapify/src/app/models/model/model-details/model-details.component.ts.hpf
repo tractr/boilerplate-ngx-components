@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
-import {MatSlideToggleChange} from '@angular/material';
 import {ErrorService} from '@app/services';
 import {<<M AA>>} from '../<<M a-a>>';
 import {<<M AA>>Service} from '../<<M a-a>>.service';
@@ -18,6 +17,8 @@ export class <<M AA>>DetailsComponent implements OnInit {
   @Input() deletable = true;
   /** @type {boolean} Toggle delete button display */
   deletionUnlocked = false;
+  /** @type {boolean} Denotes if deltion in progress */
+  deleting = false;
 
   /**
    * Constructor
@@ -31,17 +32,18 @@ export class <<M AA>>DetailsComponent implements OnInit {
   ngOnInit() {}
   /**
    * Triggered when the lock is moved
-   * @param {MatSlideToggleChange} event
    */
-  onDeletionUnlock(event: MatSlideToggleChange): void {
-    this.deletionUnlocked = event.checked;
+  onDeletionUnlock(checked: boolean): void {
+    this.deletionUnlocked = checked;
   }
   /** Called on deletion */
   onDeleteClick(): void {
+    this.deleting = true;
     this.<<M aA>>Service.remove(this.<<M aA>>.getId())
       .then(() => {
         this.delete.next();
       })
-      .catch((error) => this.errorService.handle(error));
+      .catch((error) => this.errorService.handle(error))
+      .then(() => this.deleting = false);
   }
 }

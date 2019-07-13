@@ -1,94 +1,59 @@
 <div *ngIf="formGroup && controlName" [formGroup]="formGroup">
-	<mat-form-field class="w-100">
-		<mat-select
-			[placeholder]="placeholder"
-			[formControlName]="controlName"
-			[(ngModel)]="model"
-			[multiple]="multiple"
-			(selectionChange)="onChange()"
-			(openedChange)="onOpened($event)"
-			[compareWith]="compareEntities"
-		>
-			<div
-				*ngIf="filterEnabled"
-				class="w-100 mat-option mat-option-disabled bg-accent"
-			>
-				<i class="material-icons mr-1">search</i>
-				<input
-					#filter
-					type="text"
-					matInput
-					placeholder="{{ filterPlaceholder }}"
-					[(ngModel)]="filterValue"
-					[ngModelOptions]="{ standalone: true }"
-					(keyup)="onFilterChanged()"
-				/>
-			</div>
-			<mat-option *ngIf="nullable && !multiple" [value]="null">{{
-				nullLabel
-			}}</mat-option>
-			<mat-option *ngIf="!loaded" [disabled]="true">
-				<mat-progress-bar mode="indeterminate"></mat-progress-bar>
-			</mat-option>
-			<mat-option *ngIf="loaded && !items.length" [disabled]="true">
-				<em>{{ emptyLabel }}</em>
-			</mat-option>
-			<mat-option *ngFor="let item of items" [value]="item">{{
-				item.getLabel()
-			}}</mat-option>
-		</mat-select>
-		<mat-error
-			*ngIf="
-				errorRequired &&
-				formGroup.controls[controlName].invalid &&
-				(formGroup.controls[controlName].dirty ||
-					formGroup.controls[controlName].touched)
-			"
-			class="mt-2"
-		>
-			<div *ngIf="formGroup.controls[controlName].errors.required">
-				{{ errorRequired }}
-			</div>
-		</mat-error>
-	</mat-form-field>
+	<nz-select
+		[nzPlaceHolder]="placeholder"
+		[formControlName]="controlName"
+		[(ngModel)]="model"
+		[nzMode]="multiple ? 'multiple' : 'default'"
+		(ngModelChange)="onChange()"
+		(nzOpenChange)="onOpened($event)"
+		[compareWith]="compareEntities"
+		[nzShowSearch]="filterEnabled"
+		[nzAllowClear]="nullable"
+		(nzOnSearch)="onFilterChanged($event)"
+		(nzScrollToBottom)="loadMore()"
+		[nzServerSearch]="true"
+		[nzLoading]="loading"
+		class="w-100"
+	>
+		<nz-option *ngIf="loading" nzDisabled nzCustomContent>
+			<i nz-icon type="loading" class="loading-icon"></i>
+		</nz-option>
+		<nz-option *ngIf="!loading && !items.length" nzDisabled nzCustomContent>
+			<nz-empty [nzNotFoundContent]="emptyLabel"></nz-empty>
+		</nz-option>
+		<nz-option
+			*ngFor="let item of items"
+			[nzValue]="item"
+			[nzLabel]="item.getLabel()"
+		></nz-option>
+	</nz-select>
 </div>
 <div *ngIf="!(formGroup && controlName)">
-	<mat-form-field class="w-100">
-		<mat-select
-			[placeholder]="placeholder"
-			[multiple]="multiple"
-			[(ngModel)]="model"
-			(selectionChange)="onChange()"
-			(openedChange)="onOpened($event)"
-			[compareWith]="compareEntities"
-		>
-			<div
-				*ngIf="filterEnabled"
-				class="w-100 mat-option mat-option-disabled bg-accent"
-			>
-				<i class="material-icons mr-1">search</i>
-				<input
-					#filter
-					type="text"
-					matInput
-					placeholder="{{ filterPlaceholder }}"
-					[(ngModel)]="filterValue"
-					[ngModelOptions]="{ standalone: true }"
-					(keyup)="onFilterChanged()"
-				/>
-			</div>
-			<mat-option *ngIf="nullable && !multiple" [value]="null">{{
-				nullLabel
-			}}</mat-option>
-			<mat-option *ngIf="!loaded" [disabled]="true">
-				<mat-progress-bar mode="indeterminate"></mat-progress-bar>
-			</mat-option>
-			<mat-option *ngIf="loaded && !items.length" [disabled]="true">
-				<em>{{ emptyLabel }}</em>
-			</mat-option>
-			<mat-option *ngFor="let item of items" [value]="item">{{
-				item.getLabel()
-			}}</mat-option>
-		</mat-select>
-	</mat-form-field>
+	<nz-select
+		[nzPlaceHolder]="placeholder"
+		[(ngModel)]="model"
+		[nzMode]="multiple ? 'multiple' : 'default'"
+		(ngModelChange)="onChange()"
+		(nzOpenChange)="onOpened($event)"
+		[compareWith]="compareEntities"
+		[nzShowSearch]="filterEnabled"
+		[nzAllowClear]="nullable"
+		(nzOnSearch)="onFilterChanged($event)"
+		(nzScrollToBottom)="loadMore()"
+		[nzServerSearch]="true"
+		[nzLoading]="loading"
+		class="w-100"
+	>
+		<nz-option *ngIf="loading" nzDisabled nzCustomContent>
+			<i nz-icon type="loading" class="loading-icon"></i>
+		</nz-option>
+		<nz-option *ngIf="!loading && !items.length" nzDisabled nzCustomContent>
+			<nz-empty [nzNotFoundContent]="emptyLabel"></nz-empty>
+		</nz-option>
+		<nz-option
+			*ngFor="let item of items"
+			[nzValue]="item"
+			[nzLabel]="item.getLabel()"
+		></nz-option>
+	</nz-select>
 </div>

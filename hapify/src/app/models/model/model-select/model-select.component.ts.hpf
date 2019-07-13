@@ -22,8 +22,10 @@ export class <<M AA>>SelectComponent extends EntitySelectComponent< <<M AA>>> {
   }
   /** @inheritDoc */
   protected async getList(): Promise< <<M AA>>[]> {
-      const params = new <<M AA>>SearchParams();
-      params.props._limit = this.resultsLimit;
+      const params = new <<M AA>>SearchParams({
+          _limit: this.resultsLimit,
+          _page: this.currentPage
+      });
 <<? F se*lb>>
       if (this.filterEnabled && this.filterValue) {
         params.props.<<@1 F se*lb f>><<f a_a>><<@>> = this.filterValue;

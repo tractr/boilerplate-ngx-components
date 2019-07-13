@@ -1,22 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Injectable()
 export class ErrorService {
-	/** @type {number} Display duration*/
-	duration = 2000;
-
 	/**
 	 * Constructor
-	 * @param {TranslateService} translateService
-	 * @param {MatSnackBar} snackBar
+	 * @param message
 	 */
-	constructor(
-		private translateService: TranslateService,
-		public snackBar: MatSnackBar
-	) {}
+	constructor(private message: NzMessageService) {}
 
 	/**
 	 * Handle an error
@@ -51,10 +43,6 @@ export class ErrorService {
 	 * @private
 	 */
 	private _show(message: string): void {
-		this.translateService.get('error_dismiss-action').subscribe(text => {
-			this.snackBar.open(message, text, {
-				duration: this.duration
-			});
-		});
+		this.message.create('error', message);
 	}
 }

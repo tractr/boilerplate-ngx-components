@@ -3,8 +3,8 @@
   "validatorPath": "hapify/validator.js",
   "name": "Angular Components",
   "description": "Components library built with Angular 7",
-  "logo": "https://angular.io/assets/images/logos/angular/angular.svg",
-  "project": "5c7019c998ebdb001075f1ed",
+  "logo": "https://angular.io/generated/images/marketing/concept-icons/cdk.png",
+  "project": "5cebe3af0f12bb001039e064",
   "templates": [
     {
       "path": "src/app/models/{kebab}/{kebab}-checkbox/{kebab}-checkbox.component.ts",
@@ -68,11 +68,6 @@
     },
     {
       "path": "src/app/models/{kebab}/{kebab}-table/{kebab}-table.component.html",
-      "engine": "hpf",
-      "input": "one"
-    },
-    {
-      "path": "src/app/models/{kebab}/{kebab}-table/{kebab}-table.component.scss",
       "engine": "hpf",
       "input": "one"
     },
@@ -142,22 +137,12 @@
       "input": "one"
     },
     {
-      "path": "src/app/models/{kebab}/views/{kebab}-list/{kebab}-list.component.scss",
-      "engine": "hpf",
-      "input": "one"
-    },
-    {
       "path": "src/app/models/{kebab}/views/{kebab}-list/{kebab}-list.component.ts",
       "engine": "hpf",
       "input": "one"
     },
     {
       "path": "src/app/models/{kebab}/views/{kebab}-map-view/{kebab}-map-view.component.html",
-      "engine": "hpf",
-      "input": "one"
-    },
-    {
-      "path": "src/app/models/{kebab}/views/{kebab}-map-view/{kebab}-map-view.component.scss",
       "engine": "hpf",
       "input": "one"
     },

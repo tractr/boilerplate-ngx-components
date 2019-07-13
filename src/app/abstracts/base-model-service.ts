@@ -26,6 +26,12 @@ export abstract class BaseModelService<
 	I extends BaseModelInterface,
 	S extends BaseModelSearchParamsInterface
 > {
+	/** Removes credentials on read action to allow shared caching */
+	protected publicRead = false;
+	/** Removes credentials on list action to allow shared caching */
+	protected publicList = false;
+	/** Removes credentials on count action to allow shared caching */
+	protected publicCount = false;
 	/** @param {HttpClient} http Constructor */
 	constructor(private http: HttpClient) {}
 
@@ -62,7 +68,7 @@ export abstract class BaseModelService<
 	 */
 	get(id: string): Promise<T> {
 		// Start request
-		const options = { withCredentials: true };
+		const options = { withCredentials: !this.publicRead };
 		return this.http
 			.get(`${this.uri()}/${id}`, options)
 			.toPromise()
@@ -86,8 +92,8 @@ export abstract class BaseModelService<
 	list(searchParams: S): Promise<BaseModelSearchResultInterface<T>> {
 		// Start request
 		const options = {
-			withCredentials: true,
-			params: searchParams as {}
+			withCredentials: !this.publicList,
+      params: this.transformSearchParams(searchParams) as {}
 		};
 		return this.http
 			.get(`${this.uri()}`, options)
@@ -110,14 +116,17 @@ export abstract class BaseModelService<
 	 */
 	count(searchParams: S): Promise<number> {
 		// Remove unwanted properties
-		const params = Object.assign({}, searchParams);
+		const params = Object.assign(
+			{},
+			this.transformSearchParams(searchParams)
+		);
 		delete params._page;
 		delete params._limit;
 		delete params._order;
 		delete params._sort;
 		// Start request
 		const options = {
-			withCredentials: true,
+			withCredentials: !this.publicCount,
 			params: params as {}
 		};
 		return this.http
@@ -130,9 +139,18 @@ export abstract class BaseModelService<
 	 * @return {string}
 	 */
 	protected uri(): string {
-		// Use admin routes for demo (always available)
-		return `${environment.api.uri}/admin/${this.path()}`;
+		return `${environment.api.uri}/${this.path()}`;
 	}
+
+	/**
+	 * Transform search params before search & count
+	 * @param {S} searchParams
+	 * @return {S}
+	 */
+	protected transformSearchParams(searchParams: S): S {
+		return searchParams;
+	}
+
 	/**
 	 * Returns the base URI for this model
 	 * @return {string}

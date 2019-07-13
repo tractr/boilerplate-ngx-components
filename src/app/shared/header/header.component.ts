@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators';
-import { MatSidenav } from '@angular/material';
 import { SessionService, Self } from '@app/services';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
@@ -10,11 +9,9 @@ import { ErrorService } from '@app/services';
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
-	styleUrls: ['./header.component.scss']
+	styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-	/** @type {MatSidenav} Sideobar */
-	@Input() sidenav: MatSidenav;
 	/** @type {Subject<void>} Observables unsubscriber */
 	private unsubscribe: Subject<void> = new Subject<void>();
 	/** @type {[{link: string; label: string}]} Header links */
@@ -60,7 +57,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	/**
 	 * Logout
 	 */
-	onLogoutClick() {
+	logout() {
 		this.sessionService
 			.logout()
 			.then(self => {

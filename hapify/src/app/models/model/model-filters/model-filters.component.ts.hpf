@@ -1,8 +1,8 @@
 import {Component, Input, OnInit<<? F se*(tS+tN)>>, OnDestroy<<?>>} from '@angular/core';
 import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
 <<? F se*(tS+tN)>>
-import {Subscription} from 'rxjs/Subscription';
-import {Subject} from 'rxjs/Subject';
+import {Subscription as RxJsSubscription} from 'rxjs/Subscription';
+import {Subject as RxJsSubject} from 'rxjs/Subject';
 import {debounceTime} from 'rxjs/operators';
 <<?>>
 <<? root.d.s>>
@@ -21,11 +21,13 @@ export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDes
 <<? F se*(tS+tN)>>
   /** @type {number} The debuonce delay before calling the API for filtering */
   @Input() filterDebounceTime = 300;
-  /** @type {Subject<void>} Subject for debounced keyup event */
-  private keyupSubject = new Subject<void>();
-  /** @type {Subscription[]} Subscription of the component */
-  private subscription: Subscription;
+  /** @type {RxJsSubject<void>} Subject for debounced keyup event */
+  private keyupSubject = new RxJsSubject<void>();
+  /** @type {RxJsSubscription} Subscription of the component */
+  private subscription: RxJsSubscription;
 <<?>>
+  /** @type {boolean} Denotes if the page number should be set to 0 when filters change */
+  @Input() resetPage = false;
  
   /** Constructor */
   constructor() {}
@@ -36,9 +38,7 @@ export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDes
     // Subscription
     this.subscription = this.keyupSubject
       .pipe(debounceTime(this.filterDebounceTime))
-      .subscribe(() => {
-        this.searchParams.next();
-      });
+      .subscribe(() => { this.onChange(); });
 <<?>>
   }
 
@@ -55,6 +55,9 @@ export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDes
 
   /** Called when an input is changed */
   onChange() {
+    if (this.resetPage) {
+        this.searchParams.props._page = 0;
+    }
     this.searchParams.next();
   }
 }

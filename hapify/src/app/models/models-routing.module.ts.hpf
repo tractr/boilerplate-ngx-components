@@ -12,14 +12,14 @@ import {<<m AA>>IndexComponent} from './<<m a-a>>/views/<<m a-a>>-index/<<m a-a>
 import {<<m AA>>MapViewComponent} from './<<m a-a>>/views/<<m a-a>>-map-view/<<m a-a>>-map-view.component';
     <<?>>
 <<@>>
-import { IsAdminGuard } from '@app/guards';
+import { IsLoggedGuard } from '@app/guards';
  
 const routes: Routes = [
 <<@ M m>>
   {
     path: '<<m a-a>>',
     component: <<m AA>>Component,
-    canActivate: [IsAdminGuard],
+    canActivate: [IsLoggedGuard],
     children: [
       {
         path: '',

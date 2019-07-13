@@ -2,24 +2,23 @@
 import {Component, OnDestroy, OnInit, AfterViewInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription as RxJsSubscription} from 'rxjs/Subscription';
 import {<<M AA>>SearchParams} from '../../<<M a-a>>-search-params';
 import {<<M AA>>} from '../../<<M a-a>>';
 import {Helpers} from '@app/shared';
  
 @Component({
   selector: 'hpf-<<M a-a>>-map-view',
-  templateUrl: './<<M a-a>>-map-view.component.html',
-  styleUrls: ['./<<M a-a>>-map-view.component.scss']
+  templateUrl: './<<M a-a>>-map-view.component.html'
 })
 export class <<M AA>>MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
  
   /** @type {<<M AA>>SearchParams} The filters */
   searchParams = new <<M AA>>SearchParams({ _limit: 100 });
-  /** @type {Subscription} The query subscription */
-  private querySubscription: Subscription;
-  /** @type {Subscription} The search params subscription */
-  private paramsSubscription: Subscription;
+  /** @type {RxJsSubscription} The query subscription */
+  private querySubscription: RxJsSubscription;
+  /** @type {RxJsSubscription} The search params subscription */
+  private paramsSubscription: RxJsSubscription;
  
   /**
    * Constructor

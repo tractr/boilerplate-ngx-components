@@ -1,0 +1,63 @@
+@import 'theme';
+
+///////////////
+//  FONT
+///////////////
+
+///////////////
+//  /FONT
+///////////////
+
+///////////////
+//  OVERRIDES ANT & BOOTSTRAP
+///////////////
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	.anticon {
+		vertical-align: 0 !important;
+	}
+}
+
+.min-h-100 {
+	min-height: 100% !important;
+}
+
+li:active,
+li:focus {
+	outline: none;
+	background-color: fade(@primary-1, 80%);
+}
+
+nz-picker {
+	&,
+	.ant-calendar-picker {
+		display: block;
+		width: 100%;
+	}
+}
+
+.mce-tinymce {
+	box-shadow: none !important;
+}
+
+///////////////
+//  /OVERRIDES ANT & BOOTSTRAP
+///////////////
+
+///////////////
+//  GLOBAL
+///////////////
+
+pre {
+	border: 1px solid darken(@body-background, 20%);
+	background-color: darken(@body-background, 3%);
+	padding: 1rem;
+	border-radius: 8px;
+	font-size: 0.8em;
+}
+
+///////////////
+//  /GLOBAL
+///////////////

@@ -2,19 +2,16 @@
     *ngIf="<<M aA>>"
     [<<M aA>>]="<<M aA>>"
     (delete)="onDelete()"></hpf-<<M a-a>>-details>
-<div *ngIf="!<<M aA>>" class="my-5">
-    <mat-spinner class="mx-auto"></mat-spinner>
+<div *ngIf="!<<M aA>>" class="my-5 text-center">
+    <nz-spin nzSimple></nz-spin>
 </div>
-
+ 
 <div class="container">
     <div class="row">
         <div class="col-12 my-3">
-            <mat-card>
-                <mat-card-title>Code</mat-card-title>
-                <mat-card-content>
-                    <pre><code>&lt;hpf-<<M a-a>>-details [<<M aA>>]="<<M aA>>" (delete)="onDelete()"&gt;&lt;/hpf-<<M a-a>>-details&gt;</code></pre>
-                </mat-card-content>
-            </mat-card>
+            <nz-card nzTitle="Code">
+                <pre><code>&lt;hpf-<<M a-a>>-details [<<M aA>>]="<<M aA>>" (delete)="onDelete()"&gt;&lt;/hpf-<<M a-a>>-details&gt;</code></pre>
+            </nz-card>
         </div>
     </div>
 </div>
