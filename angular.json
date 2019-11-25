@@ -69,23 +69,23 @@
 							"buildOptimizer": true,
 							"serviceWorker": true
 						},
-						"staging": {
+						"production-quick": {
 							"fileReplacements": [
 								{
 									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.staging.ts"
+									"with": "src/environments/environment.production.ts"
 								}
 							],
-							"optimization": true,
+							"optimization": false,
 							"outputHashing": "all",
 							"sourceMap": false,
-							"extractCss": true,
+							"extractCss": false,
 							"namedChunks": false,
-							"aot": true,
-							"extractLicenses": true,
+							"aot": false,
+							"extractLicenses": false,
 							"vendorChunk": false,
-							"buildOptimizer": true,
-							"serviceWorker": true
+							"buildOptimizer": false,
+							"serviceWorker": false
 						}
 					}
 				},
