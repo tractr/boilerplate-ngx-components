@@ -1,9 +1,6 @@
 import { OnInit, Input, OnDestroy } from '@angular/core';
-import {
-	BaseModel,
-	BaseModelInterface,
-	EntitySelectComponent
-} from '@app/abstracts';
+import { BaseModel, BaseModelInterface } from '../base-model';
+import { EntitySelectComponent } from '../entity-select/entity-select.component';
 
 export abstract class EntityCheckboxComponent<
 	T extends BaseModel<BaseModelInterface>

@@ -1,10 +1,7 @@
 import { OnInit, Input, OnDestroy } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import {
-	BaseModel,
-	BaseModelInterface,
-	EntitySelectComponent
-} from '@app/abstracts';
+import { BaseModel, BaseModelInterface } from '../base-model';
+import { EntitySelectComponent } from '../entity-select/entity-select.component';
 
 export abstract class EntitySortableComponent<
 	T extends BaseModel<BaseModelInterface>

@@ -1,11 +1,10 @@
 import { OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { BaseModel, BaseModelInterface } from '../base-model';
 import {
-	BaseModel,
-	BaseModelInterface,
 	BaseModelSearchParams,
 	BaseModelSearchParamsInterface
-} from '@app/abstracts';
+} from '../base-model-search-params';
 
 interface SortInfo {
 	key: string;

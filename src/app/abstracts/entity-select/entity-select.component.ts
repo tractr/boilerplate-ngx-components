@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { debounceTime } from 'rxjs/operators';
 import { ErrorService } from '@app/services';
 import { Helpers } from '@app/shared';
-import { BaseModel, BaseModelInterface } from '@app/abstracts';
+import { BaseModel, BaseModelInterface } from '../base-model';
 
 export abstract class EntitySelectComponent<
 	T extends BaseModel<BaseModelInterface>

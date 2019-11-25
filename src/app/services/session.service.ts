@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Self } from './self';
 import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { ErrorService } from '@app/services';
+import { ErrorService } from './error.service';
 
 export interface SelfResponse {
 	_id?: string;
