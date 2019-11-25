@@ -6,6 +6,7 @@
 		"start": "ng serve --port 4201 --open",
 		"build": "ng build",
 		"build:production": "ng build --prod --configuration=production",
+		"build:production-quick": "ng build --prod --configuration=production-quick",
 		"test": "ng test",
 		"lint": "./node_modules/.bin/prettier --write \"src/*/**/*{.ts,.json,.css,.scss,.html}\"",
 		"e2e": "ng e2e",
