@@ -1,6 +1,6 @@
 {
 	"name": "boilerplate-ngx-components",
-	"version": "2.0.2",
+	"version": "2.0.3",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve --port 4201 --open",

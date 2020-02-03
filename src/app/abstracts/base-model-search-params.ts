@@ -18,6 +18,10 @@ export abstract class BaseModelSearchParams<
 	defaultPage = 0;
 	/** @type {number} Default page length */
 	defaultLimit = 10;
+	/** @type {number} Default sort */
+	defaultSort = '_id';
+	/** @type {number} Default order */
+	defaultOrder = 'desc';
 
 	/**
 	 * Constructor

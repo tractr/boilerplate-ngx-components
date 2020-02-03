@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {<<M AA>>, <<M AA>>Interface} from './<<M a-a>>';
 import {<<M AA>>SearchParamsInterface} from './<<M a-a>>-search-params';
 import {BaseModelService} from '@app/abstracts';
+<<? F tD*se>>
+import {Helpers} from '@app/shared';
+<<?>>
 
 @Injectable()
 export class <<M AA>>Service extends BaseModelService< <<M AA>>, <<M AA>>Interface, <<M AA>>SearchParamsInterface> {
@@ -25,4 +28,25 @@ export class <<M AA>>Service extends BaseModelService< <<M AA>>, <<M AA>>Interfa
   protected new(object: <<M AA>>Interface): <<M AA>> {
     return new <<M AA>>(object);
   }
+<<? F tD*se>>
+  /** @inheritDoc */
+  protected transformSearchParams(searchParams: <<M AA>>SearchParamsInterface): <<M AA>>SearchParamsInterface {
+	<<@ F tD*se f>>
+    // Search by edge for <<f A>>
+    if (typeof searchParams.<<f a_a>>__min !== 'undefined') {
+      searchParams.<<f a_a>>__min = Helpers.toMidnightUTC(searchParams.<<f a_a>>__min);
+    }
+    if (typeof searchParams.<<f a_a>>__max !== 'undefined') {
+      searchParams.<<f a_a>>__max = Helpers.toLastSecondUTC(searchParams.<<f a_a>>__max);
+    }
+    if (typeof searchParams.<<f a_a>> !== 'undefined') {
+      searchParams.<<f a_a>>__min = Helpers.toMidnightUTC(searchParams.<<f a_a>>);
+      searchParams.<<f a_a>>__max = Helpers.toLastSecondUTC(searchParams.<<f a_a>>);
+      delete searchParams.<<f a_a>>;
+    }
+
+    <<@>>
+    return searchParams;
+  }
+<<?>>
 }

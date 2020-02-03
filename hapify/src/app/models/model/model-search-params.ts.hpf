@@ -26,7 +26,9 @@ export class <<M AA>>SearchParams extends BaseModelSearchParams< <<M AA>>SearchP
     // Keep default values
     if (typeof props._page === 'undefined') { props._page = this.defaultPage; }
     if (typeof props._limit === 'undefined') { props._limit = this.defaultLimit; }
-    
+    if (typeof props._sort === 'undefined') { props._sort = this.defaultSort; }
+    if (typeof props._order === 'undefined') { props._order = this.defaultOrder; }
+
     // Convert potentially multiple primary keys
     if (typeof props.<<P a_a>> === 'string') {
       props.<<P a_a>> = (< string>props.<<P a_a>>).split(',').filter((s) => s.length);
