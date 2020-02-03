@@ -146,4 +146,28 @@ export class Helpers {
 				: e2;
 		return id1 === id2;
 	}
+
+	/** Force noon to a date (as timestamp) */
+	static toNoonUTC(input: string | number | Date) {
+		const source = input instanceof Date ? input : new Date(input);
+		return new Date(
+			source.toISOString().split('T')[0] + 'T12:00:00.000Z'
+		).getTime();
+	}
+
+	/** Force midnight to a date (as timestamp) */
+	static toMidnightUTC(input: string | number | Date) {
+		const source = input instanceof Date ? input : new Date(input);
+		return new Date(
+			source.toISOString().split('T')[0] + 'T00:00:00.000Z'
+		).getTime();
+	}
+
+	/** Force last instant of a date (as timestamp) */
+	static toLastSecondUTC(input: string | number | Date) {
+		const source = input instanceof Date ? input : new Date(input);
+		return new Date(
+			source.toISOString().split('T')[0] + 'T23:59:59.999Z'
+		).getTime();
+	}
 }
