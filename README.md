@@ -31,9 +31,13 @@ Then you need to generate code from your Hapify project using `hpf generate`.
 
 ### 3. API Dependency
 
-This project depends on the [`hapijs_tractr`](https://github.com/Tractr/boilerplate-hapijs) API Boilerplate. Please install and start the API before running Angular Components.
+This project can be used with one of these back-ends:
 
-Don't forget to create an user (https://github.com/Tractr/boilerplate-hapijs#31-installation). Otherwise, you won't be able to navigate.
+-   [`hapijs_tractr`](https://github.com/Tractr/boilerplate-hapijs): NodeJS API built with [HapiJS](https://hapi.dev/).
+-   [`slim_php_tractr`](https://github.com/Tractr/boilerplate-slim-php): PHP API built with [Slim Framework](http://www.slimframework.com/).
+
+Please install and start an API before running Angular Components.
+Don't forget to create an admin user (see documentation). Otherwise, you won't be able to navigate.
 
 ### 4. Start project
 
