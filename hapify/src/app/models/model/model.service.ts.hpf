@@ -1,52 +1,52 @@
 import {Injectable} from '@angular/core';
-import {<<M AA>>, <<M AA>>Interface} from './<<M a-a>>';
-import {<<M AA>>SearchParamsInterface} from './<<M a-a>>-search-params';
+import {<<Model pascal>>, <<Model pascal>>Interface} from './<<Model kebab>>';
+import {<<Model pascal>>SearchParamsInterface} from './<<Model kebab>>-search-params';
 import {BaseModelService} from '@app/abstracts';
-<<? F tD*se>>
+<<if Fields datetime and searchable>>
 import {Helpers} from '@app/shared';
-<<?>>
+<<endif>>
 
 @Injectable()
-export class <<M AA>>Service extends BaseModelService< <<M AA>>, <<M AA>>Interface, <<M AA>>SearchParamsInterface> {
-<<? Ar gs>>
+export class <<Model pascal>>Service extends BaseModelService< <<Model pascal>>, <<Model pascal>>Interface, <<Model pascal>>SearchParamsInterface> {
+<<if ReadAccess guest>>
   /** @inheritDoc */
   protected publicRead = true;
-<<?>>
-<<? As gs>>
+<<endif>>
+<<if SearchAccess guest>>
   /** @inheritDoc */
   protected publicList = true;
-<<?>>
-<<? An gs>>
+<<endif>>
+<<if CountAccess guest>>
   /** @inheritDoc */
   protected publicCount = true;
-<<?>>
+<<endif>>
   /** @inheritDoc */
   protected path(): string {
-    return '<<M a-a>>';
+    return '<<Model kebab>>';
   }
   /** @inheritDoc */
-  protected new(object: <<M AA>>Interface): <<M AA>> {
-    return new <<M AA>>(object);
+  protected new(object: <<Model pascal>>Interface): <<Model pascal>> {
+    return new <<Model pascal>>(object);
   }
-<<? F tD*se>>
+<<if Fields datetime and searchable>>
   /** @inheritDoc */
-  protected transformSearchParams(searchParams: <<M AA>>SearchParamsInterface): <<M AA>>SearchParamsInterface {
-	<<@ F tD*se f>>
-    // Search by edge for <<f A>>
-    if (typeof searchParams.<<f a_a>>__min !== 'undefined') {
-      searchParams.<<f a_a>>__min = Helpers.toMidnightUTC(searchParams.<<f a_a>>__min);
+  protected transformSearchParams(searchParams: <<Model pascal>>SearchParamsInterface): <<Model pascal>>SearchParamsInterface {
+	<<for Fields datetime and searchable f>>
+    // Search by edge for <<f capital>>
+    if (typeof searchParams.<<f snake>>__min !== 'undefined') {
+      searchParams.<<f snake>>__min = Helpers.toMidnightUTC(searchParams.<<f snake>>__min);
     }
-    if (typeof searchParams.<<f a_a>>__max !== 'undefined') {
-      searchParams.<<f a_a>>__max = Helpers.toLastSecondUTC(searchParams.<<f a_a>>__max);
+    if (typeof searchParams.<<f snake>>__max !== 'undefined') {
+      searchParams.<<f snake>>__max = Helpers.toLastSecondUTC(searchParams.<<f snake>>__max);
     }
-    if (typeof searchParams.<<f a_a>> !== 'undefined') {
-      searchParams.<<f a_a>>__min = Helpers.toMidnightUTC(searchParams.<<f a_a>>);
-      searchParams.<<f a_a>>__max = Helpers.toLastSecondUTC(searchParams.<<f a_a>>);
-      delete searchParams.<<f a_a>>;
+    if (typeof searchParams.<<f snake>> !== 'undefined') {
+      searchParams.<<f snake>>__min = Helpers.toMidnightUTC(searchParams.<<f snake>>);
+      searchParams.<<f snake>>__max = Helpers.toLastSecondUTC(searchParams.<<f snake>>);
+      delete searchParams.<<f snake>>;
     }
 
-    <<@>>
+    <<endfor>>
     return searchParams;
   }
-<<?>>
+<<endif>>
 }

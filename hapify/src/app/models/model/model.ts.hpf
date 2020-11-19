@@ -1,147 +1,147 @@
 import {Helpers} from '@app/shared';
 import {BaseModel, BaseModelInterface} from '@app/abstracts';
-<<@ D !(hd*(in+rs)) d>>
-import {<<d AA>>, <<d AA>>Interface} from '../<<d a-a>>/<<d a-a>>';
-<<@>>
+<<for Dependencies not (hidden and (internal or restricted)) d>>
+import {<<d pascal>>, <<d pascal>>Interface} from '../<<d kebab>>/<<d kebab>>';
+<<endfor>>
  
-export interface <<M AA>>Interface extends BaseModelInterface {
-<<@ F !(hd*(in+rs))/pr f>>
-  <<f a_a>>?: <<=type(f)>>;
-<<@>>
+export interface <<Model pascal>>Interface extends BaseModelInterface {
+<<for Fields not (hidden and (internal or restricted)) and not primary f>>
+  <<f snake>>?: <<=type(f)>>;
+<<endfor>>
 }
  
-export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
+export class <<Model pascal>> extends BaseModel< <<Model pascal>>Interface> {
  
   /** @return {string} Short function to get label of instance */
   getLabel(): string {
-<<? F lb>>
+<<if Fields label>>
     return `<<=labels()>>`;
-<<??>>
-    return this.props.<<P a_a>>;
-<<?>>
+<<else>>
+    return this.props.<<PrimaryField snake>>;
+<<endif>>
   }
-<<@ F tE r>>
-  /** @return {boolean} Denotes if the instance of <<r a>> has been populated */
-  <<r aA>>Exists(): boolean {
-    <<? r ml>>
+<<for Fields entity r>>
+  /** @return {boolean} Denotes if the instance of <<r lower>> has been populated */
+  <<r camel>>Exists(): boolean {
+    <<if r multiple>>
     return !!this.props &&
-        this.props.<<r a_a>> instanceof Array &&
-        (< <<r.m AA>>[]>this.props.<<r a_a>>).every((item) => {
-            return item instanceof <<r.m AA>> && item.exists();
+        this.props.<<r snake>> instanceof Array &&
+        (< <<r.m pascal>>[]>this.props.<<r snake>>).every((item) => {
+            return item instanceof <<r.m pascal>> && item.exists();
         });
-    <<??>>
+    <<else>>
     return !!this.props &&
-        this.props.<<r a_a>> instanceof <<r.m AA>> &&
-        this.props.<<r a_a>>.exists();
-    <<?>>
+        this.props.<<r snake>> instanceof <<r.m pascal>> &&
+        this.props.<<r snake>>.exists();
+    <<endif>>
   }
-<<@>>
+<<endfor>>
  
   /**
    * Populate the current instance from an object
-   * @param {<<M AA>>Interface} object
+   * @param {<<Model pascal>>Interface} object
    */
-  fromObject(object: <<M AA>>Interface): void {
+  fromObject(object: <<Model pascal>>Interface): void {
     this.props = Object.assign({}, object);
-<<@ F tD f>>
-    <<? f nu>>
-    if (this.props.<<f a_a>> !== null) {
-    <<?>>
-        this.props.<<f a_a>> = Helpers.convertToDate(this.props.<<f a_a>>);
-    <<? f nu>>
+<<for Fields datetime f>>
+    <<if f nullable>>
+    if (this.props.<<f snake>> !== null) {
+    <<endif>>
+        this.props.<<f snake>> = Helpers.convertToDate(this.props.<<f snake>>);
+    <<if f nullable>>
     }
-    <<?>>
-<<@>>
+    <<endif>>
+<<endfor>>
 
-<<@ F tE r>>
-    <<? r ml>>
-    if (this.props.<<r a_a>> instanceof Array) {
-        this.props.<<r a_a>> = (< <<r.m AA>>Interface[]>this.props.<<r a_a>>).map((item) => {
-            return typeof item === 'object' ? new <<r.m AA>>(item) : item;
+<<for Fields entity r>>
+    <<if r multiple>>
+    if (this.props.<<r snake>> instanceof Array) {
+        this.props.<<r snake>> = (< <<r.m pascal>>Interface[]>this.props.<<r snake>>).map((item) => {
+            return typeof item === 'object' ? new <<r.m pascal>>(item) : item;
         });
     }
-    <<??>>
-    if (<<? r nu>>this.props.<<r a_a>> !== null && <<?>>typeof this.props.<<r a_a>> === 'object') {
-        this.props.<<r a_a>> = new <<r.m AA>>(< <<r.m AA>>Interface>this.props.<<r a_a>>);
+    <<else>>
+    if (<<if r nullable>>this.props.<<r snake>> !== null && <<endif>>typeof this.props.<<r snake>> === 'object') {
+        this.props.<<r snake>> = new <<r.m pascal>>(< <<r.m pascal>>Interface>this.props.<<r snake>>);
     }
-    <<?>>
-<<@>>
+    <<endif>>
+<<endfor>>
   }
   
   /**
    * Convert the current instance to an object
-   * @return {<<M AA>>Interface}
+   * @return {<<Model pascal>>Interface}
    */
-  toObject(): <<M AA>>Interface {
+  toObject(): <<Model pascal>>Interface {
     const props = Object.assign({}, this.props);
-<<@ F nu/hd f>>
-    <<? f tS>>
-    if (typeof props.<<f a_a>> !== 'string' || props.<<f a_a>>.length === 0) {
-        props.<<f a_a>> = null;
+<<for Fields nullable and not hidden f>>
+    <<if f string>>
+    if (typeof props.<<f snake>> !== 'string' || props.<<f snake>>.length === 0) {
+        props.<<f snake>> = null;
     }
-    <<??>>
-    if (typeof props.<<f a_a>> === 'undefined') {
-        props.<<f a_a>> = <<? f ml>>[]<<??>>null<<?>>;
+    <<else>>
+    if (typeof props.<<f snake>> === 'undefined') {
+        props.<<f snake>> = <<if f multiple>>[]<<else>>null<<endif>>;
     }
-    <<?>>
-<<@>>
+    <<endif>>
+<<endfor>>
 
-<<@ F tD f>>
-    <<? f nu>>
-    if (props.<<f a_a>> !== null) {
-    <<?>>
-        props.<<f a_a>> = Helpers.convertToTimestamp(props.<<f a_a>>);
-    <<? f nu>>
+<<for Fields datetime f>>
+    <<if f nullable>>
+    if (props.<<f snake>> !== null) {
+    <<endif>>
+        props.<<f snake>> = Helpers.convertToTimestamp(props.<<f snake>>);
+    <<if f nullable>>
     }
-    <<?>>
-<<@>>
+    <<endif>>
+<<endfor>>
 
-<<@ F tE r>>
-    <<? r ml>>
-    if (this.props.<<r a_a>> instanceof Array) {
-        props.<<r a_a>> = (< <<r.m AA>>[]>props.<<r a_a>>).map((item) => {
-            return item instanceof <<r.m AA>> ? item.toObject() : item;
+<<for Fields entity r>>
+    <<if r multiple>>
+    if (this.props.<<r snake>> instanceof Array) {
+        props.<<r snake>> = (< <<r.m pascal>>[]>props.<<r snake>>).map((item) => {
+            return item instanceof <<r.m pascal>> ? item.toObject() : item;
         });
     }
-    <<??>>
-    if (<<? r nu>>props.<<r a_a>> !== null && <<?>>props.<<r a_a>> instanceof <<r.m AA>>) {
-        props.<<r a_a>> = props.<<r a_a>>.toObject();
+    <<else>>
+    if (<<if r nullable>>props.<<r snake>> !== null && <<endif>>props.<<r snake>> instanceof <<r.m pascal>>) {
+        props.<<r snake>> = props.<<r snake>>.toObject();
     }
-    <<?>>
-<<@>>
+    <<endif>>
+<<endfor>>
     return props;
   }
   
   /**
    * Convert an instance to an object to be sent to the API
-   * @return {<<M AA>>Interface}
+   * @return {<<Model pascal>>Interface}
    */
-  toPayload(): <<M AA>>Interface {
+  toPayload(): <<Model pascal>>Interface {
     const raw = this.toObject();
     const allowed = this.allowedKeys();
     
     <<# Remove public data that cannot be sent to the API >>
     const payload = Object.keys(raw)
       .filter(key => allowed.includes(key))
-      .reduce((o, k) => { o[k] = raw[k]; return o; }, {} as <<M AA>>Interface);
+      .reduce((o, k) => { o[k] = raw[k]; return o; }, {} as <<Model pascal>>Interface);
  
 <<# Remove private data that have been entered >>
-<<@ F hd/(in+rs)/nu f>>
-    if (payload.<<f a_a>> === null) { delete payload.<<f a_a>>; }
-<<@>>
+<<for Fields hidden and not (internal or restricted) and not nullable f>>
+    if (payload.<<f snake>> === null) { delete payload.<<f snake>>; }
+<<endfor>>
 
 <<# Convert dates and entities >>
-<<@ F /in/rs*(tD+tE) f>>
-    <<? f tD>>
-    payload.<<f a_a>> = < number>payload.<<f a_a>>;
-    <<?? f tE>>
-        <<? f ml>>
-    payload.<<f a_a>> = payload.<<f a_a>> ? (< <<f.m AA>>Interface[]>payload.<<f a_a>>).map((i) => i.<<f.m.f.pr a_a>>) : null;
-        <<??>>
-    payload.<<f a_a>> = payload.<<f a_a>> ? (< <<f.m AA>>Interface>payload.<<f a_a>>).<<f.m.f.pr a_a>> : null;
-        <<?>>
-    <<?>>
-<<@>>
+<<for Fields not internal and not restricted and (datetime or entity) f>>
+    <<if f datetime>>
+    payload.<<f snake>> = < number>payload.<<f snake>>;
+    <<elseif f entity>>
+        <<if f multiple>>
+    payload.<<f snake>> = payload.<<f snake>> ? (< <<f.m pascal>>Interface[]>payload.<<f snake>>).map((i) => i.<<f.m.f.primary snake>>) : null;
+        <<else>>
+    payload.<<f snake>> = payload.<<f snake>> ? (< <<f.m pascal>>Interface>payload.<<f snake>>).<<f.m.f.primary snake>> : null;
+        <<endif>>
+    <<endif>>
+<<endfor>>
     return payload;
   }
   
@@ -151,9 +151,9 @@ export class <<M AA>> extends BaseModel< <<M AA>>Interface> {
    */
   protected allowedKeys(): string[] {
   	return [
-<<@ F /in/rs f>>
-      '<<f a_a>>',
-<<@>>
+<<for Fields not internal and not restricted f>>
+      '<<f snake>>',
+<<endfor>>
   	];
   }
 }

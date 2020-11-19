@@ -1,4 +1,4 @@
-<div class="<<M a-a>>-list-container">
+<div class="<<Model kebab>>-list-container">
     <nz-card class="table-container">
         <nz-table   #table
                     [nzData]="items"
@@ -15,47 +15,47 @@
 
                    <thead [nzSingleSort]="true" (nzSortChange)="sort($event)">
                         <tr>
-<<@ F /hd/pr/(tE/em) f>>
-                            <th *ngIf="columns.includes('<<f a_a>>')"<<? f so>> nzShowSort nzSortKey="<<f a_a>>"<<?>>>{{ '<<M a-a>>_<<f a-a>>' | translate }}</th>
-<<@>>
+<<for Fields not hidden and not primary and not (entity and not embedded) f>>
+                            <th *ngIf="columns.includes('<<f snake>>')"<<if f sortable>> nzShowSort nzSortKey="<<f snake>>"<<endif>>>{{ '<<Model kebab>>_<<f kebab>>' | translate }}</th>
+<<endfor>>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let row of table.data" (click)="onClick(row)">
-<<@ F /hd/pr/(tE/em) f>>
-                            <td *ngIf="columns.includes('<<f a_a>>')">
-    <<? f tE>>
-        <<? f ml>>
+<<for Fields not hidden and not primary and not (entity and not embedded) f>>
+                            <td *ngIf="columns.includes('<<f snake>>')">
+    <<if f entity>>
+        <<if f multiple>>
                               <div>
-                                  <div *ngFor="let item of row.props.<<f a_a>>">
+                                  <div *ngFor="let item of row.props.<<f snake>>">
                                       {{ item.getLabel() }}
                                   </div>
                               </div>
-        <<??>>
-                              {{ row.<<f aA>>Exists() ? row.props.<<f a_a>>.getLabel() : '' }}
-        <<?>>
-    <<?? f tD>>
-                              {{ row.props.<<f a_a>> | date:'medium' }}
-    <<?? f tB>>
-                              {{ (row.props.<<f a_a>> ? 'common_true' : 'common_false') | translate }}
-    <<?? f tSt>>
-                              <div [innerHTML]="row.props.<<f a_a>> | nl2br"></div>
-    <<?? f tSr>>
-                              <div [innerHTML]="row.props.<<f a_a>>"></div>
-    <<?? f tO>>
+        <<else>>
+                              {{ row.<<f camel>>Exists() ? row.props.<<f snake>>.getLabel() : '' }}
+        <<endif>>
+    <<elseif f datetime>>
+                              {{ row.props.<<f snake>> | date:'medium' }}
+    <<elseif f boolean>>
+                              {{ (row.props.<<f snake>> ? 'common_true' : 'common_false') | translate }}
+    <<elseif f text>>
+                              <div [innerHTML]="row.props.<<f snake>> | nl2br"></div>
+    <<elseif f richText>>
+                              <div [innerHTML]="row.props.<<f snake>>"></div>
+    <<elseif f object>>
                               <small>
-                                  <pre>{{ row.props.<<f a_a>> | json }}</pre>
+                                  <pre>{{ row.props.<<f snake>> | json }}</pre>
                               </small>
-    <<??>>
-                              {{ row.props.<<f a_a>> }}
-    <<?>>
+    <<else>>
+                              {{ row.props.<<f snake>> }}
+    <<endif>>
                             </td>
-<<@>>
+<<endfor>>
                         </tr>
                     </tbody>
         </nz-table>
     </nz-card>
     <ng-template #notFound>
-        <nz-empty [nzNotFoundContent]="'<<M a-a>>_common_not-found' | translate "></nz-empty>
+        <nz-empty [nzNotFoundContent]="'<<Model kebab>>_common_not-found' | translate "></nz-empty>
     </ng-template>
 </div>

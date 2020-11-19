@@ -1,16 +1,16 @@
 import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import {ErrorService} from '@app/services';
-import {<<M AA>>} from '../<<M a-a>>';
-import {<<M AA>>Service} from '../<<M a-a>>.service';
+import {<<Model pascal>>} from '../<<Model kebab>>';
+import {<<Model pascal>>Service} from '../<<Model kebab>>.service';
 
 @Component({
-  selector: 'hpf-<<M a-a>>-details',
-  templateUrl: './<<M a-a>>-details.component.html'
+  selector: 'hpf-<<Model kebab>>-details',
+  templateUrl: './<<Model kebab>>-details.component.html'
 })
-export class <<M AA>>DetailsComponent implements OnInit {
+export class <<Model pascal>>DetailsComponent implements OnInit {
 
-  /** @type {<<M AA>>} The <<M a>> to inject view */
-  @Input() <<M aA>>: <<M AA>>;
+  /** @type {<<Model pascal>>} The <<Model lower>> to inject view */
+  @Input() <<Model camel>>: <<Model pascal>>;
   /** @type {EventEmitter<void>} Called the delete button is clicked */
   @Output() delete = new EventEmitter<void>();
   /** @type {boolean} Enable the deletion button */
@@ -22,10 +22,10 @@ export class <<M AA>>DetailsComponent implements OnInit {
 
   /**
    * Constructor
-   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {<<Model pascal>>Service} <<Model camel>>Service
    * @param {ErrorService} errorService
    */
-  constructor(private <<M aA>>Service: <<M AA>>Service,
+  constructor(private <<Model camel>>Service: <<Model pascal>>Service,
               private errorService: ErrorService) {}
 
   /** Init */
@@ -39,7 +39,7 @@ export class <<M AA>>DetailsComponent implements OnInit {
   /** Called on deletion */
   onDeleteClick(): void {
     this.deleting = true;
-    this.<<M aA>>Service.remove(this.<<M aA>>.getId())
+    this.<<Model camel>>Service.remove(this.<<Model camel>>.getId())
       .then(() => {
         this.delete.next();
       })

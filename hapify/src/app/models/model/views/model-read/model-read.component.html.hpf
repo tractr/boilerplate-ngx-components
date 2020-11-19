@@ -1,8 +1,8 @@
-<hpf-<<M a-a>>-details
-    *ngIf="<<M aA>>"
-    [<<M aA>>]="<<M aA>>"
-    (delete)="onDelete()"></hpf-<<M a-a>>-details>
-<div *ngIf="!<<M aA>>" class="my-5 text-center">
+<hpf-<<Model kebab>>-details
+    *ngIf="<<Model camel>>"
+    [<<Model camel>>]="<<Model camel>>"
+    (delete)="onDelete()"></hpf-<<Model kebab>>-details>
+<div *ngIf="!<<Model camel>>" class="my-5 text-center">
     <nz-spin nzSimple></nz-spin>
 </div>
  
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12 my-3">
             <nz-card nzTitle="Code">
-                <pre><code>&lt;hpf-<<M a-a>>-details [<<M aA>>]="<<M aA>>" (delete)="onDelete()"&gt;&lt;/hpf-<<M a-a>>-details&gt;</code></pre>
+                <pre><code>&lt;hpf-<<Model kebab>>-details [<<Model camel>>]="<<Model camel>>" (delete)="onDelete()"&gt;&lt;/hpf-<<Model kebab>>-details&gt;</code></pre>
             </nz-card>
         </div>
     </div>

@@ -3,153 +3,153 @@
         <div class="col-12 my-3">
             <nz-card nzTitle="Dropdown">
                     <h5 class="mt-3">Single selection</h5>
-                    <hpf-<<M a-a>>-select
+                    <hpf-<<Model kebab>>-select
                         [(model)]="singleSelect"
                         [nullable]="true"
                         [emptyLabel]="'common_empty' | translate"
-<<? F se*lb >>
+<<if Fields searchable and label >>
                         [filterEnabled]="true"
-                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
-<<??>>
-                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
-<<?>>
+                        [placeholder]="'<<Model kebab>>_common_search-placeholder' | translate"
+<<else>>
+                        [placeholder]="'<<Model kebab>>_common_select-placeholder' | translate"
+<<endif>>
                         [multiple]="false">
-                    </hpf-<<M a-a>>-select>
+                    </hpf-<<Model kebab>>-select>
                     <h5 class="mt-3">Multiple selection</h5>
-                    <hpf-<<M a-a>>-select
+                    <hpf-<<Model kebab>>-select
                         [(model)]="multipleSelect"
                         [nullable]="true"
                         [emptyLabel]="'common_empty' | translate"
-<<? F se*lb >>
+<<if Fields searchable and label >>
                         [filterEnabled]="true"
-                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
-<<??>>
-                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
-<<?>>
+                        [placeholder]="'<<Model kebab>>_common_search-placeholder' | translate"
+<<else>>
+                        [placeholder]="'<<Model kebab>>_common_select-placeholder' | translate"
+<<endif>>
                         [multiple]="true">
-                    </hpf-<<M a-a>>-select>
+                    </hpf-<<Model kebab>>-select>
                     <h5 class="mt-3">Code</h5>
-                    <pre><code>&lt;hpf-<<M a-a>>-select
+                    <pre><code>&lt;hpf-<<Model kebab>>-select
     [nullable]="true"
     [paginated]="true"
     [emptyLabel]="'common_empty' | translate"
-<<? F se*lb >>
+<<if Fields searchable and label >>
     [filterEnabled]="true"
-    [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
-<<??>>
-    [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
-<<?>>
+    [placeholder]="'<<Model kebab>>_common_search-placeholder' | translate"
+<<else>>
+    [placeholder]="'<<Model kebab>>_common_select-placeholder' | translate"
+<<endif>>
     [multiple]="true"
-    [controlName]="'<<M a-a>>'"
+    [controlName]="'<<Model kebab>>'"
     [formGroup]="form"
-    [(model)]="<<M a_a>>"
-    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-select&gt;</code></pre>
+    [(model)]="<<Model snake>>"
+    (change)="onChange();"&gt;&lt;/hpf-<<Model kebab>>-select&gt;</code></pre>
             </nz-card>
         </div>
 
         <div class="col-12 my-3">
             <nz-card nzTitle="Sortable">
                     <h5 class="mt-3">Sortable selection</h5>
-                    <hpf-<<M a-a>>-sortable
-<<? F se*lb >>
+                    <hpf-<<Model kebab>>-sortable
+<<if Fields searchable and label >>
                         [filterEnabled]="true"
-                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
-<<??>>
-                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
-<<?>>
+                        [placeholder]="'<<Model kebab>>_common_search-placeholder' | translate"
+<<else>>
+                        [placeholder]="'<<Model kebab>>_common_select-placeholder' | translate"
+<<endif>>
                         [emptyLabel]="'common_empty' | translate"
                         [(model)]="baseSortable"
                         [nullable]="true">
-                    </hpf-<<M a-a>>-sortable>
+                    </hpf-<<Model kebab>>-sortable>
                     <h5 class="mt-3">Sortable selection with duplicates</h5>
-                    <hpf-<<M a-a>>-sortable
-<<? F se*lb >>
+                    <hpf-<<Model kebab>>-sortable
+<<if Fields searchable and label >>
                         [filterEnabled]="true"
-                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
-<<??>>
-                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
-<<?>>
+                        [placeholder]="'<<Model kebab>>_common_search-placeholder' | translate"
+<<else>>
+                        [placeholder]="'<<Model kebab>>_common_select-placeholder' | translate"
+<<endif>>
                         [emptyLabel]="'common_empty' | translate"
                         [(model)]="duplicateSortable"
                         [unique]="false"
                         [nullable]="true">
-                    </hpf-<<M a-a>>-sortable>
+                    </hpf-<<Model kebab>>-sortable>
                     <h5 class="mt-3">Sortable selection with max 3 items</h5>
-                    <hpf-<<M a-a>>-sortable
-<<? F se*lb >>
+                    <hpf-<<Model kebab>>-sortable
+<<if Fields searchable and label >>
                         [filterEnabled]="true"
-                        [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
-<<??>>
-                        [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
-<<?>>
+                        [placeholder]="'<<Model kebab>>_common_search-placeholder' | translate"
+<<else>>
+                        [placeholder]="'<<Model kebab>>_common_select-placeholder' | translate"
+<<endif>>
                         [emptyLabel]="'common_empty' | translate"
                         [(model)]="maxSortable"
                         [nullable]="true"
                         [maxSelectable]="3">
-                    </hpf-<<M a-a>>-sortable>
+                    </hpf-<<Model kebab>>-sortable>
                     <h5 class="mt-3">Code</h5>
-                    <pre><code>&lt;hpf-<<M a-a>>-sortable
+                    <pre><code>&lt;hpf-<<Model kebab>>-sortable
     [emptyLabel]="'common_empty' | translate"
-<<? F se*lb >>
+<<if Fields searchable and label >>
     [filterEnabled]="true"
-    [placeholder]="'<<M a-a>>_common_search-placeholder' | translate"
-<<??>>
-    [placeholder]="'<<M a-a>>_common_select-placeholder' | translate"
-<<?>>
+    [placeholder]="'<<Model kebab>>_common_search-placeholder' | translate"
+<<else>>
+    [placeholder]="'<<Model kebab>>_common_select-placeholder' | translate"
+<<endif>>
     [nullable]="true"
     [paginated]="true"
     [unique]="true"
     [maxSelectable]="3"
-    [controlName]="'<<M a-a>>'"
+    [controlName]="'<<Model kebab>>'"
     [formGroup]="form"
-    [(model)]="<<M a_a>>"
-    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-sortable&gt;</code></pre>
+    [(model)]="<<Model snake>>"
+    (change)="onChange();"&gt;&lt;/hpf-<<Model kebab>>-sortable&gt;</code></pre>
             </nz-card>
         </div>
 
         <div class="col-12 my-3">
             <nz-card nzTitle="Buttons">
                 <h5 class="mt-3">Single selection</h5>
-                <hpf-<<M a-a>>-checkbox
-                    [placeholder]="'<<M a-a>>_common_name' | translate"
+                <hpf-<<Model kebab>>-checkbox
+                    [placeholder]="'<<Model kebab>>_common_name' | translate"
                     [(model)]="singleNullCheckbox"
                     [nullable]="true"
                     [multiple]="false">
-                </hpf-<<M a-a>>-checkbox>
+                </hpf-<<Model kebab>>-checkbox>
                 <h5 class="mt-3">Single selection not null</h5>
-                <hpf-<<M a-a>>-checkbox
-                    [placeholder]="'<<M a-a>>_common_name' | translate"
+                <hpf-<<Model kebab>>-checkbox
+                    [placeholder]="'<<Model kebab>>_common_name' | translate"
                     [(model)]="singleCheckbox"
                     [nullable]="false"
                     [multiple]="false">
-                </hpf-<<M a-a>>-checkbox>
+                </hpf-<<Model kebab>>-checkbox>
                 <h5 class="mt-3">Multiple selection</h5>
-                <hpf-<<M a-a>>-checkbox
-                    [placeholder]="'<<M a-a>>_common_name' | translate"
+                <hpf-<<Model kebab>>-checkbox
+                    [placeholder]="'<<Model kebab>>_common_name' | translate"
                     [(model)]="multipleCheckbox"
                     [nullable]="true"
                     [multiple]="true">
-                </hpf-<<M a-a>>-checkbox>
+                </hpf-<<Model kebab>>-checkbox>
                 <h5 class="mt-3">Multiple selection with max 3 items</h5>
-                <hpf-<<M a-a>>-checkbox
-                    [placeholder]="'<<M a-a>>_common_name' | translate"
+                <hpf-<<Model kebab>>-checkbox
+                    [placeholder]="'<<Model kebab>>_common_name' | translate"
                     [(model)]="multipleMaxCheckbox"
                     [nullable]="true"
                     [multiple]="true"
                     [maxSelectable]="3">
-                </hpf-<<M a-a>>-checkbox>
+                </hpf-<<Model kebab>>-checkbox>
                 <h5 class="mt-3">Code</h5>
-                <pre><code>&lt;hpf-<<M a-a>>-checkbox
-    [placeholder]="'<<M a-a>>_common_name' | translate"
+                <pre><code>&lt;hpf-<<Model kebab>>-checkbox
+    [placeholder]="'<<Model kebab>>_common_name' | translate"
     [nullable]="true"
     [paginated]="true"
     [multiple]="true"
     [resultsLimit]="12"
     [maxSelectable]="3"
-    [controlName]="'<<M a-a>>'"
+    [controlName]="'<<Model kebab>>'"
     [formGroup]="form"
-    [(model)]="<<M a_a>>"
-    (change)="onChange();"&gt;&lt;/hpf-<<M a-a>>-checkbox&gt;</code></pre>
+    [(model)]="<<Model snake>>"
+    (change)="onChange();"&gt;&lt;/hpf-<<Model kebab>>-checkbox&gt;</code></pre>
             </nz-card>
         </div>
     </div>

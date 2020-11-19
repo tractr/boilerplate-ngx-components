@@ -1,22 +1,22 @@
-<<@ F se f>>
+<<for Fields searchable f>>
 
-<!-- <<f A>> -->
+<!-- <<f capital>> -->
 <nz-form-item>
-    <nz-form-label>{{ '<<M a-a>>_<<f a-a>>' | translate }}</nz-form-label>
+    <nz-form-label>{{ '<<Model kebab>>_<<f kebab>>' | translate }}</nz-form-label>
 
-    <<? f tS>>
+    <<if f string>>
 
     <input nz-input
            class="w-100"
            (keyup)="onChangeDebounced();"
            [placeholder]="'common_value-string' | translate"
-           [(ngModel)]="searchParams.props.<<f a_a>>">
+           [(ngModel)]="searchParams.props.<<f snake>>">
 
-    <<?? f tN>>
+    <<elseif f number>>
 
     <nz-input-number
         class="w-100 mb-3"
-        [(ngModel)]="searchParams.props.<<f a_a>>"
+        [(ngModel)]="searchParams.props.<<f snake>>"
         [nzStep]="1"
         [nzPlaceHolder]="'common_value-number' | translate"
         (ngModelChange)="onChange();"
@@ -25,68 +25,68 @@
     <nz-input-group nzCompact>
         <nz-input-number
             class="w-50"
-            [(ngModel)]="searchParams.props.<<f a_a>>__min"
+            [(ngModel)]="searchParams.props.<<f snake>>__min"
             [nzStep]="1"
             [nzPlaceHolder]="'common_min' | translate"
             (ngModelChange)="onChange();"
             (keyup)="onChangeDebounced();"></nz-input-number>
         <nz-input-number
             class="w-50"
-            [(ngModel)]="searchParams.props.<<f a_a>>__max"
+            [(ngModel)]="searchParams.props.<<f snake>>__max"
             [nzStep]="1"
             [nzPlaceHolder]="'common_max' | translate"
             (ngModelChange)="onChange();"
             (keyup)="onChangeDebounced();"></nz-input-number>
     </nz-input-group>
 
-    <<?? f tD>>
+    <<elseif f datetime>>
 
     <nz-date-picker class="w-100 mb-3"
-                    [(ngModel)]="searchParams.props.<<f a_a>>"
+                    [(ngModel)]="searchParams.props.<<f snake>>"
                     (ngModelChange)="onChange()"
                     [nzPlaceHolder]="'common_value-date' | translate"></nz-date-picker>
 
     <nz-input-group nzCompact>
         <nz-date-picker class="w-50"
-                        [(ngModel)]="searchParams.props.<<f a_a>>__min"
+                        [(ngModel)]="searchParams.props.<<f snake>>__min"
                         (ngModelChange)="onChange()"
                         [nzPlaceHolder]="'common_min' | translate"></nz-date-picker>
         <nz-date-picker class="w-50"
-                        [(ngModel)]="searchParams.props.<<f a_a>>__max"
+                        [(ngModel)]="searchParams.props.<<f snake>>__max"
                         (ngModelChange)="onChange()"
                         [nzPlaceHolder]="'common_max' | translate"></nz-date-picker>
     </nz-input-group>
 
-    <<?? f tB>>
+    <<elseif f boolean>>
 
     <nz-select  class="w-100"
                 [nzPlaceHolder]="'common_value-boolean' | translate"
-                [(ngModel)]="searchParams.props.<<f a_a>>"
+                [(ngModel)]="searchParams.props.<<f snake>>"
                 (ngModelChange)="onChange();"
                 [nzAllowClear]="true">
         <nz-option [nzValue]="true" [nzLabel]="'common_true' | translate"></nz-option>
         <nz-option [nzValue]="false" [nzLabel]="'common_false' | translate"></nz-option>
     </nz-select>
 
-    <<?? f tE>>
+    <<elseif f entity>>
 
-    <hpf-<<f.m a-a>>-select
-        [(id)]="searchParams.props.<<f a_a>>"
+    <hpf-<<f.m kebab>>-select
+        [(id)]="searchParams.props.<<f snake>>"
         [nullable]="true"
         [emptyLabel]="'common_empty' | translate"
-        <<? f.m.f se*lb >>
+        <<if f.m.f searchable and label >>
         [filterEnabled]="true"
-        [placeholder]="'<<f.m a-a>>_common_search-placeholder' | translate"
-        <<??>>
-        [placeholder]="'<<f.m a-a>>_common_select-placeholder' | translate"
-        <<?>>
-        <<? f ml>>
+        [placeholder]="'<<f.m kebab>>_common_search-placeholder' | translate"
+        <<else>>
+        [placeholder]="'<<f.m kebab>>_common_select-placeholder' | translate"
+        <<endif>>
+        <<if f multiple>>
         [multiple]="true"
-        <<?>>
+        <<endif>>
         (change)="onChange();">
-    </hpf-<<f.m a-a>>-select>
-    <<?>>
+    </hpf-<<f.m kebab>>-select>
+    <<endif>>
 
 </nz-form-item>
-<!-- /<<f A>> -->
-<<@>>
+<!-- /<<f capital>> -->
+<<endfor>>

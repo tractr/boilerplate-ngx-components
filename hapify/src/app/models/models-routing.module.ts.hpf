@@ -1,66 +1,66 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-<<@ M m>>
-import {<<m AA>>Component} from './<<m a-a>>/<<m a-a>>/<<m a-a>>.component';
-import {<<m AA>>CreateComponent} from './<<m a-a>>/views/<<m a-a>>-create/<<m a-a>>-create.component';
-import {<<m AA>>ReadComponent} from './<<m a-a>>/views/<<m a-a>>-read/<<m a-a>>-read.component';
-import {<<m AA>>EditComponent} from './<<m a-a>>/views/<<m a-a>>-edit/<<m a-a>>-edit.component';
-import {<<m AA>>ListComponent} from './<<m a-a>>/views/<<m a-a>>-list/<<m a-a>>-list.component';
-import {<<m AA>>SelectorsComponent} from './<<m a-a>>/views/<<m a-a>>-selectors/<<m a-a>>-selectors.component';
-import {<<m AA>>IndexComponent} from './<<m a-a>>/views/<<m a-a>>-index/<<m a-a>>-index.component';
-    <<? m pGSe>>
-import {<<m AA>>MapViewComponent} from './<<m a-a>>/views/<<m a-a>>-map-view/<<m a-a>>-map-view.component';
-    <<?>>
-<<@>>
+<<for Models m>>
+import {<<m pascal>>Component} from './<<m kebab>>/<<m kebab>>/<<m kebab>>.component';
+import {<<m pascal>>CreateComponent} from './<<m kebab>>/views/<<m kebab>>-create/<<m kebab>>-create.component';
+import {<<m pascal>>ReadComponent} from './<<m kebab>>/views/<<m kebab>>-read/<<m kebab>>-read.component';
+import {<<m pascal>>EditComponent} from './<<m kebab>>/views/<<m kebab>>-edit/<<m kebab>>-edit.component';
+import {<<m pascal>>ListComponent} from './<<m kebab>>/views/<<m kebab>>-list/<<m kebab>>-list.component';
+import {<<m pascal>>SelectorsComponent} from './<<m kebab>>/views/<<m kebab>>-selectors/<<m kebab>>-selectors.component';
+import {<<m pascal>>IndexComponent} from './<<m kebab>>/views/<<m kebab>>-index/<<m kebab>>-index.component';
+    <<if m isGeoSearchable>>
+import {<<m pascal>>MapViewComponent} from './<<m kebab>>/views/<<m kebab>>-map-view/<<m kebab>>-map-view.component';
+    <<endif>>
+<<endfor>>
 import { IsLoggedGuard } from '@app/guards';
  
 const routes: Routes = [
-<<@ M m>>
+<<for Models m>>
   {
-    path: '<<m a-a>>',
-    component: <<m AA>>Component,
+    path: '<<m kebab>>',
+    component: <<m pascal>>Component,
     canActivate: [IsLoggedGuard],
     children: [
       {
         path: '',
-        component: <<m AA>>IndexComponent,
-        data: { title: 'List <<m a>>' }
+        component: <<m pascal>>IndexComponent,
+        data: { title: 'List <<m lower>>' }
       },
       {
         path: 'selectors',
-        component: <<m AA>>SelectorsComponent,
-        data: { title: 'List <<m a>>' }
+        component: <<m pascal>>SelectorsComponent,
+        data: { title: 'List <<m lower>>' }
       },
       {
         path: 'list',
-        component: <<m AA>>ListComponent,
-        data: { title: 'List <<m a>>' }
+        component: <<m pascal>>ListComponent,
+        data: { title: 'List <<m lower>>' }
       },
-    <<? m pGSe>>
+    <<if m isGeoSearchable>>
       {
         path: 'map',
-        component: <<m AA>>MapViewComponent,
-        data: { title: 'Map <<m a>>' }
+        component: <<m pascal>>MapViewComponent,
+        data: { title: 'Map <<m lower>>' }
       },
-    <<?>>
+    <<endif>>
       {
         path: 'create',
-        component: <<m AA>>CreateComponent,
-        data: { title: 'Create <<m a>>' }
+        component: <<m pascal>>CreateComponent,
+        data: { title: 'Create <<m lower>>' }
       },
       {
         path: 'edit/:id',
-        component: <<m AA>>EditComponent,
-        data: { title: 'Edit <<m a>>' }
+        component: <<m pascal>>EditComponent,
+        data: { title: 'Edit <<m lower>>' }
       },
       {
         path: ':id',
-        component: <<m AA>>ReadComponent,
-        data: { title: 'Read <<m a>>' }
+        component: <<m pascal>>ReadComponent,
+        data: { title: 'Read <<m lower>>' }
       },
     ]
   },
-<<@>>
+<<endfor>>
 ];
  
 @NgModule({

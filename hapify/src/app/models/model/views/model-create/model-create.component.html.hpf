@@ -1,10 +1,10 @@
-<hpf-<<M a-a>>-form (create)="onSave($event)"></hpf-<<M a-a>>-form>
+<hpf-<<Model kebab>>-form (create)="onSave($event)"></hpf-<<Model kebab>>-form>
  
 <div class="container">
     <div class="row">
         <div class="col-12 my-3">
             <nz-card nzTitle="Code">
-                <pre><code>&lt;hpf-<<M a-a>>-form (create)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</code></pre>
+                <pre><code>&lt;hpf-<<Model kebab>>-form (create)="onSave($event)"&gt;&lt;/hpf-<<Model kebab>>-form&gt;</code></pre>
             </nz-card>
         </div>
     </div>

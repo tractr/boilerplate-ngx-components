@@ -1,31 +1,31 @@
-import {Component, Input, OnInit<<? F se*(tS+tN)>>, OnDestroy<<?>>} from '@angular/core';
-import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
-<<? F se*(tS+tN)>>
+import {Component, Input, OnInit<<if Fields searchable and (string or number)>>, OnDestroy<<endif>>} from '@angular/core';
+import {<<Model pascal>>SearchParams} from '../<<Model kebab>>-search-params';
+<<if Fields searchable and (string or number)>>
 import {Subscription as RxJsSubscription} from 'rxjs/Subscription';
 import {Subject as RxJsSubject} from 'rxjs/Subject';
 import {debounceTime} from 'rxjs/operators';
-<<?>>
-<<? root.d.s>>
-import {<<M AA>>} from '../<<M a-a>>';
-import {<<M AA>>Service} from '../<<M a-a>>.service';
-<<?>>
+<<endif>>
+<<if root.d.s>>
+import {<<Model pascal>>} from '../<<Model kebab>>';
+import {<<Model pascal>>Service} from '../<<Model kebab>>.service';
+<<endif>>
  
 @Component({
-  selector: 'hpf-<<M a-a>>-filters',
-  templateUrl: './<<M a-a>>-filters.component.html'
+  selector: 'hpf-<<Model kebab>>-filters',
+  templateUrl: './<<Model kebab>>-filters.component.html'
 })
-export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDestroy<<?>> {
+export class <<Model pascal>>FiltersComponent implements OnInit<<if Fields searchable and (string or number)>>, OnDestroy<<endif>> {
  
-  /** @type {<<M AA>>SearchParams} The filters */
-  @Input() searchParams: <<M AA>>SearchParams = new <<M AA>>SearchParams();
-<<? F se*(tS+tN)>>
+  /** @type {<<Model pascal>>SearchParams} The filters */
+  @Input() searchParams: <<Model pascal>>SearchParams = new <<Model pascal>>SearchParams();
+<<if Fields searchable and (string or number)>>
   /** @type {number} The debuonce delay before calling the API for filtering */
   @Input() filterDebounceTime = 300;
   /** @type {RxJsSubject<void>} Subject for debounced keyup event */
   private keyupSubject = new RxJsSubject<void>();
   /** @type {RxJsSubscription} Subscription of the component */
   private subscription: RxJsSubscription;
-<<?>>
+<<endif>>
   /** @type {boolean} Denotes if the page number should be set to 0 when filters change */
   @Input() resetPage = false;
  
@@ -34,15 +34,15 @@ export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDes
  
   /** Init */
   ngOnInit() {
-<<? F se*(tS+tN)>>
+<<if Fields searchable and (string or number)>>
     // Subscription
     this.subscription = this.keyupSubject
       .pipe(debounceTime(this.filterDebounceTime))
       .subscribe(() => { this.onChange(); });
-<<?>>
+<<endif>>
   }
 
-<<? F se*(tS+tN)>>
+<<if Fields searchable and (string or number)>>
   /** Destroy */
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -51,7 +51,7 @@ export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDes
   onChangeDebounced() {
     this.keyupSubject.next();
   }
-<<?>>
+<<endif>>
 
   /** Called when an input is changed */
   onChange() {

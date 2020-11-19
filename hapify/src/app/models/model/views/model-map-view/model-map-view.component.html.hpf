@@ -1,22 +1,22 @@
-<<? M pGSe>>
+<<if Model isGeoSearchable>>
 <div class="container-fluid">
     <div class="row my-5">
         <div class="col-3">
             <div class="p-3 bg-light rounded">
                 <h6 class="border-bottom pb-2 mb-3">{{ 'common_filters-title' | translate }}</h6>
-                <hpf-<<M a-a>>-filters [searchParams]="searchParams"></hpf-<<M a-a>>-filters>
+                <hpf-<<Model kebab>>-filters [searchParams]="searchParams"></hpf-<<Model kebab>>-filters>
             </div>
         </div>
         <div class="col-9">
             <div class="row">
                 <div class="col-12" style="min-height: calc(100vh - 130px)">
-                    <hpf-<<M a-a>>-map 
+                    <hpf-<<Model kebab>>-map 
                         [searchParams]="searchParams"
-                        (select)="onSelect($event)"></hpf-<<M a-a>>-map>
+                        (select)="onSelect($event)"></hpf-<<Model kebab>>-map>
                     <div class="w-100 my-3">
                         <nz-card nzTitle="Code">
-                            <pre><code>&lt;hpf-<<M a-a>>-filters [searchParams]="searchParams"&gt;&lt;/hpf-<<M a-a>>-filters&gt;</code></pre>
-                            <pre><code>&lt;hpf-<<M a-a>>-map [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<M a-a>>-map&gt;</code></pre>
+                            <pre><code>&lt;hpf-<<Model kebab>>-filters [searchParams]="searchParams"&gt;&lt;/hpf-<<Model kebab>>-filters&gt;</code></pre>
+                            <pre><code>&lt;hpf-<<Model kebab>>-map [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<Model kebab>>-map&gt;</code></pre>
                         </nz-card>
                     </div>
                 </div>
@@ -24,4 +24,4 @@
         </div>
     </div>
 </div>
-<<?>>
+<<endif>>

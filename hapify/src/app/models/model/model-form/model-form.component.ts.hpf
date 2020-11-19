@@ -1,34 +1,34 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {ErrorService} from '@app/services';
-<<? F tSr/in/rs>>
+<<if Fields richText and not internal and not restricted>>
 import {TinyMceConfig} from '@app/shared';
-<<?>>
+<<endif>>
 <<# Includes toJSON helpers for Objects >>
-<<? F tO/in/rs>>
+<<if Fields object and not internal and not restricted>>
 import {Helpers} from '@app/shared';
-<<?>>
-import {<<M AA>><<? root.d.s>>, <<M AA>>Interface<<?>>} from '../<<M a-a>>';
-import {<<M AA>>Service} from '../<<M a-a>>.service';
+<<endif>>
+import {<<Model pascal>><<if root.d.s>>, <<Model pascal>>Interface<<endif>>} from '../<<Model kebab>>';
+import {<<Model pascal>>Service} from '../<<Model kebab>>.service';
 
 @Component({
-  selector: 'hpf-<<M a-a>>-form',
-  templateUrl: './<<M a-a>>-form.component.html'
+  selector: 'hpf-<<Model kebab>>-form',
+  templateUrl: './<<Model kebab>>-form.component.html'
 })
-export class <<M AA>>FormComponent implements OnInit {
+export class <<Model pascal>>FormComponent implements OnInit {
 
-  /** The <<M a>> to inject in the form */
-  @Input() <<M aA>>: <<M AA>>;
-  /** @type {EventEmitter<<<M AA>>>} Called the save button is clicked for a new instance */
-  @Output() create = new EventEmitter<<<M AA>>>();
-  /** @type {EventEmitter<<<M AA>>>} Called the save button is clicked for an existing instance */
-  @Output() update = new EventEmitter<<<M AA>>>();
+  /** The <<Model lower>> to inject in the form */
+  @Input() <<Model camel>>: <<Model pascal>>;
+  /** @type {EventEmitter<<<Model pascal>>>} Called the save button is clicked for a new instance */
+  @Output() create = new EventEmitter<<<Model pascal>>>();
+  /** @type {EventEmitter<<<Model pascal>>>} Called the save button is clicked for an existing instance */
+  @Output() update = new EventEmitter<<<Model pascal>>>();
   /** @type {FormGroup} The form group to use */
   form: FormGroup;
-<<? F tSr/in/rs>>
+<<if Fields richText and not internal and not restricted>>
   /** @type {Function<{}>} TinyMCE config */
   tinyMceConfig = TinyMceConfig;
-<<?>>
+<<endif>>
   /** @type {boolean} Denotes if the form is pending */
   loading = false;
 
@@ -36,31 +36,31 @@ export class <<M AA>>FormComponent implements OnInit {
    * Constructor
    * @param {FormBuilder} formBuilder
    * @param {ErrorService} errorService
-   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {<<Model pascal>>Service} <<Model camel>>Service
    */
   constructor(private formBuilder: FormBuilder,
               private errorService: ErrorService,
-              private <<M aA>>Service: <<M AA>>Service) {
+              private <<Model camel>>Service: <<Model pascal>>Service) {
   }
 
   /** Init */
   ngOnInit() {
     // If no instance, create a new one
-    if (!this.<<M aA>>) {
-      this.<<M aA>> = new <<M AA>>();
+    if (!this.<<Model camel>>) {
+      this.<<Model camel>> = new <<Model pascal>>();
     }
     // Form validator
-<<? F hd/nu/in/rs>>
-    const privateRequired = this.<<M aA>>.isNew() ? [Validators.required] : [];
-<<?>>
+<<if Fields hidden and not nullable and not internal and not restricted>>
+    const privateRequired = this.<<Model camel>>.isNew() ? [Validators.required] : [];
+<<endif>>
     this.form = this.formBuilder.group({
-<<@ F /in/rs f>>
-    <<? f hd/nu>>
-          <<f a_a>>: new FormControl(<<? f tO>>Helpers.toJSON(<<?>>this.<<M aA>>.props.<<f a_a>><<? f tO>>)<<?>>, [<<=validator(f, false)>>].concat(privateRequired)),
-    <<??>>
-          <<f a_a>>: new FormControl(<<? f tO>>Helpers.toJSON(<<?>>this.<<M aA>>.props.<<f a_a>><<? f tO>>)<<?>>, [<<=validator(f, true)>>]),
-    <<?>>
-<<@>>
+<<for Fields not internal and not restricted f>>
+    <<if f hidden and not nullable>>
+          <<f snake>>: new FormControl(<<if f object>>Helpers.toJSON(<<endif>>this.<<Model camel>>.props.<<f snake>><<if f object>>)<<endif>>, [<<=validator(f, false)>>].concat(privateRequired)),
+    <<else>>
+          <<f snake>>: new FormControl(<<if f object>>Helpers.toJSON(<<endif>>this.<<Model camel>>.props.<<f snake>><<if f object>>)<<endif>>, [<<=validator(f, true)>>]),
+    <<endif>>
+<<endfor>>
     });
   }
   /** Called on form submit */
@@ -74,14 +74,14 @@ export class <<M AA>>FormComponent implements OnInit {
         this.updateModel();
     
         // Creation or update ?
-        if (this.<<M aA>>.isNew()) {
+        if (this.<<Model camel>>.isNew()) {
           // Creation
-          const <<M aA>>: <<M AA>> = await this.<<M aA>>Service.create(this.<<M aA>>.toPayload());
-          this.create.next(<<M aA>>);
+          const <<Model camel>>: <<Model pascal>> = await this.<<Model camel>>Service.create(this.<<Model camel>>.toPayload());
+          this.create.next(<<Model camel>>);
         } else {
           // Update
-          await this.<<M aA>>Service.update(this.<<M aA>>.getId(), this.<<M aA>>.toPayload());
-          this.update.next(this.<<M aA>>);
+          await this.<<Model camel>>Service.update(this.<<Model camel>>.getId(), this.<<Model camel>>.toPayload());
+          this.update.next(this.<<Model camel>>);
         }
     
     } catch (error) {
@@ -94,15 +94,15 @@ export class <<M AA>>FormComponent implements OnInit {
   /** Update models properties from inputs values */
   private updateModel(): void {
     for (const key of Object.keys(this.form.controls)) {
-        this.<<M aA>>.props[key] = this.form.get(key).value;
+        this.<<Model camel>>.props[key] = this.form.get(key).value;
     }
 <<# Transform JSON to objects >>
-<<@ F tO/in/rs f>>
-    if (typeof this.<<M aA>>.props.<<f a_a>> === 'string') {
-        this.<<M aA>>.props.<<f a_a>> = this.<<M aA>>.props.<<f a_a>> ?
-            JSON.parse(this.<<M aA>>.props.<<f a_a>>) : <<? f ml>>[]<<??>>null<<?>>;
+<<for Fields object and not internal and not restricted f>>
+    if (typeof this.<<Model camel>>.props.<<f snake>> === 'string') {
+        this.<<Model camel>>.props.<<f snake>> = this.<<Model camel>>.props.<<f snake>> ?
+            JSON.parse(this.<<Model camel>>.props.<<f snake>>) : <<if f multiple>>[]<<else>>null<<endif>>;
     }
-<<@>>
+<<endfor>>
   }
 
 }

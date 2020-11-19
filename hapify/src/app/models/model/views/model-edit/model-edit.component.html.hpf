@@ -1,8 +1,8 @@
-<hpf-<<M a-a>>-form
-        *ngIf="<<M aA>>"
-        [<<M aA>>]="<<M aA>>"
-        (update)="onSave($event)"></hpf-<<M a-a>>-form>
-<div *ngIf="!<<M aA>>" class="my-5 text-center">
+<hpf-<<Model kebab>>-form
+        *ngIf="<<Model camel>>"
+        [<<Model camel>>]="<<Model camel>>"
+        (update)="onSave($event)"></hpf-<<Model kebab>>-form>
+<div *ngIf="!<<Model camel>>" class="my-5 text-center">
     <nz-spin nzSimple></nz-spin>
 </div>
  
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12 my-3">
             <nz-card nzTitle="Code">
-                <pre><code>&lt;hpf-<<M a-a>>-form [<<M aA>>]="<<M aA>>" (update)="onSave($event)"&gt;&lt;/hpf-<<M a-a>>-form&gt;</code></pre>
+                <pre><code>&lt;hpf-<<Model kebab>>-form [<<Model camel>>]="<<Model camel>>" (update)="onSave($event)"&gt;&lt;/hpf-<<Model kebab>>-form&gt;</code></pre>
             </nz-card>
         </div>
     </div>

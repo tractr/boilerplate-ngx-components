@@ -1,20 +1,20 @@
-<<? M pGSe>>
+<<if Model isGeoSearchable>>
 import {Component, OnDestroy, OnInit, AfterViewInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {Subscription as RxJsSubscription} from 'rxjs/Subscription';
-import {<<M AA>>SearchParams} from '../../<<M a-a>>-search-params';
-import {<<M AA>>} from '../../<<M a-a>>';
+import {<<Model pascal>>SearchParams} from '../../<<Model kebab>>-search-params';
+import {<<Model pascal>>} from '../../<<Model kebab>>';
 import {Helpers} from '@app/shared';
  
 @Component({
-  selector: 'hpf-<<M a-a>>-map-view',
-  templateUrl: './<<M a-a>>-map-view.component.html'
+  selector: 'hpf-<<Model kebab>>-map-view',
+  templateUrl: './<<Model kebab>>-map-view.component.html'
 })
-export class <<M AA>>MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
+export class <<Model pascal>>MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
  
-  /** @type {<<M AA>>SearchParams} The filters */
-  searchParams = new <<M AA>>SearchParams({ _limit: 100 });
+  /** @type {<<Model pascal>>SearchParams} The filters */
+  searchParams = new <<Model pascal>>SearchParams({ _limit: 100 });
   /** @type {RxJsSubscription} The query subscription */
   private querySubscription: RxJsSubscription;
   /** @type {RxJsSubscription} The search params subscription */
@@ -37,7 +37,7 @@ export class <<M AA>>MapViewComponent implements OnInit, AfterViewInit, OnDestro
     this.paramsSubscription = this.searchParams.subscribe(() => {
       const params = this.searchParams.toObject();
       // Update query string
-      this.location.replaceState('/<<M a-a>>/map', Helpers.toQueryString(params));
+      this.location.replaceState('/<<Model kebab>>/map', Helpers.toQueryString(params));
     });
     // Init the search from query params
     this.querySubscription = this.route.queryParams.subscribe(params => {
@@ -53,10 +53,10 @@ export class <<M AA>>MapViewComponent implements OnInit, AfterViewInit, OnDestro
     this.paramsSubscription.unsubscribe();
     this.querySubscription.unsubscribe();
   }
-  /** @param {<<M AA>>} item Called when the user select a row in the table */
-  onSelect(item: <<M AA>>) {
-    this.router.navigateByUrl(`/<<M a-a>>/${item.getId()}`);
+  /** @param {<<Model pascal>>} item Called when the user select a row in the table */
+  onSelect(item: <<Model pascal>>) {
+    this.router.navigateByUrl(`/<<Model kebab>>/${item.getId()}`);
   }
  
 }
-<<?>>
+<<endif>>

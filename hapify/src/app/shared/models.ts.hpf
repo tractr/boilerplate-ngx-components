@@ -7,20 +7,20 @@ interface ModelLink {
  
 /** @type {ModelsLinks} */
 export const ModelsLinks: ModelLink[] = [
-<<@ M m>>
+<<for Models m>>
   {
-    label: '<<m A>>',
-    link: ['/<<m a-a>>']
+    label: '<<m capital>>',
+    link: ['/<<m kebab>>']
   },
-<<@>>
+<<endfor>>
 ];
  
 /** @type {ModelsLinks} */
 export const ModelsHomeLinks: ModelLink[] = [
-<<@5 M m>>
+<<for5 Model m>>
   {
-    label: '<<m A>>',
-    link: ['/<<m a-a>>']
+    label: '<<m capital>>',
+    link: ['/<<m kebab>>']
   },
-<<@>>
+<<endfor>>
 ];

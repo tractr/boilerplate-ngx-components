@@ -1,40 +1,40 @@
 import {Component} from '@angular/core';
 import {EntitySelectComponent} from '@app/abstracts';
 import {ErrorService} from '@app/services';
-import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
-import {<<M AA>>Service} from '../<<M a-a>>.service';
-import {<<M AA>>} from '../<<M a-a>>';
+import {<<Model pascal>>SearchParams} from '../<<Model kebab>>-search-params';
+import {<<Model pascal>>Service} from '../<<Model kebab>>.service';
+import {<<Model pascal>>} from '../<<Model kebab>>';
  
 @Component({
-  selector: 'hpf-<<M a-a>>-select',
+  selector: 'hpf-<<Model kebab>>-select',
   templateUrl: '../../../abstracts/entity-select/entity-select.component.html'
 })
-export class <<M AA>>SelectComponent extends EntitySelectComponent< <<M AA>>> {
+export class <<Model pascal>>SelectComponent extends EntitySelectComponent< <<Model pascal>>> {
 
   /**
    * Constructor
-   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {<<Model pascal>>Service} <<Model camel>>Service
    * @param {ErrorService} errorService
    */
-  constructor(private <<M aA>>Service: <<M AA>>Service,
+  constructor(private <<Model camel>>Service: <<Model pascal>>Service,
               protected errorService: ErrorService) {
     super(errorService);
   }
   /** @inheritDoc */
-  protected async getList(): Promise< <<M AA>>[]> {
-      const params = new <<M AA>>SearchParams({
+  protected async getList(): Promise< <<Model pascal>>[]> {
+      const params = new <<Model pascal>>SearchParams({
           _limit: this.resultsLimit,
           _page: this.currentPage
       });
-<<? F se*lb>>
+<<if Fields searchable and label>>
       if (this.filterEnabled && this.filterValue) {
-        params.props.<<@1 F se*lb f>><<f a_a>><<@>> = this.filterValue;
+        params.props.<<for1 Fields searchable and label f>><<f snake>><<endfor>> = this.filterValue;
       }
-<<?>>
-      return (await this.<<M aA>>Service.list(params.toObject())).items;
+<<endif>>
+      return (await this.<<Model camel>>Service.list(params.toObject())).items;
   }
   /** @inheritDoc */
-  protected async getOne(id: string): Promise< <<M AA>>> {
-      return await this.<<M aA>>Service.get(id);
+  protected async getOne(id: string): Promise< <<Model pascal>>> {
+      return await this.<<Model camel>>Service.get(id);
   }
 }

@@ -2,53 +2,53 @@
     <div class="row">
         <div class="col-12 my-3 my-lg-5">
             <nz-card>
-<<@ F /hd/pr f>>
-                <!-- <<f A>> -->
+<<for Fields not hidden and not primary f>>
+                <!-- <<f capital>> -->
                 <div class="mb-4">
-                    <h5>{{ '<<M a-a>>_<<f a-a>>' | translate }}</h5>
-    <<? f tD>>
-                    <div>{{ <<M aA>>.props.<<f a_a>> | date:'medium' }}</div>
-    <<?? f tE>>
-                    <div *ngIf="<<M aA>>.<<f aA>>Exists()">
-        <<? f ml>>
-                        <div *ngFor="let item of <<M aA>>.props.<<f a_a>>">
-                            <a class="mr-2" [routerLink]="['/<<f.m a-a>>', item.getId()]">
+                    <h5>{{ '<<Model kebab>>_<<f kebab>>' | translate }}</h5>
+    <<if f datetime>>
+                    <div>{{ <<Model camel>>.props.<<f snake>> | date:'medium' }}</div>
+    <<elseif f entity>>
+                    <div *ngIf="<<Model camel>>.<<f camel>>Exists()">
+        <<if f multiple>>
+                        <div *ngFor="let item of <<Model camel>>.props.<<f snake>>">
+                            <a class="mr-2" [routerLink]="['/<<f.m kebab>>', item.getId()]">
                                 {{ item.getLabel() }}
                             </a>
                         </div>
-        <<??>>
-                        <a [routerLink]="['/<<f.m a-a>>', <<M aA>>.props.<<f a_a>>.getId()]">
-                            {{ <<M aA>>.props.<<f a_a>>.getLabel() }}
+        <<else>>
+                        <a [routerLink]="['/<<f.m kebab>>', <<Model camel>>.props.<<f snake>>.getId()]">
+                            {{ <<Model camel>>.props.<<f snake>>.getLabel() }}
                         </a>
-        <<?>>
+        <<endif>>
                     </div>
-    <<?? f tB>>
+    <<elseif f boolean>>
                     <div>
-                        <span *ngIf="<<M aA>>.props.<<f a_a>> === true || <<M aA>>.props.<<f a_a>> === false">
-                            {{ (<<M aA>>.props.<<f a_a>> ? 'common_true' : 'common_false') | translate }}
+                        <span *ngIf="<<Model camel>>.props.<<f snake>> === true || <<Model camel>>.props.<<f snake>> === false">
+                            {{ (<<Model camel>>.props.<<f snake>> ? 'common_true' : 'common_false') | translate }}
                         </span>
                     </div>
-    <<?? f tSt>>
-                    <div [innerHTML]="<<M aA>>.props.<<f a_a>> | nl2br"></div>
-    <<?? f tSr>>
-                    <div class="bg-light pt-3 pb-1 px-3 rounded" [innerHTML]="<<M aA>>.props.<<f a_a>>"></div>
-    <<?? f tO>>
+    <<elseif f text>>
+                    <div [innerHTML]="<<Model camel>>.props.<<f snake>> | nl2br"></div>
+    <<elseif f richText>>
+                    <div class="bg-light pt-3 pb-1 px-3 rounded" [innerHTML]="<<Model camel>>.props.<<f snake>>"></div>
+    <<elseif f object>>
                     <small>
-                        <pre>{{ <<M aA>>.props.<<f a_a>> | json }}</pre>
+                        <pre>{{ <<Model camel>>.props.<<f snake>> | json }}</pre>
                     </small>
-    <<??>>
-                    <div>{{ <<M aA>>.props.<<f a_a>> }}</div>
-    <<?>>
+    <<else>>
+                    <div>{{ <<Model camel>>.props.<<f snake>> }}</div>
+    <<endif>>
                 </div>
-                <!-- /<<f A>> -->
-<<@>>
+                <!-- /<<f capital>> -->
+<<endfor>>
                 <nz-divider class="mb-4"></nz-divider>
                 <div class="row">
                     <div class="col-6">
-                        <a [routerLink]="['/<<M a-a>>/edit', <<M aA>>.getId()]" nz-button nzType="primary">
+                        <a [routerLink]="['/<<Model kebab>>/edit', <<Model camel>>.getId()]" nz-button nzType="primary">
                             {{ 'common_edit' | translate }}
                         </a>
-                        <a [routerLink]="['/<<M a-a>>/create']" nz-button nzType="default" class="ml-2">
+                        <a [routerLink]="['/<<Model kebab>>/create']" nz-button nzType="default" class="ml-2">
                             {{ 'common_create' | translate }}
                         </a>
                     </div>

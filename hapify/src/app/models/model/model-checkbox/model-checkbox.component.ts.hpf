@@ -1,35 +1,35 @@
 import {Component} from '@angular/core';
 import {EntityCheckboxComponent} from '@app/abstracts';
 import {ErrorService} from '@app/services';
-import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
-import {<<M AA>>Service} from '../<<M a-a>>.service';
-import {<<M AA>>} from '../<<M a-a>>';
+import {<<Model pascal>>SearchParams} from '../<<Model kebab>>-search-params';
+import {<<Model pascal>>Service} from '../<<Model kebab>>.service';
+import {<<Model pascal>>} from '../<<Model kebab>>';
  
 @Component({
-  selector: 'hpf-<<M a-a>>-checkbox',
+  selector: 'hpf-<<Model kebab>>-checkbox',
   templateUrl: '../../../abstracts/entity-checkbox/entity-checkbox.component.html'
 })
-export class <<M AA>>CheckboxComponent extends EntityCheckboxComponent< <<M AA>>> {
+export class <<Model pascal>>CheckboxComponent extends EntityCheckboxComponent< <<Model pascal>>> {
 
   /**
    * Constructor
-   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {<<Model pascal>>Service} <<Model camel>>Service
    * @param {ErrorService} errorService
    */
-  constructor(private <<M aA>>Service: <<M AA>>Service,
+  constructor(private <<Model camel>>Service: <<Model pascal>>Service,
               protected errorService: ErrorService) {
     super(errorService);
   }
   /** @inheritDoc */
-  protected async getList(): Promise< <<M AA>>[]> {
-      const params = new <<M AA>>SearchParams({
+  protected async getList(): Promise< <<Model pascal>>[]> {
+      const params = new <<Model pascal>>SearchParams({
           _limit: this.resultsLimit,
           _page: this.currentPage
       });
-      return (await this.<<M aA>>Service.list(params.toObject())).items;
+      return (await this.<<Model camel>>Service.list(params.toObject())).items;
   }
   /** @inheritDoc */
-  protected async getOne(id: string): Promise< <<M AA>>> {
-      return await this.<<M aA>>Service.get(id);
+  protected async getOne(id: string): Promise< <<Model pascal>>> {
+      return await this.<<Model camel>>Service.get(id);
   }
 }

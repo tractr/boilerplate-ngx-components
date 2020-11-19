@@ -1,33 +1,33 @@
 import {Component, OnInit} from '@angular/core';
 import {ErrorService} from '@app/services';
-import {<<M AA>>} from '../../<<M a-a>>';
-import {<<M AA>>Service} from '../../<<M a-a>>.service';
-import {<<M AA>>SearchParams} from '../../<<M a-a>>-search-params';
+import {<<Model pascal>>} from '../../<<Model kebab>>';
+import {<<Model pascal>>Service} from '../../<<Model kebab>>.service';
+import {<<Model pascal>>SearchParams} from '../../<<Model kebab>>-search-params';
  
 @Component({
-  selector: 'hpf-<<M a-a>>-index',
-  templateUrl: './<<M a-a>>-index.component.html'
+  selector: 'hpf-<<Model kebab>>-index',
+  templateUrl: './<<Model kebab>>-index.component.html'
 })
-export class <<M AA>>IndexComponent implements OnInit {
+export class <<Model pascal>>IndexComponent implements OnInit {
  
   /**
    * First found item
    */
-  item: <<M AA>> = null;
+  item: <<Model pascal>> = null;
   
   /**
    * Constructor
    * @param {ErrorService} errorService
-   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {<<Model pascal>>Service} <<Model camel>>Service
    */
   constructor(private errorService: ErrorService,
-              private <<M aA>>Service: <<M AA>>Service) {}
+              private <<Model camel>>Service: <<Model pascal>>Service) {}
 
  
   /** Init */
   ngOnInit() {
-      const params = new <<M AA>>SearchParams({ _limit: 1 });
-      this.<<M aA>>Service.list(params.toObject())
+      const params = new <<Model pascal>>SearchParams({ _limit: 1 });
+      this.<<Model camel>>Service.list(params.toObject())
         .then((results) => {
             if (results.count) {
                 this.item = results.items[0];

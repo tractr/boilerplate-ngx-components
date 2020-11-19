@@ -1,32 +1,32 @@
-<<? M pGSe>>
+<<if Model isGeoSearchable>>
 <<# Define shortcuts to fields latitude/longitude >>
 <<< let lat, lng; >>>
-<<@1 F se*tNt f>><<< lat = f; >>><<@>>
-<<@1 F se*tNg f>><<< lng = f; >>><<@>>
+<<for1 Fields searchable and latitude f>><<< lat = f; >>><<endfor>>
+<<for1 Fields searchable and longitude f>><<< lng = f; >>><<endfor>>
 import {Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {takeUntil} from 'rxjs/operators';
 import {ErrorService} from '@app/services';
-import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
-import {<<M AA>>Service} from '../<<M a-a>>.service';
-import {<<M AA>>} from '../<<M a-a>>';
+import {<<Model pascal>>SearchParams} from '../<<Model kebab>>-search-params';
+import {<<Model pascal>>Service} from '../<<Model kebab>>.service';
+import {<<Model pascal>>} from '../<<Model kebab>>';
  
 @Component({
-  selector: 'hpf-<<M a-a>>-map',
-  templateUrl: './<<M a-a>>-map.component.html'
+  selector: 'hpf-<<Model kebab>>-map',
+  templateUrl: './<<Model kebab>>-map.component.html'
 })
-export class <<M AA>>MapComponent implements OnInit, OnDestroy {
+export class <<Model pascal>>MapComponent implements OnInit, OnDestroy {
  
-  /** @type {<<M AA>>SearchParams} The search params */
-  @Input() searchParams: <<M AA>>SearchParams;
+  /** @type {<<Model pascal>>SearchParams} The search params */
+  @Input() searchParams: <<Model pascal>>SearchParams;
   /** @type {EventEmitter} Triggered when the user select a marker */
-  @Output() select = new EventEmitter<<<M AA>>>();
+  @Output() select = new EventEmitter<<<Model pascal>>>();
   /** @type {Subject<void>} Observables unsubscriber */
   private unsubscribe: Subject<void> = new Subject<void>();
   /** @type {any} The map object */
   map: any;
-  /** @type {<<M AA>>[]} The found objects */
-  items: <<M AA>>[] = [];
+  /** @type {<<Model pascal>>[]} The found objects */
+  items: <<Model pascal>>[] = [];
   /** @type {number} Length of the received results */
   total = 0;
   /** @type {boolean} Denotes if the map should fit the search params on loading */
@@ -40,10 +40,10 @@ export class <<M AA>>MapComponent implements OnInit, OnDestroy {
  
   /**
    * Constructor
-   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {<<Model pascal>>Service} <<Model camel>>Service
    * @param {ErrorService} errorService
    */
-  constructor(private <<M aA>>Service: <<M AA>>Service,
+  constructor(private <<Model camel>>Service: <<Model pascal>>Service,
               private errorService: ErrorService) {
   }
 
@@ -62,9 +62,9 @@ export class <<M AA>>MapComponent implements OnInit, OnDestroy {
   }
   /**
    * On select
-   * @param {<<M AA>>} item
+   * @param {<<Model pascal>>} item
    */
-  onSelect(item: <<M AA>>) {
+  onSelect(item: <<Model pascal>>) {
     this.select.emit(item);
   }
   /**
@@ -76,10 +76,10 @@ export class <<M AA>>MapComponent implements OnInit, OnDestroy {
     // Set bounds if possible
     if (this.centerOnLoad) {
         const bounds = {
-          south: this.searchParams.props.<<lat a_a>>__min,
-          north: this.searchParams.props.<<lat a_a>>__max,
-          west: this.searchParams.props.<<lng a_a>>__min,
-          east: this.searchParams.props.<<lng a_a>>__max,
+          south: this.searchParams.props.<<lat snake>>__min,
+          north: this.searchParams.props.<<lat snake>>__max,
+          west: this.searchParams.props.<<lng snake>>__min,
+          east: this.searchParams.props.<<lng snake>>__max,
         };
         if (typeof bounds.south !== 'undefined' &&
             typeof bounds.west !== 'undefined' &&
@@ -101,8 +101,8 @@ export class <<M AA>>MapComponent implements OnInit, OnDestroy {
     const northEast = bounds.getNorthEast();
     const southWest = bounds.getSouthWest();
     // Latitude
-    this.searchParams.props.<<lat a_a>>__min = southWest.lat();
-    this.searchParams.props.<<lat a_a>>__max = northEast.lat();
+    this.searchParams.props.<<lat snake>>__min = southWest.lat();
+    this.searchParams.props.<<lat snake>>__max = northEast.lat();
     // Deal with borders -180/180 for longitudes
     // @Todo Solve this border issue on backend side by using an "$or" statement when lngMax < lngMin
     const lngMin = southWest.lng();
@@ -110,16 +110,16 @@ export class <<M AA>>MapComponent implements OnInit, OnDestroy {
     if (lngMin > lngMax) {
         // The map has more positive longitudes displayed
         if (Math.abs(lngMin) < Math.abs(lngMax)) {
-            this.searchParams.props.<<lng a_a>>__min = lngMin;
-            delete this.searchParams.props.<<lng a_a>>__max;
+            this.searchParams.props.<<lng snake>>__min = lngMin;
+            delete this.searchParams.props.<<lng snake>>__max;
         } else {
             // The map has more negative longitudes displayed
-            this.searchParams.props.<<lng a_a>>__max = lngMax;
-            delete this.searchParams.props.<<lng a_a>>__min
+            this.searchParams.props.<<lng snake>>__max = lngMax;
+            delete this.searchParams.props.<<lng snake>>__min
         }
     } else {
-        this.searchParams.props.<<lng a_a>>__min = lngMin;
-        this.searchParams.props.<<lng a_a>>__max = lngMax;
+        this.searchParams.props.<<lng snake>>__min = lngMin;
+        this.searchParams.props.<<lng snake>>__max = lngMax;
     }
     // Trigger update
     this.searchParams.next();
@@ -131,7 +131,7 @@ export class <<M AA>>MapComponent implements OnInit, OnDestroy {
   private _refresh(): void {
     const params = this.searchParams.toObject();
     // Get list
-    this.<<M aA>>Service.list(params)
+    this.<<Model camel>>Service.list(params)
       .then((results) => {
         // Link data
         this.items = results.items;
@@ -141,6 +141,6 @@ export class <<M AA>>MapComponent implements OnInit, OnDestroy {
   }
 
 }
-<<??>>
-// No map for <<M a>>
-<<?>>
+<<else>>
+// No map for <<Model lower>>
+<<endif>>

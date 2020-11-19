@@ -1,25 +1,25 @@
 import {Component, Input} from '@angular/core';
 import {ErrorService} from '@app/services';
 import {EntityTableComponent} from '@app/abstracts';
-import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
-import {<<M AA>>Service} from '../<<M a-a>>.service';
-import {<<M AA>>} from '../<<M a-a>>';
+import {<<Model pascal>>SearchParams} from '../<<Model kebab>>-search-params';
+import {<<Model pascal>>Service} from '../<<Model kebab>>.service';
+import {<<Model pascal>>} from '../<<Model kebab>>';
  
 @Component({
-  selector: 'hpf-<<M a-a>>-table',
-  templateUrl: './<<M a-a>>-table.component.html'
+  selector: 'hpf-<<Model kebab>>-table',
+  templateUrl: './<<Model kebab>>-table.component.html'
 })
-export class <<M AA>>TableComponent extends EntityTableComponent< <<M AA>>, <<M AA>>SearchParams> {
+export class <<Model pascal>>TableComponent extends EntityTableComponent< <<Model pascal>>, <<Model pascal>>SearchParams> {
 
   /** @type {string[]} Columns to show */
   @Input() columns = [
-<<@5 F /hd/pr/(tE/em)/tSt/tSr f>>
-    '<<f a_a>>',
-<<@>>
+<<for5 Fields not hidden and not primary and not (entity and not embedded) and not text and not richText f>>
+    '<<f snake>>',
+<<endfor>>
   ];
 
   /** Constructor */
-  constructor(private <<M aA>>Service: <<M AA>>Service,
+  constructor(private <<Model camel>>Service: <<Model pascal>>Service,
               private errorService: ErrorService) {
     super();
   }
@@ -31,7 +31,7 @@ export class <<M AA>>TableComponent extends EntityTableComponent< <<M AA>>, <<M 
     // Set refreshing flag
     this.refreshing = true;
     // Get list
-    this.<<M aA>>Service.list(params)
+    this.<<Model camel>>Service.list(params)
       .then((results) => {
         // Link data
         this.items = results.items;

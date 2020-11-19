@@ -1,5 +1,5 @@
-<<? M pGSe>>
-<div class="<<M a-a>>-list-container w-100 h-100">
+<<if Model isGeoSearchable>>
+<div class="<<Model kebab>>-list-container w-100 h-100">
     <agm-map class="h-100"
              [latitude]="latitude"
              [longitude]="longitude"
@@ -10,8 +10,8 @@
              (mapReady)="onReady($event)"
              (idle)="onIdle()">
         <agm-marker *ngFor="let item of items"
-                    [latitude]="item.props.<<@1 F se*tNt f>><<f a_a>><<@>>"
-                    [longitude]="item.props.<<@1 F se*tNg f>><<f a_a>><<@>>">
+                    [latitude]="item.props.<<for1 Fields searchable and latitude f>><<f snake>><<endfor>>"
+                    [longitude]="item.props.<<for1 Fields searchable and longitude f>><<f snake>><<endfor>>">
             <agm-snazzy-info-window borderRadius="0"
                                     padding="0"
                                     [border]="false"
@@ -31,6 +31,6 @@
         </agm-marker>
     </agm-map>
 </div>
-<<??>>
-<!-- No map for <<M a>> -->
-<<?>>
+<<else>>
+<!-- No map for <<Model lower>> -->
+<<endif>>

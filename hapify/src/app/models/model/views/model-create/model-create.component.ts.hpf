@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {<<M AA>>} from '../../<<M a-a>>';
+import {<<Model pascal>>} from '../../<<Model kebab>>';
  
 @Component({
-  selector: 'hpf-<<M a-a>>-create',
-  templateUrl: './<<M a-a>>-create.component.html'
+  selector: 'hpf-<<Model kebab>>-create',
+  templateUrl: './<<Model kebab>>-create.component.html'
 })
-export class <<M AA>>CreateComponent implements OnInit {
+export class <<Model pascal>>CreateComponent implements OnInit {
  
   /**
    * Constructor
@@ -19,11 +19,11 @@ export class <<M AA>>CreateComponent implements OnInit {
   ngOnInit() {
   }
   /**
-   * Called when the <<M a>> is saved
-   * @param {<<M AA>>} <<M aA>>
+   * Called when the <<Model lower>> is saved
+   * @param {<<Model pascal>>} <<Model camel>>
    */
-  onSave(<<M aA>>: <<M AA>>): void {
-    this.router.navigateByUrl(`/<<M a-a>>/${<<M aA>>.getId()}`);
+  onSave(<<Model camel>>: <<Model pascal>>): void {
+    this.router.navigateByUrl(`/<<Model kebab>>/${<<Model camel>>.getId()}`);
   }
  
 }

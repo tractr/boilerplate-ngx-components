@@ -3,21 +3,21 @@
         <div class="col-3">
             <div class="p-3 bg-light rounded">
                 <h6 class="border-bottom pb-2 mb-3">{{ 'common_filters-title' | translate }}</h6>
-                <hpf-<<M a-a>>-filters [searchParams]="searchParams" [resetPage]="true"></hpf-<<M a-a>>-filters>
+                <hpf-<<Model kebab>>-filters [searchParams]="searchParams" [resetPage]="true"></hpf-<<Model kebab>>-filters>
             </div>
         </div>
         <div class="col-9">
             <div class="row">
                 <div class="col-12">
-                    <hpf-<<M a-a>>-table
+                    <hpf-<<Model kebab>>-table
                         [searchParams]="searchParams"
-                        (select)="onSelect($event)"></hpf-<<M a-a>>-table>
+                        (select)="onSelect($event)"></hpf-<<Model kebab>>-table>
                     <div class="w-100 my-3">
                         <nz-card nzTitle="Code">
-            <<? F se>>
-                            <pre><code>&lt;hpf-<<M a-a>>-filters [searchParams]="searchParams" [resetPage]="true"&gt;&lt;/hpf-<<M a-a>>-filters&gt;</code></pre>
-            <<?>>
-                            <pre><code>&lt;hpf-<<M a-a>>-table [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<M a-a>>-table&gt;</code></pre>
+            <<if Fields searchable>>
+                            <pre><code>&lt;hpf-<<Model kebab>>-filters [searchParams]="searchParams" [resetPage]="true"&gt;&lt;/hpf-<<Model kebab>>-filters&gt;</code></pre>
+            <<endif>>
+                            <pre><code>&lt;hpf-<<Model kebab>>-table [searchParams]="searchParams" (select)="onSelect($event)"&gt;&lt;/hpf-<<Model kebab>>-table&gt;</code></pre>
                         </nz-card>
                     </div>
                 </div>

@@ -3,17 +3,17 @@ import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Subscription as RxJsSubscription} from 'rxjs/Subscription';
 import {ErrorService} from '@app/services';
-import {<<M AA>>} from '../../<<M a-a>>';
-import {<<M AA>>Service} from '../../<<M a-a>>.service';
+import {<<Model pascal>>} from '../../<<Model kebab>>';
+import {<<Model pascal>>Service} from '../../<<Model kebab>>.service';
 
 @Component({
-  selector: 'hpf-<<M a-a>>-edit',
-  templateUrl: './<<M a-a>>-edit.component.html'
+  selector: 'hpf-<<Model kebab>>-edit',
+  templateUrl: './<<Model kebab>>-edit.component.html'
 })
-export class <<M AA>>EditComponent implements OnInit, OnDestroy {
+export class <<Model pascal>>EditComponent implements OnInit, OnDestroy {
 
-  /** @type {<<M AA>>} The <<M a>> */
-  <<M aA>>: <<M AA>>;
+  /** @type {<<Model pascal>>} The <<Model lower>> */
+  <<Model camel>>: <<Model pascal>>;
   /** @type {RxJsSubscription} The id subscription */
   private idSubscription: RxJsSubscription;
 
@@ -22,20 +22,20 @@ export class <<M AA>>EditComponent implements OnInit, OnDestroy {
    * @param {ActivatedRoute} route
    * @param {Router} router
    * @param {ErrorService} errorService
-   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {<<Model pascal>>Service} <<Model camel>>Service
    */
   constructor(private route: ActivatedRoute,
               private router: Router,
               private errorService: ErrorService,
-              private <<M aA>>Service: <<M AA>>Service) {}
+              private <<Model camel>>Service: <<Model pascal>>Service) {}
 
   /** Init */
   ngOnInit() {
-    // Get the <<M a>> after reading the id
+    // Get the <<Model lower>> after reading the id
     this.idSubscription = this.route.params.subscribe(params => {
-      this.<<M aA>>Service.get(params['id'])
-        .then((<<M aA>>: <<M AA>>) => {
-          this.<<M aA>> = <<M aA>>;
+      this.<<Model camel>>Service.get(params['id'])
+        .then((<<Model camel>>: <<Model pascal>>) => {
+          this.<<Model camel>> = <<Model camel>>;
         })
         .catch((error) => this.errorService.handle(error));
     });
@@ -44,8 +44,8 @@ export class <<M AA>>EditComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.idSubscription.unsubscribe();
   }
-  /** @param {<<M AA>>} <<M aA>> Called when the <<M a>> is saved*/
-  onSave(<<M aA>>: <<M AA>>): void {
-    this.router.navigateByUrl(`/<<M a-a>>/${<<M aA>>.getId()}`);
+  /** @param {<<Model pascal>>} <<Model camel>> Called when the <<Model lower>> is saved*/
+  onSave(<<Model camel>>: <<Model pascal>>): void {
+    this.router.navigateByUrl(`/<<Model kebab>>/${<<Model camel>>.getId()}`);
   }
 }

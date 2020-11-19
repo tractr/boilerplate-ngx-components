@@ -1,4 +1,4 @@
 export * from './models.module';
-<<@ M m>>
-export * from './<<m a-a>>';
-<<@>>
+<<for Models m>>
+export * from './<<m kebab>>';
+<<endfor>>

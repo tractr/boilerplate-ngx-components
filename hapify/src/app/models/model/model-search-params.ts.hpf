@@ -2,21 +2,21 @@ import {Helpers} from '@app/shared';
 import {BaseModelSearchParams, BaseModelSearchParamsInterface} from '@app/abstracts';
  
 /** Used to export and import search params */
-export interface <<M AA>>SearchParamsInterface extends BaseModelSearchParamsInterface {
-  <<P a_a>>?: string[];
-<<@ F se f>>
+export interface <<Model pascal>>SearchParamsInterface extends BaseModelSearchParamsInterface {
+  <<PrimaryField snake>>?: string[];
+<<for Fields searchable f>>
   <<=_interface(f)>>;
-<<@>>
+<<endfor>>
 }
  
-/** Manage <<M a>> search params */
-export class <<M AA>>SearchParams extends BaseModelSearchParams< <<M AA>>SearchParamsInterface> {
+/** Manage <<Model lower>> search params */
+export class <<Model pascal>>SearchParams extends BaseModelSearchParams< <<Model pascal>>SearchParamsInterface> {
  
   /** @inheritDoc */
-  fromObject(input: <<M AA>>SearchParamsInterface): void {
+  fromObject(input: <<Model pascal>>SearchParamsInterface): void {
  
     // Clone object with allowed keys only
-    const props: <<M AA>>SearchParamsInterface = {};
+    const props: <<Model pascal>>SearchParamsInterface = {};
     this.allowedKeys().map((key: string) => {
       if (typeof input[key] !== 'undefined') {
         props[key] = input[key];
@@ -30,77 +30,77 @@ export class <<M AA>>SearchParams extends BaseModelSearchParams< <<M AA>>SearchP
     if (typeof props._order === 'undefined') { props._order = this.defaultOrder; }
 
     // Convert potentially multiple primary keys
-    if (typeof props.<<P a_a>> === 'string') {
-      props.<<P a_a>> = (< string>props.<<P a_a>>).split(',').filter((s) => s.length);
+    if (typeof props.<<PrimaryField snake>> === 'string') {
+      props.<<PrimaryField snake>> = (< string>props.<<PrimaryField snake>>).split(',').filter((s) => s.length);
     }
 
-<<@ F se f>>
-    <<? f tB>>
+<<for Fields searchable f>>
+    <<if f boolean>>
  
-    // Convert boolean <<f a>>
-    if (typeof props.<<f a_a>> !== 'undefined') {
-      props.<<f a_a>> = Helpers.convertToBoolean(props.<<f a_a>>);
+    // Convert boolean <<f lower>>
+    if (typeof props.<<f snake>> !== 'undefined') {
+      props.<<f snake>> = Helpers.convertToBoolean(props.<<f snake>>);
     }
 
-    <<?? f tD>>
+    <<elseif f datetime>>
  
-    // Convert dates for <<f a>>
-    if (typeof props.<<f a_a>> !== 'undefined') {
-      props.<<f a_a>> = Helpers.convertToDate(props.<<f a_a>>);
+    // Convert dates for <<f lower>>
+    if (typeof props.<<f snake>> !== 'undefined') {
+      props.<<f snake>> = Helpers.convertToDate(props.<<f snake>>);
     }
-    if (typeof props.<<f a_a>>__min !== 'undefined') {
-      props.<<f a_a>>__min = Helpers.convertToDate(props.<<f a_a>>__min);
+    if (typeof props.<<f snake>>__min !== 'undefined') {
+      props.<<f snake>>__min = Helpers.convertToDate(props.<<f snake>>__min);
     }
-    if (typeof props.<<f a_a>>__max !== 'undefined') {
-      props.<<f a_a>>__max = Helpers.convertToDate(props.<<f a_a>>__max);
+    if (typeof props.<<f snake>>__max !== 'undefined') {
+      props.<<f snake>>__max = Helpers.convertToDate(props.<<f snake>>__max);
     }
 
-    <<?? f tE*ml>>
+    <<elseif f entity and multiple>>
  
-    // Convert potentially multiple ids for <<f a>>
-    if (typeof props.<<f a_a>> === 'string') {
-      props.<<f a_a>> = (< string>props.<<f a_a>>).split(',').filter((s) => s.length);
+    // Convert potentially multiple ids for <<f lower>>
+    if (typeof props.<<f snake>> === 'string') {
+      props.<<f snake>> = (< string>props.<<f snake>>).split(',').filter((s) => s.length);
     }
-    <<?>>
-<<@>>
+    <<endif>>
+<<endfor>>
  
     // Assign values
     this.props = props;
     this.next();
   }
   /** @inheritDoc */
-  toObject(): <<M AA>>SearchParamsInterface {
+  toObject(): <<Model pascal>>SearchParamsInterface {
  
     // Filter not allowed, undefined and null values
-    const props: <<M AA>>SearchParamsInterface = {};
+    const props: <<Model pascal>>SearchParamsInterface = {};
     this.allowedKeys().map(Helpers.prepareObjectForApi(this.props, props));
 
-<<@ F se f>>
-    <<? f tD>>
+<<for Fields searchable f>>
+    <<if f datetime>>
  
-    // Avoid conflict in value of <<f a>>
-    if (typeof props.<<f a_a>> !== 'undefined') {
-      delete props.<<f a_a>>__min;
-      delete props.<<f a_a>>__max;
+    // Avoid conflict in value of <<f lower>>
+    if (typeof props.<<f snake>> !== 'undefined') {
+      delete props.<<f snake>>__min;
+      delete props.<<f snake>>__max;
     }
-    <<?? f tB>>
+    <<elseif f boolean>>
  
-    // Convert boolean <<f a>>
-    if (typeof props.<<f a_a>> !== 'undefined') {
-      props.<<f a_a>> = props.<<f a_a>> ? 'true' : 'false';
+    // Convert boolean <<f lower>>
+    if (typeof props.<<f snake>> !== 'undefined') {
+      props.<<f snake>> = props.<<f snake>> ? 'true' : 'false';
     }
-    <<?>>
-<<@>>
+    <<endif>>
+<<endfor>>
  
     return props;
   }
   /** @inheritDoc */
   protected allowedKeys(): string[] {
     return super.allowedKeys().concat([
-      '<<P a_a>>',
-<<@ F se f>>
+      '<<PrimaryField snake>>',
+<<for Fields searchable f>>
       <<=_key(f)>>,
-<<@>>
+<<endfor>>
     ]);
   }
 }

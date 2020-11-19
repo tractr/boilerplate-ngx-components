@@ -2,26 +2,26 @@
     <div class="row">
         <div class="col-12 my-3 my-lg-5">
             <nz-card>
-                <h2>Components for <<M a>></h2>
+                <h2>Components for <<Model lower>></h2>
                 <div class="mt-4">
-                    <a [routerLink]="['/<<M a-a>>/selectors']">Selectors</a>
+                    <a [routerLink]="['/<<Model kebab>>/selectors']">Selectors</a>
                 </div>
                 <div class="mt-4">
-                    <a [routerLink]="['/<<M a-a>>/list']">Table & Filters</a>
+                    <a [routerLink]="['/<<Model kebab>>/list']">Table & Filters</a>
                 </div>
-<<? M pGSe>>
+<<if Model isGeoSearchable>>
                 <div class="mt-4">
-                    <a [routerLink]="['/<<M a-a>>/map']">Map & Filters</a>
+                    <a [routerLink]="['/<<Model kebab>>/map']">Map & Filters</a>
                 </div>
-<<?>>
+<<endif>>
                 <div class="mt-4">
-                    <a [routerLink]="['/<<M a-a>>/create']">Creation form</a>
+                    <a [routerLink]="['/<<Model kebab>>/create']">Creation form</a>
                 </div>
                 <div class="mt-4" *ngIf="item">
-                    <a [routerLink]="['/<<M a-a>>/edit', item.getId()]">Edition form</a>
+                    <a [routerLink]="['/<<Model kebab>>/edit', item.getId()]">Edition form</a>
                 </div>
                 <div class="mt-4" *ngIf="item">
-                    <a [routerLink]="['/<<M a-a>>', item.getId()]">Details</a>
+                    <a [routerLink]="['/<<Model kebab>>', item.getId()]">Details</a>
                 </div>
             </nz-card>
         </div>

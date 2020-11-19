@@ -1,13 +1,13 @@
-export * from './<<M a-a>>.service';
-export * from './<<M a-a>>';
-export * from './<<M a-a>>-search-params';
-export * from './<<M a-a>>-details/<<M a-a>>-details.component';
-export * from './<<M a-a>>-filters/<<M a-a>>-filters.component';
-export * from './<<M a-a>>-form/<<M a-a>>-form.component';
-export * from './<<M a-a>>-table/<<M a-a>>-table.component';
-export * from './<<M a-a>>-select/<<M a-a>>-select.component';
-export * from './<<M a-a>>-checkbox/<<M a-a>>-checkbox.component';
-export * from './<<M a-a>>-sortable/<<M a-a>>-sortable.component';
-<<? M pGSe>>
-export * from './<<M a-a>>-map/<<M a-a>>-map.component';
-<<?>>
+export * from './<<Model kebab>>.service';
+export * from './<<Model kebab>>';
+export * from './<<Model kebab>>-search-params';
+export * from './<<Model kebab>>-details/<<Model kebab>>-details.component';
+export * from './<<Model kebab>>-filters/<<Model kebab>>-filters.component';
+export * from './<<Model kebab>>-form/<<Model kebab>>-form.component';
+export * from './<<Model kebab>>-table/<<Model kebab>>-table.component';
+export * from './<<Model kebab>>-select/<<Model kebab>>-select.component';
+export * from './<<Model kebab>>-checkbox/<<Model kebab>>-checkbox.component';
+export * from './<<Model kebab>>-sortable/<<Model kebab>>-sortable.component';
+<<if Model isGeoSearchable>>
+export * from './<<Model kebab>>-map/<<Model kebab>>-map.component';
+<<endif>>
